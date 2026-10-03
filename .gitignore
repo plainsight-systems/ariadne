@@ -1,0 +1,14 @@
+# Papers downloaded for reading: copyrighted, large, never committed.
+# references/library.tsv records what is here so the folder can be rebuilt.
+references/library/*
+!references/library/README.md
+
+# Experiment outputs that are regenerated (keep small summaries in results/)
+experiments/*/out/
+experiments/*/.venv/
+__pycache__/
+
+# Paper build intermediates
+build/
+
+.DS_Store
