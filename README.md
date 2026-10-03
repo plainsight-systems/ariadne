@@ -1,5 +1,9 @@
 # Ariadne
 
+![A small wood-and-brass mechanical mouse with a ball of red thread on its back stands in a lit square of a 5 by 5 relay maze. The thread unwinds behind it through the corridors it has already traveled, back to a brass post at the maze entrance. Under the floor, a cutaway shows rows of telephone relays, a few glowing amber. On the right, the maze walls rise and fold into an impossible higher-dimensional labyrinth that fades into a drafting grid.](assets/ariadne-readme.png)
+
+<sub>Illustration generated with ChatGPT for this repository.</sub>
+
 How much of a message can a finite receiver actually use, and does the right
 alphabet fall out of the receiver's capacity instead of being tuned?
 
