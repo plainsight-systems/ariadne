@@ -1,6 +1,6 @@
 file	url	bibkey
-shannon-1948-part1.pdf	https://archive.org/download/bstj27-3-379/bstj27-3-379.pdf	shannon1948
-shannon-1948-part2.pdf	https://archive.org/download/bstj27-4-623/bstj27-4-623.pdf	shannon1948
+shannon-1948-part1.pdf	https://archive.org/download/bstj27-3-379/bstj27-3-379.pdf	shannon1948a
+shannon-1948-part2.pdf	https://archive.org/download/bstj27-4-623/bstj27-4-623.pdf	shannon1948b
 shannon-1951-prediction-entropy-printed-english.pdf	https://archive.org/download/bstj30-1-50/bstj30-1-50.pdf	shannon1951
 xu-2020-usable-information.pdf	https://arxiv.org/pdf/2002.10689	xu2020
 finzi-2026-epiplexity.pdf	https://arxiv.org/pdf/2601.03220	finzi2026
@@ -28,8 +28,8 @@ sennrich-2016-subword-units.pdf	https://aclanthology.org/P16-1162.pdf	sennrich20
 kudo-2018-subword-regularization.pdf	https://aclanthology.org/P18-1007.pdf	kudo2018
 bottou-bousquet-2008-tradeoffs-large-scale-learning.pdf	https://proceedings.neurips.cc/paper_files/paper/2007/file/0d3180d672e08b4c5312dcdafdf6ef36-Paper.pdf	bottou2008
 gowda-may-2020-optimal-vocabulary-size-nmt.pdf	https://aclanthology.org/2020.findings-emnlp.352.pdf	gowda2020
-shannon-1948-part1-ocr.pdf	https://archive.org/download/bstj27-3-379/bstj27-3-379_text.pdf	shannon1948
-shannon-1948-part2-ocr.pdf	https://archive.org/download/bstj27-4-623/bstj27-4-623_text.pdf	shannon1948
+shannon-1948-part1-ocr.pdf	https://archive.org/download/bstj27-3-379/bstj27-3-379_text.pdf	shannon1948a
+shannon-1948-part2-ocr.pdf	https://archive.org/download/bstj27-4-623/bstj27-4-623_text.pdf	shannon1948b
 shannon-1951-prediction-entropy-printed-english-ocr.pdf	https://archive.org/download/bstj30-1-50/bstj30-1-50_text.pdf	shannon1951
 hellman-cover-1970-learning-with-finite-memory.pdf	https://www-ee.stanford.edu/~hellman/publications/04.pdf	hellman1970
 tunstall-1967-synthesis-of-noiseless-compression-codes.pdf	https://repository.gatech.edu/bitstreams/ccc48466-bd49-45fa-b579-d75b22f6465d/download	tunstall1967
