@@ -19,6 +19,24 @@ as evidence).
   5. Convert the brief's credit list into verified `references/refs.bib` entries
      (only two exist so far).
 
+### Known gaps
+
+- **`references/refs.bib` is nearly empty.** It has two verified entries
+  (Shannon 1948, Xu et al. 2020). Every other work in the brief's "Prior art
+  carried over" list still needs an entry checked against the paper before any
+  piece cites it. `references/library.tsv` already names a bibkey for each
+  downloaded paper; use those keys.
+- **The paper build cannot read this repository yet.**
+  `plainsight-systems-site/scripts/build-paper.sh` only builds from the site's
+  own `papers/<slug>/` folder, so a finished piece must be copied there first.
+  A `--source <dir>` option to build straight from `pieces/` was proposed and
+  not built. Building it is a change to the public site repository's build
+  script: state the intent and get Andrew's go-ahead first.
+- **The reading library is not in git.** `references/library/` (38 PDFs) exists
+  only on Andrew's machine. On another machine, rebuild it from
+  `references/library.tsv`; papers Andrew downloaded by hand (Creutz and Lagus
+  2007 from ACM) cannot be fetched by script.
+
 ## Framing rules (Andrew's, not negotiable)
 
 - **Not about BPE, not scoped to ML idioms.** BPE is how the question arose;
