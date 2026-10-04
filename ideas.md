@@ -17,3 +17,14 @@ The thought or question, as rough as it is.
 From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
+
+## 2026-10-04: Information theory starts at the signal, not the transmitter?
+
+Information theory seems to start at the signal, the information, and not at
+the transmitter. Is this true? If the alphabet is chosen at the sending end,
+is "the right alphabet" a question about the transmitter as much as the
+receiver?
+
+## 2026-10-04: The hypotheses are over-restricted
+
+H1 to H4 may be drawn too narrowly.
