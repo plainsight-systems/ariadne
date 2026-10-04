@@ -48,6 +48,8 @@ as evidence).
   cannot find elsewhere.
 - **Keep facts, inferences and hypotheses separate,** and say how confident a
   claim is.
+- **Loose thoughts go in `ideas.md`,** not the brief. An idea is not a
+  hypothesis; promote it to `brief.md` or a note only when it firms up.
 - **Record results that contradict a prediction.** They are results.
 
 ## Research rules
