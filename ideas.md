@@ -18,6 +18,28 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-04: Meaning has to fit both ends
+
+The key here is the meaning. In order to transmit and receive, we need to be
+able to express the concept in both the transmitter's and the receiver's
+compute capability. This is, I believe, the vocab x embedding dimension
+relationship.
+
+From: "The loss from source to signal is the meaning" (below)
+Leads (unchecked):
+- A language model is both ends: the input embedding receives tokens, the
+  output head transmits them. H3's input/output split may be this
+  receiver/transmitter split under another name; the softmax bottleneck
+  (rank at most d + 1) is then a transmitter limit.
+- V is not capped at d: superposition packs many more near-orthogonal
+  directions than dimensions, at the cost of interference (Elhage et al.
+  2022). The limit may be tolerable interference, not V <= d.
+- Tokens whose differences cannot be expressed in d dimensions end up close
+  together: the embedding may be where "equating the unequal" happens.
+- Non-neural counterpart: vector quantization (a codebook of K vectors in d
+  dimensions; rate, dimension and distortion trade off), and Shannon 1949's
+  sphere packing in dimension. Likely prior art; check.
+
 ## 2026-10-04: The loss from source to signal is the meaning
 
 My guess is transmission from source to signal is lossy, and the lossiness is
