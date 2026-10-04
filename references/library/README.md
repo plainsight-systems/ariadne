@@ -28,3 +28,11 @@ file<TAB>url<TAB>bibkey
   as printed in Shannon and Weaver, *The Mathematical Theory of
   Communication* (University of Illinois Press, 1949), checked against the
   book; a condensed version appeared in *Scientific American*, July 1949.
+- `shannon-1959-fidelity-criterion.pdf`: a retypeset reprint (it footnotes
+  the original as IRE International Convention Record, vol. 7, 1959), so
+  its page numbers are not the original's. Check citations against the
+  original printing.
+- `tishby-2000-information-bottleneck.pdf`: the arXiv preprint
+  (physics/0004057, April 2000). The paper is usually cited to the 37th
+  Allerton Conference (1999); the arXiv copy does not say so, so confirm
+  the venue before citing it that way.
