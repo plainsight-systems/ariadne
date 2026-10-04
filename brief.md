@@ -77,7 +77,7 @@ Shannon sets the last three to zero. The alphabet moves all three at once, which
 | # | Hypothesis | Status |
 |---|---|---|
 | H1 | The alphabet matters only because the receiver is bounded. | **Prior art; credit, do not claim.** Epiplexity's "Paradox 2", V-information, Rajaraman et al. |
-| H2 | The right alphabet size can be derived from the receiver's capacity and budget, not tuned. | **Appears open** (moderate confidence; no paper found deriving it). The core of the program. |
+| H2 | The right alphabet size can be derived from the receiver's capacity and budget, not tuned. | **Partly anticipated** (2026-10-04). Nixon 2026 (arXiv:2604.09521, unreviewed) derives an agent's *semantic* alphabet (the history distinctions a finite-state controller's memory can sustain) from its capacity, and the communication rate between two such agents. Not found: the size of the *code* alphabet over a source, derived from a receiver's capacity and exposure budget. Moderate-low confidence that this remains open. The core of the program. |
 | H3 | It is two numbers: what a receiver can take in is bounded by exposure; what it can express out is bounded by its dimension. | **Appears open** (moderate-low confidence). Evidence: the softmax bottleneck (output rank at most d + 1); Over-Tokenized Transformer (input vocabulary scales freely, output vocabulary hurts small models). |
 | H4 | Capacity and compute are not independent: compute is spent through the receiver's limited dimension. | Strong evidence in one receiver kind: Godey and Artzi 2026 (95 to 99% of gradient norm suppressed at a rank-limited output). Needs a general statement. |
 
@@ -147,7 +147,7 @@ Compression"; Chung, Garrette et al. 2020 (MDL for vocabularies); Goldwater 2007
 encoding); Gastaldi et al. 2024, "The Foundations of Tokenization"; Erdogan et al. 2026; ByteSpan 2025; Delétang et
 al., "Language Modeling Is Compression".
 
-**Bounded learners:** Xu et al. 2020 (V-information); Finzi et al. 2026 (epiplexity, time-bounded entropy); Rajaraman,
+**Bounded learners:** Nixon 2026 (capacity-derived semantic alphabets); Xu et al. 2020 (V-information); Finzi et al. 2026 (epiplexity, time-bounded entropy); Rajaraman,
 Jiao, Ramchandran 2024; Hellman and Cover 1970; Bottou and Bousquet 2007.
 
 **Vocabulary and the learner:** Tao et al. 2024 (vocabulary scaling laws); Chung and Kim 2025 (frequency imbalance);

@@ -52,7 +52,27 @@ Closest, read these first:
   rate set by the mismatch, intent-preserving communication is impossible.
   States its contribution as deriving the alphabet from bounded interaction.
   Capacity there is memory and horizon in a POMDP, not V x d. Bears on H2 as
-  well as this idea.
+  well as this idea. Read in full 2026-10-04:
+  - Each agent's alphabet is the set of observation histories its m-node
+    finite-state controller can tell apart (a Myhill-Nerode quotient, from
+    Nixon's earlier paper). A finite-state controller is a non-neural
+    receiver.
+  - The receiver's quotient merges classes the sender keeps apart. Those
+    merged distinctions are the loss, so the quotient is a formal version of
+    "the structure of the loss" (the entry below).
+  - Critical rate: log|Q_A| - log|Q_B| for uniform visitation; generally the
+    conditional entropy rate of A's classes given B's. Below it, the sender's
+    intent cannot get across. The lower bound is a pigeonhole argument.
+  - Continuous extension (proof sketch only, appendix N): rate of about
+    (d_A - d_B) log(1/eps) for spaces of intrinsic dimension d_A > d_B. The
+    cost is the dimension gap.
+  - Covers one-way communication where the sender's partition refines the
+    receiver's. States as open: two-way communication, and agents whose
+    partitions are not nested. "Both ends must express it" sits in that open
+    case.
+  - Says nothing about a code's vocabulary size or exposure; the message is
+    R bits per step. Conjectures (unproved) that transformer layer
+    representations refine its quotient.
 - Xu, "Semantic Channel Theory: Deductive Compression and Structural Fidelity
   for Multi-Agent Communication", arXiv:2604.16471 (Apr 2026, single author).
   Vocabulary mismatch between agents limits fidelity even over a noiseless
