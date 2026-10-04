@@ -60,7 +60,7 @@ question appears wherever a finite receiver meets a code.
 
 ## Framework: where the loss lives
 
-Prior art (Bottou and Bousquet, "The Tradeoffs of Large Scale Learning", NeurIPS 2008): a receiver's loss is
+Prior art (Bottou and Bousquet, "The Tradeoffs of Large Scale Learning", NIPS 2007): a receiver's loss is
 
 **source entropy + approximation gap + estimation gap + optimization gap**
 
@@ -148,7 +148,7 @@ encoding); Gastaldi et al. 2024, "The Foundations of Tokenization"; Erdogan et a
 al., "Language Modeling Is Compression".
 
 **Bounded learners:** Xu et al. 2020 (V-information); Finzi et al. 2026 (epiplexity, time-bounded entropy); Rajaraman,
-Jiao, Ramchandran 2024; Hellman and Cover 1970; Bottou and Bousquet 2008.
+Jiao, Ramchandran 2024; Hellman and Cover 1970; Bottou and Bousquet 2007.
 
 **Vocabulary and the learner:** Tao et al. 2024 (vocabulary scaling laws); Chung and Kim 2025 (frequency imbalance);
 Land and Bartolo 2024 (undertrained tokens); Gowda and May 2020 (exposure heuristic).
