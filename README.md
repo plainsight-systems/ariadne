@@ -18,7 +18,8 @@ memory, and the thread Ariadne gave Theseus to find his way through the
 labyrinth.
 
 **Status:** research program defined; nothing written or built yet.
-**Visibility:** private working repository. See [COPYRIGHT.md](COPYRIGHT.md).
+**License:** writing CC BY 4.0, code Apache 2.0; see [LICENSE](LICENSE) and
+[NOTICE](NOTICE).
 
 ## Layout
 

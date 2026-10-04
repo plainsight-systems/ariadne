@@ -1,0 +1,12 @@
+Ariadne
+Copyright 2026 Andrew P Hunter. Published by Plainsight Systems LLC.
+
+Not covered by LICENSE:
+
+- Papers in references/library/ belong to their authors and publishers.
+  They are kept for personal reading, are git-ignored and are never
+  distributed here; references/library.tsv lists where each came from.
+- Quotations from cited works remain their authors'.
+
+assets/ariadne-readme.png was generated with ChatGPT for this repository.
+It is offered under CC BY 4.0 to the extent any copyright applies to it.
