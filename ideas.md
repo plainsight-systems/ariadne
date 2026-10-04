@@ -25,6 +25,20 @@ the meaning. I think this is important, and philosophy via Nietzsche points at
 this.
 
 From: Shannon 1948's five-part diagram, where the source comes before the transmitter
+Leads (unchecked unless marked):
+- Nietzsche, "On Truth and Lies in a Nonmoral Sense" (1873): concepts form by
+  equating unequal things.
+- Weaver 1949 (checked): proposes a "semantic noise" box between source and
+  transmitter, which is where this idea puts the loss, but treats that loss
+  as noise; and a "semantic receiver" matched to the receivers' capacities.
+- Shannon 1959, rate-distortion: the distortion measure says which loss is
+  acceptable, and comes from outside the theory.
+- Tishby, Pereira and Bialek, information bottleneck: keep only what bears on
+  a chosen relevant variable.
+- Dretske 1981: perception to concept as a lossy analog-to-digital step.
+  Book not yet in hand (references/to-get.md).
+- Refinement to test: the meaning may be the structure of the loss (which
+  differences are discarded), not the amount.
 
 ## 2026-10-04: Information theory starts at the signal, not the transmitter?
 
