@@ -17,15 +17,16 @@ as evidence).
   3. Design experiment A in detail.
   4. Outline piece 1.
   5. Convert the brief's credit list into verified `references/refs.bib` entries
-     (only two exist so far).
+     (only four exist so far).
 
 ### Known gaps
 
-- **`references/refs.bib` is nearly empty.** It has two verified entries
-  (Shannon 1948, Xu et al. 2020). Every other work in the brief's "Prior art
-  carried over" list still needs an entry checked against the paper before any
-  piece cites it. `references/library.tsv` already names a bibkey for each
-  downloaded paper; use those keys.
+- **`references/refs.bib` is nearly empty.** It has four verified entries
+  (Shannon 1948 Parts I and II, Xu et al. 2020, Bottou and Bousquet 2007).
+  Every other work in the brief's "Prior art carried over" list still needs an
+  entry checked against the paper before any piece cites it.
+  `references/library.tsv` already names a bibkey for each downloaded paper;
+  use those keys.
 - **The paper build cannot read this repository yet.**
   `plainsight-systems-site/scripts/build-paper.sh` only builds from the site's
   own `papers/<slug>/` folder, so a finished piece must be copied there first.
