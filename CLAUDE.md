@@ -93,8 +93,9 @@ likeness).
 
 ## Publishing
 
-- Published writing: CC BY 4.0, copyright Andrew P Hunter, published by
-  Plainsight Systems. Published code: Apache 2.0. See `COPYRIGHT.md`.
+- This repository is public. Writing is CC BY 4.0 and code is Apache 2.0,
+  copyright Andrew P Hunter, published by Plainsight Systems: see `LICENSE`,
+  `LICENSE-CONTENT`, `LICENSE-CODE` and `NOTICE`.
 - A piece goes wherever it fits: a paper on plainsight-systems.com, an article
   on andrewphunter.com, or a standalone LinkedIn post.
 - The site pipeline lives in `~/repositories/plainsight-systems-site`: the
@@ -110,9 +111,10 @@ likeness).
   first. Tests: `scripts/test-publish-piece.sh`. The site's own build script
   is unchanged; changing it is a change to a public repository and needs
   Andrew's go-ahead.
-- **plainsight-systems-site is a public repository.** Plans, audits, critiques
-  and drafts never go there; only the finished paper does. This repository is
-  private, so working material belongs here (or in `~/Documents/`).
+- **plainsight-systems-site is the showcase.** Plans, audits, critiques and
+  drafts never go there; only the finished paper does. Research working
+  material belongs here, in the open. Anything that should not be public
+  (career plans, personal material) goes in `~/Documents/`, not here.
 - The site's Research page lists write-ups in `data/writing.yaml`: articles and
   papers, plus LinkedIn posts only when they stand alone or explain a build,
   never posts that just point to an article. Titles are quoted verbatim.
@@ -132,5 +134,5 @@ likeness).
 
 ## Git
 
-Private repository `plainsight-systems/ariadne`; push to `main`. Commit
+Public repository `plainsight-systems/ariadne`; push to `main`. Commit
 messages end with the co-author trailer the session provides.
