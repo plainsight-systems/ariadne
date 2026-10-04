@@ -29,6 +29,7 @@ labyrinth.
 | `ideas.md` | Half-formed thoughts and questions to explore; not hypotheses |
 | `notes/` | Dated research notes, `YYYY-MM-DD-topic.md`. Notes are a record: add new ones rather than rewriting old conclusions |
 | `references/refs.bib` | One bibliography shared by every piece |
+| `references/to-get.md` | Books and papers to acquire later, with where to get them |
 | `references/library/` | Papers downloaded for reading. Git-ignored; `references/library.tsv` lists what belongs there |
 | `pieces/` | One folder per piece of writing, in the site's paper format |
 | `experiments/` | One folder per experiment: code, pinned environment, small results |
