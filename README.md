@@ -30,11 +30,12 @@ labyrinth.
 | `references/library/` | Papers downloaded for reading. Git-ignored; `references/library.tsv` lists what belongs there |
 | `pieces/` | One folder per piece of writing, in the site's paper format |
 | `experiments/` | One folder per experiment: code, pinned environment, small results |
+| `scripts/` | `publish-piece.sh` (copy a piece into the site and build it) and its tests |
 
 ## Publishing
 
 A piece is published on plainsight-systems.com through the site's paper
-pipeline (`scripts/build-paper.sh` in plainsight-systems-site), or as an
-article on andrewphunter.com, or as a standalone LinkedIn post, whichever fits
-the result. Published writing is CC BY 4.0, copyright Andrew P Hunter;
-published code is Apache 2.0.
+pipeline (`scripts/publish-piece.sh` here, which runs `scripts/build-paper.sh`
+in plainsight-systems-site), or as an article on andrewphunter.com, or as a
+standalone LinkedIn post, whichever fits the result. Published writing is
+CC BY 4.0, copyright Andrew P Hunter; published code is Apache 2.0.

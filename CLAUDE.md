@@ -27,12 +27,6 @@ as evidence).
   entry checked against the paper before any piece cites it.
   `references/library.tsv` already names a bibkey for each downloaded paper;
   use those keys.
-- **The paper build cannot read this repository yet.**
-  `plainsight-systems-site/scripts/build-paper.sh` only builds from the site's
-  own `papers/<slug>/` folder, so a finished piece must be copied there first.
-  A `--source <dir>` option to build straight from `pieces/` was proposed and
-  not built. Building it is a change to the public site repository's build
-  script: state the intent and get Andrew's go-ahead first.
 - **The reading library is not in git.** `references/library/` (38 PDFs) exists
   only on Andrew's machine. On another machine, rebuild it from
   `references/library.tsv`; papers Andrew downloaded by hand (Creutz and Lagus
@@ -103,9 +97,17 @@ likeness).
   on andrewphunter.com, or a standalone LinkedIn post.
 - The site pipeline lives in `~/repositories/plainsight-systems-site`: the
   authoring contract is `papers/README.md`, the build is
-  `scripts/build-paper.sh <slug> [--arxiv]`. The script reads from the site's
-  own `papers/<slug>/`, so a finished piece is copied there to build; a
-  `--source` option to build straight from `pieces/` was proposed and not built.
+  `scripts/build-paper.sh <slug> [--arxiv]`, which reads only the site's own
+  `papers/<slug>/`.
+- Publish a piece with this repository's
+  `scripts/publish-piece.sh <piece-dir> <slug> [--arxiv]`. It copies
+  `paper.md`, `figures/` and the shared `references/refs.bib` (nothing else)
+  into the site's `papers/<slug>/`, then runs the site build. Andrew commits
+  the site. It replaces `papers/<slug>/` only if it still matches the last
+  publish, so a fix made on the site side has to come back into `pieces/`
+  first. Tests: `scripts/test-publish-piece.sh`. The site's own build script
+  is unchanged; changing it is a change to a public repository and needs
+  Andrew's go-ahead.
 - **plainsight-systems-site is a public repository.** Plans, audits, critiques
   and drafts never go there; only the finished paper does. This repository is
   private, so working material belongs here (or in `~/Documents/`).
