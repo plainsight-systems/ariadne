@@ -22,3 +22,9 @@ file<TAB>url<TAB>bibkey
   unknown. Personal reading copy only. Claude Elwood Shannon: Collected
   Papers (Sloane and Wyner, IEEE Press, 1993) also contains it: ASU Noble
   Library, TK5101 .S448 1993.
+- `weaver-1949-recent-contributions.pdf`: a 2009 retypesetting (LaTeX) of
+  Weaver's essay, from a UC Berkeley iSchool course page, dated September
+  1949 in its heading. Its page numbers are not the book's. Cite the essay
+  as printed in Shannon and Weaver, *The Mathematical Theory of
+  Communication* (University of Illinois Press, 1949), checked against the
+  book; a condensed version appeared in *Scientific American*, July 1949.

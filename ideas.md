@@ -18,6 +18,14 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-04: The loss from source to signal is the meaning
+
+My guess is transmission from source to signal is lossy, and the lossiness is
+the meaning. I think this is important, and philosophy via Nietzsche points at
+this.
+
+From: Shannon 1948's five-part diagram, where the source comes before the transmitter
+
 ## 2026-10-04: Information theory starts at the signal, not the transmitter?
 
 Information theory seems to start at the signal, the information, and not at
