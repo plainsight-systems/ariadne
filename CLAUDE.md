@@ -38,7 +38,10 @@ as evidence).
   vocabulary size is one instance. Every claim keeps at least one non-neural
   receiver in it.
 - **A hyperparameter is a sign the theory is incomplete.** The goal is a derived
-  number, not a tuned one.
+  number, not a tuned one. This is the same instinct as the skeptics of
+  deep-learning theory, and Andrew agrees with them: Ariadne follows that
+  skepticism out (why is it this way, what is the proof) from receivers where
+  proofs are tractable. It never claims a theory of how networks work.
 - **Recoding is lossless; what a finite receiver loses is expression,** which
   lives in the receiver's dimension ("flatlander" information theory).
 - **Start where the field started** and work forward: what was assumed, what was
