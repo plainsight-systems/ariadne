@@ -18,6 +18,35 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-05: The hyperparameters are a map of where the theory stops
+
+Working through my WebGPU transformer, it is hyperparameters everywhere, with
+vague answers of "well, this kinda tells us". Did ML just walk away from
+information theory? It flows all the way through: tokenization, the attention
+block itself (Q/K/V, their values and dimensionality), the number of heads,
+the rotation parameters, and so on.
+
+From: Charlotte (~/repositories/tech-demos/charlotte), the WebGPU inference
+harness
+Candidate: the opening of piece 1, built from Charlotte's own code. Walk the
+forward pass and mark each number as derived, fitted or convention.
+Knobs to walk (status from memory, unchecked):
+- Vocabulary size: fitted (Tao et al. 2024). H2.
+- Width d: fitted ratios; nothing derives it from the vocabulary or the data.
+- Q/K/V width per head, usually d / heads: convention.
+- Number of heads: convention.
+- The 1/sqrt(d_k) in attention: half-derived, a variance argument (Vaswani
+  et al. 2017), not an information argument.
+- Rotary position base (10000 in RoFormer, Su et al. 2021; raised later for
+  long context): chosen, then tuned. Check whether anyone has derived it from
+  context length.
+- MLP width (often 4d, or about 8/3 d for gated units): convention.
+- Layers, normalization epsilon, warmup, Adam beta2, weight decay: empirical.
+- Learning rate and initialization across width: derived in part by muP
+  (Yang et al., Tensor Programs V, 2022), the clearest counterexample.
+- Counter-trend to credit: V-information, epiplexity, Nixon 2026, Deletang
+  et al., all in the library.
+
 ## 2026-10-04: Meaning has to fit both ends
 
 The key here is the meaning. In order to transmit and receive, we need to be
