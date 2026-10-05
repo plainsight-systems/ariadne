@@ -47,6 +47,27 @@ Knobs to walk (status from memory, unchecked):
 - Counter-trend to credit: V-information, epiplexity, Nixon 2026, Deletang
   et al., all in the library.
 
+Second strand: even "what does this mean" gets circular answers. "The query is
+what a token looks for, the key what it offers, the value what it passes" is
+a database-lookup metaphor attached to three matrix multiplies, not a
+definition.
+- The mechanical account is not circular. Checked against Elhage et al.
+  2021, "A Mathematical Framework for Transformer Circuits" (in the library):
+  Q, K and V are intermediate results of two low-rank matrices, W_Q^T W_K and
+  W_O W_V, each of rank at most d_head, and the paper says transformers can
+  usefully be described without reference to Q, K and V. The QK circuit is a
+  bilinear form deciding which source position a destination position reads
+  from; the OV circuit is a linear map deciding what gets written.
+- So d_head has a meaning: the rank of a head's read rule (QK) and of its
+  write (OV). It has no derived value. Heads x d_head = d splits a fixed
+  budget into channels, and nothing says where the split should land.
+- Ties to "Meaning has to fit both ends" (above): inside each head, QK acts as
+  a receiver (what it can tell apart) and OV as a transmitter (what it can
+  say), both bounded by d_head.
+- Unchecked lead: Tsai et al. 2019 (EMNLP), attention as a kernel smoother.
+- Opinion: the explanations fall back on names because there is no theory of
+  the receiver, the same gap the hyperparameters mark.
+
 ## 2026-10-04: Meaning has to fit both ends
 
 The key here is the meaning. In order to transmit and receive, we need to be

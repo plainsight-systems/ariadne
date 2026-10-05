@@ -36,3 +36,8 @@ file<TAB>url<TAB>bibkey
   (physics/0004057, April 2000). The paper is usually cited to the 37th
   Allerton Conference (1999); the arXiv copy does not say so, so confirm
   the venue before citing it that way.
+- `elhage-2021-transformer-circuits.pdf`: "A Mathematical Framework for
+  Transformer Circuits" is published only as a web page on
+  transformer-circuits.pub (no official PDF). This is a print of that page
+  made with headless Chrome on 2026-10-05; rebuild it the same way. Its
+  page numbers are the print's, not the publisher's.
