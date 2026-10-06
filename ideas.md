@@ -18,6 +18,25 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-06: The knob held fixed in a paper about the knob
+
+Pulipaka 2026 (arXiv:2608.07727, in the library as pulipaka2026) asks how vocabulary and capacity should be
+allocated across four Dravidian languages, and concludes that "how vocabulary and model capacity are allocated can
+matter just as much as model size." Every model uses GPT-2 small's shape (12 layers, d = 768, 12 heads); the four
+monolingual tokenizers are 32K each and the joint one 64K. Neither size is derived, and none is varied. Asked on
+LinkedIn (2026-10-06) how 32K was chosen, the author said it was kept fixed to keep the comparison consistent across
+languages, with a sweep left for future work.
+
+Candidate citation for piece 1: a clean, current example of a vocabulary size used as an experimental control rather
+than as the question, inside a paper whose subject is vocabulary allocation. Also the GPT-2 small shape (2019) still
+serving as the default body in 2026: convention, inherited.
+
+Cite the paper's own text (setup in section 3.2 and 3.3), not the LinkedIn exchange, and keep it neutral: it is the
+field's habit, not one author's lapse. Supporting numbers from the paper: dedicated fertility 1.59 (Kannada) to 1.84
+(Malayalam) tokens per word; bits per byte favors the monolingual models on all four languages.
+
+From: comment sweep for Ariadne-aligned posts, 2026-10-06
+
 ## 2026-10-05: Vocabulary, order, room and shape
 
 We shifted to "alphabet" for tokenization, but that was incorrect. It is
