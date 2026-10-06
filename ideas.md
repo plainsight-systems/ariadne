@@ -18,6 +18,39 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-05: Vocabulary, order, room and shape
+
+We shifted to "alphabet" for tokenization, but that was incorrect. It is
+vocabulary: not just phonemes, but the vocabulary of the corpus being
+compressed. That is Shannon's "meaning doesn't matter", and why compression
+plus codec is lossless. The vocabulary isn't lost, it's translated.
+
+If vocabulary is that, then the order of the tokens is where implied grammar
+lives. Hence why ordering is important.
+
+The embedding dimension is where the expressiveness lives, where vocabulary
+and grammar can become meaning. It's both: the number of dimensions is the
+size of the room, and the values in those dimensions are the shape carved in.
+
+Rough notes from talking it through:
+- BPE's vocabulary is one of reuse, not meaning ("ing", " the").
+- Order could be measured: entropy from token frequencies alone minus the
+  true entropy rate is what order carries (Shannon's 1948 approximation
+  series is this, step by step). Attention without position signal cannot
+  see order at all; the rotary parameters are what let it see grammar.
+- The tokenizer draws the line between vocabulary and grammar: merging
+  "New York" moves structure out of order into vocabulary. Maybe the
+  vocabulary-size knob is where that line goes (cleaner H2?).
+- Room = approximation term; shape = estimation and optimization terms
+  (Bottou and Bousquet, from the inside).
+- Which binds? Compare the embedding's effective rank with d. Near d: the
+  room is the limit. Far below: the carving is (exposure, compute).
+  Superposition can over-fill the room too. Could check in Charlotte on the
+  open-weight models it loads. Guess: small models room-limited, large ones
+  carving-limited.
+- Non-neural version: a receiver that sees the last m tokens sees as much
+  grammar as fits in m; longer tokens pull grammar into range (experiment A).
+
 ## 2026-10-05: The hyperparameters are a map of where the theory stops
 
 Working through my WebGPU transformer, it is hyperparameters everywhere, with
