@@ -123,3 +123,38 @@ python3 -m venv .venv
 
 Python version in `python-version.txt`. Downloads go to `out/` (git-ignored),
 about 25 GB for both scripts.
+
+## Rate of new directions through training (2026-10-07), parked
+
+Scripts: `plot_rate_lr.py`, `plot_lr_ceiling.py`. Plots: `results/rate_vs_step.png`,
+`results/rate_vs_lr.png`, `results/lr_ceiling.png`. Learning-rate schedule
+from Pythia's own 2.8B config (lr 1.6e-4, floor 1.6e-5, cosine over 143,000
+steps, 1% warmup; commit pinned in `plot_rate_lr.py`).
+
+pythia-2.8b, input table, new directions (within 0.01 bits per byte) per
+1,000 steps, and the learning rate scaled into the tightest ceiling over
+those points:
+
+| Step (midpoint) | Rate | Ceiling | Rate / ceiling |
+|---|---|---|---|
+| 12,000 | 1.35 | 9.65 | 0.14 |
+| 24,500 | 2.72 | 9.19 | 0.30 |
+| 49,500 | 3.05 | 7.45 | 0.41 |
+| 83,000 | 1.88 | 4.36 | 0.43 |
+| 121,500 | 1.62 | 1.62 | 1.00 |
+
+- The rate rises, peaks mid-training, then falls, and is still positive at
+  the end of training (300B tokens). No bound in sight.
+- Early on the learning rate is far above the rate: it is not what limits
+  new directions. The rate climbs toward the ceiling, and only at the end
+  does the learning rate press down on it. The late slowdown looks like the
+  schedule, not the language running out.
+- Per unit of learning rate spent, new directions keep rising (8.5, 18.1,
+  25.0, 26.4, 61.1), but the low-rate end of training also works
+  differently (annealing), so this ratio is not a clean measure.
+- Weak points: one model, seven checkpoints, k steps of 128 before
+  interpolation; the last interval sets the ceiling's height.
+
+Parked (Andrew): the training-rate curve mostly shows the learning-rate
+schedule, so it is not the thread to chase for the natural-dimension
+question.
