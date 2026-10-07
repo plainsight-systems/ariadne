@@ -1,0 +1,35 @@
+{
+  "family": "EleutherAI Pythia (standard Pile run, not deduplicated)",
+  "models": [
+    {
+      "repo": "EleutherAI/pythia-70m",
+      "revision": "a39f36b100fe8a5377810d56c3f4789b9c53ac42",
+      "step0_revision": "87c8ac0ba129db9b084502d341c6ca8dec0fa01f"
+    },
+    {
+      "repo": "EleutherAI/pythia-160m",
+      "revision": "50f5173d932e8e61f858120bcb800b97af589f46",
+      "step0_revision": "0cf035e7d55e9b2fbec7f2db0c0c32670146b9b1"
+    },
+    {
+      "repo": "EleutherAI/pythia-410m",
+      "revision": "9879c9b5f8bea9051dcb0e68dff21493d67e9d4f",
+      "step0_revision": "8bba10b3d3588a20deaaeacca9efc46a680ca91d"
+    },
+    {
+      "repo": "EleutherAI/pythia-1b",
+      "revision": "f73d7dcc545c8bd326d8559c8ef84ffe92fea6b2",
+      "step0_revision": "3f3a5e066c3737f066e123b80b81141b82473280"
+    },
+    {
+      "repo": "EleutherAI/pythia-1.4b",
+      "revision": "fedc38a16eea3bd36a96b906d78d11d2ce18ed79",
+      "step0_revision": "ae04bdc1923b877cf65aee9da264d30555f011ab"
+    },
+    {
+      "repo": "EleutherAI/pythia-2.8b",
+      "revision": "2a259cdd96a4beb1cdf467512e3904197345f6a9",
+      "step0_revision": "bd55df2208f3b31d01673d546f786be9cc3c4ba5"
+    }
+  ]
+}
