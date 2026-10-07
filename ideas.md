@@ -65,8 +65,13 @@ Rough notes from talking it through:
 - Which binds? Compare the embedding's effective rank with d. Near d: the
   room is the limit. Far below: the carving is (exposure, compute).
   Superposition can over-fill the room too. Could check in Charlotte on the
-  open-weight models it loads. Guess: small models room-limited, large ones
-  carving-limited.
+  open-weight models it loads. (Claude's side guess, not Andrew's: small
+  models room-limited, large ones carving-limited.)
+- Andrew's hypothesis (2026-10-07): vocabulary and embedding dimension
+  together specify the expressiveness of the learned language, and the
+  dimension should be derivable from knowing the vocabulary and the grammar.
+  It should not be a hyperparameter. First step: study small language models
+  and see whether they routinely have empty dimensions.
 - Non-neural version: a receiver that sees the last m tokens sees as much
   grammar as fits in m; longer tokens pull grammar into range (experiment A).
 
