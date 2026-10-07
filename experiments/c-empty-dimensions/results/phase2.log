@@ -1,0 +1,167 @@
+EleutherAI/pythia-160m on mps
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights:  86%|████████▋ | 128/148 [00:00<00:00, 1266.69it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 1331.59it/s]
+  unmodified: 1.1519 bits/byte
+  input table
+    k=   15 (0.02 d)  3.5352 bits/byte
+    k=   38 (0.05 d)  3.2339 bits/byte
+    k=   77 (0.10 d)  3.0617 bits/byte
+    k=  154 (0.20 d)  2.8191 bits/byte
+    k=  230 (0.30 d)  2.6706 bits/byte
+    k=  307 (0.40 d)  2.5298 bits/byte
+    k=  384 (0.50 d)  2.4174 bits/byte
+    k=  461 (0.60 d)  2.2934 bits/byte
+    k=  538 (0.70 d)  2.1382 bits/byte
+    k=  614 (0.80 d)  1.9906 bits/byte
+    k=  691 (0.90 d)  1.8355 bits/byte
+    k=  730 (0.95 d)  1.7003 bits/byte
+    k=  768 (1.00 d)  1.1519 bits/byte
+  output table
+    k=   15 (0.02 d)  2.4731 bits/byte
+    k=   38 (0.05 d)  2.3019 bits/byte
+    k=   77 (0.10 d)  2.1096 bits/byte
+    k=  154 (0.20 d)  1.8471 bits/byte
+    k=  230 (0.30 d)  1.6895 bits/byte
+    k=  307 (0.40 d)  1.5762 bits/byte
+    k=  384 (0.50 d)  1.4928 bits/byte
+    k=  461 (0.60 d)  1.4154 bits/byte
+    k=  538 (0.70 d)  1.3594 bits/byte
+    k=  614 (0.80 d)  1.3074 bits/byte
+    k=  691 (0.90 d)  1.2642 bits/byte
+    k=  730 (0.95 d)  1.2339 bits/byte
+    k=  768 (1.00 d)  1.1519 bits/byte
+EleutherAI/pythia-410m on mps
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:  45%|████▌     | 132/292 [00:00<00:00, 1266.67it/s]Loading weights:  95%|█████████▍| 277/292 [00:00<00:00, 1372.54it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 1372.79it/s]
+  unmodified: 0.9731 bits/byte
+  input table
+    k=   20 (0.02 d)  2.9398 bits/byte
+    k=   51 (0.05 d)  2.7609 bits/byte
+    k=  102 (0.10 d)  2.5517 bits/byte
+    k=  205 (0.20 d)  2.1850 bits/byte
+    k=  307 (0.30 d)  1.9446 bits/byte
+    k=  410 (0.40 d)  1.6730 bits/byte
+    k=  512 (0.50 d)  1.4516 bits/byte
+    k=  614 (0.60 d)  1.3015 bits/byte
+    k=  717 (0.70 d)  1.1813 bits/byte
+    k=  819 (0.80 d)  1.0958 bits/byte
+    k=  922 (0.90 d)  1.0272 bits/byte
+    k=  973 (0.95 d)  0.9949 bits/byte
+    k= 1024 (1.00 d)  0.9731 bits/byte
+  output table
+    k=   20 (0.02 d)  2.6227 bits/byte
+    k=   51 (0.05 d)  2.3894 bits/byte
+    k=  102 (0.10 d)  2.1819 bits/byte
+    k=  205 (0.20 d)  1.9244 bits/byte
+    k=  307 (0.30 d)  1.7661 bits/byte
+    k=  410 (0.40 d)  1.6468 bits/byte
+    k=  512 (0.50 d)  1.5518 bits/byte
+    k=  614 (0.60 d)  1.4794 bits/byte
+    k=  717 (0.70 d)  1.4097 bits/byte
+    k=  819 (0.80 d)  1.3451 bits/byte
+    k=  922 (0.90 d)  1.2745 bits/byte
+    k=  973 (0.95 d)  1.2172 bits/byte
+    k= 1024 (1.00 d)  0.9731 bits/byte
+EleutherAI/pythia-1b on mps
+Loading weights:   0%|          | 0/196 [00:00<?, ?it/s]Loading weights:   1%|          | 1/196 [00:00<00:51,  3.78it/s]Loading weights:  38%|███▊      | 74/196 [00:00<00:00, 252.79it/s]Loading weights:  59%|█████▊    | 115/196 [00:00<00:00, 303.93it/s]Loading weights:  80%|███████▉  | 156/196 [00:00<00:00, 330.95it/s]Loading weights: 100%|██████████| 196/196 [00:00<00:00, 299.48it/s]Loading weights: 100%|██████████| 196/196 [00:00<00:00, 266.61it/s]
+  unmodified: 0.9089 bits/byte
+  input table
+    k=   41 (0.02 d)  2.7636 bits/byte
+    k=  102 (0.05 d)  2.6887 bits/byte
+    k=  205 (0.10 d)  2.5919 bits/byte
+    k=  410 (0.20 d)  2.3569 bits/byte
+    k=  614 (0.30 d)  2.1472 bits/byte
+    k=  819 (0.40 d)  1.8933 bits/byte
+    k= 1024 (0.50 d)  1.6446 bits/byte
+    k= 1229 (0.60 d)  1.3411 bits/byte
+    k= 1434 (0.70 d)  1.1280 bits/byte
+    k= 1638 (0.80 d)  0.9924 bits/byte
+    k= 1843 (0.90 d)  0.9338 bits/byte
+    k= 1946 (0.95 d)  0.9140 bits/byte
+    k= 2048 (1.00 d)  0.9089 bits/byte
+  output table
+    k=   41 (0.02 d)  2.5359 bits/byte
+    k=  102 (0.05 d)  2.2844 bits/byte
+    k=  205 (0.10 d)  2.0216 bits/byte
+    k=  410 (0.20 d)  1.7575 bits/byte
+    k=  614 (0.30 d)  1.6034 bits/byte
+    k=  819 (0.40 d)  1.5041 bits/byte
+    k= 1024 (0.50 d)  1.4224 bits/byte
+    k= 1229 (0.60 d)  1.3518 bits/byte
+    k= 1434 (0.70 d)  1.2964 bits/byte
+    k= 1638 (0.80 d)  1.2419 bits/byte
+    k= 1843 (0.90 d)  1.1985 bits/byte
+    k= 1946 (0.95 d)  1.1761 bits/byte
+    k= 2048 (1.00 d)  0.9089 bits/byte
+EleutherAI/pythia-1.4b on mps
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:   0%|          | 1/292 [00:00<01:02,  4.63it/s]Loading weights:  29%|██▉       | 84/292 [00:00<00:00, 325.18it/s]Loading weights:  45%|████▍     | 131/292 [00:00<00:00, 356.95it/s]Loading weights:  60%|█████▉    | 175/292 [00:00<00:00, 363.37it/s]Loading weights:  74%|███████▍  | 217/292 [00:00<00:00, 302.58it/s]Loading weights:  86%|████████▋ | 252/292 [00:00<00:00, 262.40it/s]Loading weights:  99%|█████████▊| 288/292 [00:01<00:00, 278.10it/s]Loading weights: 100%|██████████| 292/292 [00:01<00:00, 283.51it/s]
+  unmodified: 0.8635 bits/byte
+  input table
+    k=   41 (0.02 d)  2.9714 bits/byte
+    k=  102 (0.05 d)  2.7160 bits/byte
+    k=  205 (0.10 d)  2.5329 bits/byte
+    k=  410 (0.20 d)  2.2257 bits/byte
+    k=  614 (0.30 d)  1.9342 bits/byte
+    k=  819 (0.40 d)  1.6423 bits/byte
+    k= 1024 (0.50 d)  1.3335 bits/byte
+    k= 1229 (0.60 d)  1.0849 bits/byte
+    k= 1434 (0.70 d)  0.9302 bits/byte
+    k= 1638 (0.80 d)  0.8742 bits/byte
+    k= 1843 (0.90 d)  0.8651 bits/byte
+    k= 1946 (0.95 d)  0.8636 bits/byte
+    k= 2048 (1.00 d)  0.8635 bits/byte
+  output table
+    k=   41 (0.02 d)  2.5378 bits/byte
+    k=  102 (0.05 d)  2.2800 bits/byte
+    k=  205 (0.10 d)  2.0316 bits/byte
+    k=  410 (0.20 d)  1.7725 bits/byte
+    k=  614 (0.30 d)  1.6254 bits/byte
+    k=  819 (0.40 d)  1.5109 bits/byte
+    k= 1024 (0.50 d)  1.4180 bits/byte
+    k= 1229 (0.60 d)  1.3457 bits/byte
+    k= 1434 (0.70 d)  1.2853 bits/byte
+    k= 1638 (0.80 d)  1.2350 bits/byte
+    k= 1843 (0.90 d)  1.1823 bits/byte
+    k= 1946 (0.95 d)  1.1375 bits/byte
+    k= 2048 (1.00 d)  0.8635 bits/byte
+EleutherAI/pythia-2.8b on mps
+Loading weights:   0%|          | 0/388 [00:00<?, ?it/s]Loading weights:   0%|          | 1/388 [00:00<01:46,  3.62it/s]Loading weights:  15%|█▌        | 60/388 [00:00<00:01, 191.30it/s]Loading weights:  23%|██▎       | 90/388 [00:00<00:01, 210.33it/s]Loading weights:  30%|███       | 118/388 [00:00<00:01, 219.83it/s]Loading weights:  37%|███▋      | 144/388 [00:00<00:01, 214.35it/s]Loading weights:  43%|████▎     | 168/388 [00:00<00:01, 212.92it/s]Loading weights:  49%|████▉     | 192/388 [00:01<00:00, 207.24it/s]Loading weights:  55%|█████▌    | 214/388 [00:01<00:00, 202.89it/s]Loading weights:  61%|██████    | 235/388 [00:01<00:00, 190.82it/s]Loading weights:  66%|██████▌   | 255/388 [00:01<00:00, 145.31it/s]Loading weights:  70%|███████   | 272/388 [00:01<00:00, 132.22it/s]Loading weights:  74%|███████▍  | 287/388 [00:01<00:00, 127.50it/s]Loading weights:  78%|███████▊  | 301/388 [00:01<00:00, 103.63it/s]Loading weights:  81%|████████  | 313/388 [00:02<00:00, 104.59it/s]Loading weights:  84%|████████▍ | 325/388 [00:02<00:00, 96.64it/s] Loading weights:  87%|████████▋ | 336/388 [00:02<00:00, 88.55it/s]Loading weights:  90%|████████▉ | 348/388 [00:02<00:00, 87.38it/s]Loading weights:  93%|█████████▎| 360/388 [00:02<00:00, 88.10it/s]Loading weights:  96%|█████████▌| 372/388 [00:02<00:00, 86.31it/s]Loading weights: 100%|██████████| 388/388 [00:02<00:00, 133.39it/s]
+  unmodified: 0.8060 bits/byte
+  input table
+    k=   51 (0.02 d)  3.2414 bits/byte
+    k=  128 (0.05 d)  2.8840 bits/byte
+    k=  256 (0.10 d)  2.6487 bits/byte
+    k=  512 (0.20 d)  2.4131 bits/byte
+    k=  768 (0.30 d)  2.1393 bits/byte
+    k= 1024 (0.40 d)  1.6743 bits/byte
+    k= 1280 (0.50 d)  0.9326 bits/byte
+    k= 1536 (0.60 d)  0.8223 bits/byte
+    k= 1792 (0.70 d)  0.8097 bits/byte
+    k= 2048 (0.80 d)  0.8073 bits/byte
+    k= 2304 (0.90 d)  0.8064 bits/byte
+    k= 2432 (0.95 d)  0.8062 bits/byte
+    k= 2560 (1.00 d)  0.8060 bits/byte
+  output table
+    k=   51 (0.02 d)  2.4871 bits/byte
+    k=  128 (0.05 d)  2.2206 bits/byte
+    k=  256 (0.10 d)  1.9744 bits/byte
+    k=  512 (0.20 d)  1.7067 bits/byte
+    k=  768 (0.30 d)  1.5434 bits/byte
+    k= 1024 (0.40 d)  1.4327 bits/byte
+    k= 1280 (0.50 d)  1.3511 bits/byte
+    k= 1536 (0.60 d)  1.2858 bits/byte
+    k= 1792 (0.70 d)  1.2356 bits/byte
+    k= 2048 (0.80 d)  1.1819 bits/byte
+    k= 2304 (0.90 d)  1.1295 bits/byte
+    k= 2432 (0.95 d)  1.0863 bits/byte
+    k= 2560 (1.00 d)  0.8060 bits/byte
+# Phase 2: squash a table onto its top k directions, measure loss (Pythia)
+
+WikiText-103 test, first 16 x 1024 tokens. k* = smallest k within 0.01 bits/byte of the unmodified model.
+
+| Model | d | layers | baseline bits/byte | input k* | input k*/d | output k* | output k*/d |
+|---|---|---|---|---|---|---|---|
+| pythia-70m | 512 | 6 | 1.3449 | 512 | 1.00 | 512 | 1.00 |
+| pythia-160m | 768 | 12 | 1.1519 | 768 | 1.00 | 768 | 1.00 |
+| pythia-410m | 1024 | 24 | 0.9731 | 1024 | 1.00 | 1024 | 1.00 |
+| pythia-1b | 2048 | 16 | 0.9089 | 1946 | 0.95 | 2048 | 1.00 |
+| pythia-1.4b | 2048 | 24 | 0.8635 | 1843 | 0.90 | 2048 | 1.00 |
+| pythia-2.8b | 2560 | 32 | 0.8060 | 1792 | 0.70 | 2560 | 1.00 |
