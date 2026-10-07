@@ -35,6 +35,7 @@ pinned revisions in `models.json`.
 | `measure_init.py` | Trained table vs the same table at training step 0 | `results/phase1b.md` (read its correction), `results/growth.png` |
 
 | `refine.py` | Finer k steps, larger models, checkpoints | `results/phase3_*` |
+| `cross_vocab.py` | Same d, different vocabularies (TinyLlama, Pythia, OLMo-2) | `results/cross_vocab.*` |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
 ## What we have so far (2026-10-07)
@@ -158,3 +159,28 @@ those points:
 Parked (Andrew): the training-rate curve mostly shows the learning-rate
 schedule, so it is not the thread to chase for the natural-dimension
 question.
+
+## Same room, different vocabularies (2026-10-07)
+
+`cross_vocab.py`; results in `results/cross_vocab.*`. Four finished models
+with d = 2048, all read on the same text (first 70,000 characters of the
+WikiText-103 test set), loss in bits per byte. Input table: directions
+needed at each tolerance.
+
+| Model | V | trained on | k +0.1 | k +0.03 | k +0.01 | output k +0.01 |
+|---|---|---|---|---|---|---|
+| TinyLlama 1.1B | 32,000 | 3T | 1479 | 1828 | 2019 | 2045 |
+| Pythia 1B | 50,277 | 300B | 1601 | 1821 | 1921 | 2043 |
+| Pythia 1.4B | 50,277 | 300B | 1370 | 1553 | 1652 | 2044 |
+| OLMo-2 1B | 100,278 | ~4T | 2030 | 2042 | 2046 | 2045 |
+
+- OLMo-2, the largest vocabulary, needs all 2048 input directions even at
+  the loosest tolerance: the room is too small for it.
+- The core (loosest tolerance) roughly follows vocabulary size: about
+  1.4-1.6K for 32K and 50K, all of the room for 100K.
+- At strict tolerance the two long-trained models (TinyLlama, OLMo-2) fill
+  the room; Pythia, trained 10x less, leaves the most empty. Training amount
+  and vocabulary are confounded across these families (and so are data,
+  architecture and recipe), and the checkpoint run showed used room grows
+  with training.
+- Output tables use all of d in every model.
