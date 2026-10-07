@@ -70,8 +70,12 @@ Rough notes from talking it through:
 - Andrew's hypothesis (2026-10-07): vocabulary and embedding dimension
   together specify the expressiveness of the learned language, and the
   dimension should be derivable from knowing the vocabulary and the grammar.
-  It should not be a hyperparameter. First step: study small language models
-  and see whether they routinely have empty dimensions.
+  It should not be a hyperparameter.
+- Plan (Andrew, 2026-10-07): first question, do models have empty
+  dimensions? Not limited to small models; run small ones first because the
+  runs are cheap, then confirm on a larger open-weight model. Only if that
+  holds, the larger question: do vocabulary and grammar drive the effective
+  dimension?
 - Non-neural version: a receiver that sees the last m tokens sees as much
   grammar as fits in m; longer tokens pull grammar into range (experiment A).
 
