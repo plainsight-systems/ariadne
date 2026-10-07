@@ -34,6 +34,7 @@ pinned revisions in `models.json`.
 | `measure.py` | Spread of the trained input and output tables across d, vs a random table of the same shape | `results/phase1.md`, `results/spectra.png` |
 | `measure_init.py` | Trained table vs the same table at training step 0 | `results/phase1b.md` (read its correction), `results/growth.png` |
 
+| `refine.py` | Finer k steps, larger models, checkpoints | `results/phase3_*` |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
 ## What we have so far (2026-10-07)
@@ -56,6 +57,60 @@ Next: finer k steps around the knee for 1b, 1.4b and 2.8b; then pythia-6.9b
 (d = 4096) and pythia-12b (d = 5120). If the input side really wants about
 1.8-1.9K dimensions for this vocabulary, k* should stay near there while d
 doubles.
+
+## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
+
+`refine.py`; results in `results/phase3_*.md`, `.json`, `.png`, `.log`.
+
+Input table, directions needed (k) at several loss tolerances (bits per byte
+above the unmodified model):
+
+| Model | d | +0.1 | +0.03 | +0.01 | +0.003 | k/d at +0.01 |
+|---|---|---|---|---|---|---|
+| 1b | 2048 | 1664 | 1856 | 1984 | 1984 | 0.97 |
+| 1.4b | 2048 | 1408 | 1600 | 1664 | 1856 | 0.81 |
+| 2.8b | 2560 | 1344 | 1472 | 1664 | 1856 | 0.65 |
+| 6.9b | 4096 | 2048 | 2560 | 2816 | 3328 | 0.69 |
+| 12b | 5120 | 2048 | 2560 | 3072 | 3840 | 0.60 |
+
+(1b to 2.8b in steps of 64; 6.9b and 12b in steps of 256.)
+
+Output table, 6.9b and 12b: all of d needed, as at every smaller size.
+
+pythia-2.8b through training (steps of 128):
+
+| Step | bits/byte | +0.1 | +0.03 | +0.01 | +0.003 |
+|---|---|---|---|---|---|
+| 1000 | 1.602 | 768 | 1408 | 1920 | 2304 |
+| 8000 | 0.996 | 640 | 1024 | 1408 | 1920 |
+| 16000 | 0.934 | 768 | 1024 | 1408 | 1792 |
+| 33000 | 0.888 | 1024 | 1280 | 1408 | 1792 |
+| 66000 | 0.847 | 1280 | 1408 | 1536 | 1792 |
+| 100000 | 0.820 | 1408 | 1536 | 1664 | 1920 |
+| 143000 | 0.806 | 1408 | 1536 | 1664 | 1920 |
+
+What this says:
+
+- **Empty room: yes, on the input side.** From 1.4b up, 20 to 40% of the
+  input table's room can be removed for 0.01 bits per byte. The output table
+  uses all of d at every size.
+- **The plateau prediction failed.** The needed count did not stay near
+  1.8-1.9K: it keeps growing with d (1664 at 2.8b, 2816 at 6.9b, 3072 at 12b
+  at +0.01). The share used settles around 60-70% of d instead. At looser
+  tolerances (+0.1, +0.03) 6.9b and 12b need the same (2048, 2560): the core
+  may level off while finer detail keeps using more room.
+- **Exposure matters.** Within 2.8b, after an early phase (step 1000, still
+  close to random), the needed count grows with training: 640 to 1408 at
+  +0.1, 1408 to 1664 at +0.01. The room used is not fixed by the vocabulary
+  alone; it grows as the model learns more about each token.
+
+Data problem found and fixed: on the Pythia hub repos, several checkpoint
+branches hold a copy of the final model under the standard filename (same
+LFS hash as main); the checkpoint's own weights are in other files. The
+first checkpoint run measured the final model seven times and was
+discarded. `refine.py` now picks the weight files whose hashes differ from
+main's, records them, and fails if there are none. The step-0 comparison in
+phase 1b used genuine step-0 files (checked by hash).
 
 ## Reproduce
 

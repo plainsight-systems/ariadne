@@ -72,13 +72,14 @@ def principal(w):
     return mu, vec[:, np.argsort(lam)[::-1]]
 
 
-def sweep(model, param, n_real, batch, nbytes, d):
+def sweep(model, param, n_real, batch, nbytes, d, ks=None):
+    """Loss with param's real rows squashed to each k in ks (default: FRACTIONS of d)."""
+    ks = ks or [max(1, round(frac * d)) for frac in FRACTIONS]
     original = param.data.clone()
     w = original[:n_real].cpu().double().numpy()
     mu, vec = principal(w)
     curve = []
-    for frac in FRACTIONS:
-        k = max(1, round(frac * d))
+    for k in ks:
         vk = vec[:, :k]
         squashed = mu + (w - mu) @ vk @ vk.T
         param.data[:n_real] = torch.from_numpy(squashed).to(param.dtype).to(param.device)

@@ -1,0 +1,78 @@
+EleutherAI/pythia-1b final on mps
+Loading weights:   0%|          | 0/196 [00:00<?, ?it/s]Loading weights:   1%|          | 1/196 [00:00<00:42,  4.61it/s]Loading weights:  43%|████▎     | 84/196 [00:00<00:00, 320.65it/s]Loading weights:  66%|██████▌   | 129/196 [00:00<00:00, 356.76it/s]Loading weights:  88%|████████▊ | 173/196 [00:00<00:00, 348.83it/s]Loading weights: 100%|██████████| 196/196 [00:00<00:00, 324.75it/s]
+  unmodified: 0.9089 bits/byte
+  input table
+    k= 1024 (0.50 d)  1.6446 bits/byte
+    k= 1088 (0.53 d)  1.5444 bits/byte
+    k= 1152 (0.56 d)  1.4451 bits/byte
+    k= 1216 (0.59 d)  1.3653 bits/byte
+    k= 1280 (0.62 d)  1.2796 bits/byte
+    k= 1344 (0.66 d)  1.2133 bits/byte
+    k= 1408 (0.69 d)  1.1502 bits/byte
+    k= 1472 (0.72 d)  1.0919 bits/byte
+    k= 1536 (0.75 d)  1.0476 bits/byte
+    k= 1600 (0.78 d)  1.0092 bits/byte
+    k= 1664 (0.81 d)  0.9836 bits/byte
+    k= 1728 (0.84 d)  0.9585 bits/byte
+    k= 1792 (0.88 d)  0.9442 bits/byte
+    k= 1856 (0.91 d)  0.9323 bits/byte
+    k= 1920 (0.94 d)  0.9190 bits/byte
+    k= 1984 (0.97 d)  0.9111 bits/byte
+    k= 2048 (1.00 d)  0.9089 bits/byte
+EleutherAI/pythia-1.4b final on mps
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:   0%|          | 1/292 [00:00<01:02,  4.67it/s]Loading weights:  27%|██▋       | 80/292 [00:00<00:00, 313.75it/s]Loading weights:  43%|████▎     | 125/292 [00:00<00:00, 323.77it/s]Loading weights:  58%|█████▊    | 168/292 [00:00<00:00, 342.10it/s]Loading weights:  71%|███████   | 207/292 [00:00<00:00, 335.88it/s]Loading weights:  84%|████████▎ | 244/292 [00:00<00:00, 342.72it/s]Loading weights:  96%|█████████▌| 281/292 [00:00<00:00, 341.64it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 320.38it/s]
+  unmodified: 0.8635 bits/byte
+  input table
+    k= 1024 (0.50 d)  1.3335 bits/byte
+    k= 1088 (0.53 d)  1.2391 bits/byte
+    k= 1152 (0.56 d)  1.1657 bits/byte
+    k= 1216 (0.59 d)  1.0974 bits/byte
+    k= 1280 (0.62 d)  1.0398 bits/byte
+    k= 1344 (0.66 d)  0.9800 bits/byte
+    k= 1408 (0.69 d)  0.9400 bits/byte
+    k= 1472 (0.72 d)  0.9164 bits/byte
+    k= 1536 (0.75 d)  0.8984 bits/byte
+    k= 1600 (0.78 d)  0.8802 bits/byte
+    k= 1664 (0.81 d)  0.8721 bits/byte
+    k= 1728 (0.84 d)  0.8694 bits/byte
+    k= 1792 (0.88 d)  0.8669 bits/byte
+    k= 1856 (0.91 d)  0.8649 bits/byte
+    k= 1920 (0.94 d)  0.8638 bits/byte
+    k= 1984 (0.97 d)  0.8637 bits/byte
+    k= 2048 (1.00 d)  0.8635 bits/byte
+EleutherAI/pythia-2.8b final on mps
+Loading weights:   0%|          | 0/388 [00:00<?, ?it/s]Loading weights:   0%|          | 1/388 [00:00<01:27,  4.41it/s]Loading weights:  15%|█▌        | 60/388 [00:00<00:01, 227.96it/s]Loading weights:  25%|██▍       | 96/388 [00:00<00:01, 257.15it/s]Loading weights:  39%|███▉      | 152/388 [00:00<00:00, 350.97it/s]Loading weights:  62%|██████▏   | 242/388 [00:00<00:00, 521.46it/s]Loading weights:  84%|████████▎ | 324/388 [00:00<00:00, 605.47it/s]Loading weights: 100%|██████████| 388/388 [00:00<00:00, 440.54it/s]
+  unmodified: 0.8060 bits/byte
+  input table
+    k= 1024 (0.40 d)  1.6743 bits/byte
+    k= 1088 (0.42 d)  1.5169 bits/byte
+    k= 1152 (0.45 d)  1.2901 bits/byte
+    k= 1216 (0.47 d)  1.0856 bits/byte
+    k= 1280 (0.50 d)  0.9326 bits/byte
+    k= 1344 (0.53 d)  0.8776 bits/byte
+    k= 1408 (0.55 d)  0.8480 bits/byte
+    k= 1472 (0.57 d)  0.8328 bits/byte
+    k= 1536 (0.60 d)  0.8223 bits/byte
+    k= 1600 (0.62 d)  0.8168 bits/byte
+    k= 1664 (0.65 d)  0.8141 bits/byte
+    k= 1728 (0.68 d)  0.8118 bits/byte
+    k= 1792 (0.70 d)  0.8097 bits/byte
+    k= 1856 (0.72 d)  0.8090 bits/byte
+    k= 1920 (0.75 d)  0.8083 bits/byte
+    k= 1984 (0.78 d)  0.8079 bits/byte
+    k= 2048 (0.80 d)  0.8073 bits/byte
+    k= 2112 (0.82 d)  0.8069 bits/byte
+    k= 2176 (0.85 d)  0.8068 bits/byte
+    k= 2240 (0.88 d)  0.8065 bits/byte
+    k= 2304 (0.90 d)  0.8064 bits/byte
+    k= 2368 (0.93 d)  0.8062 bits/byte
+    k= 2432 (0.95 d)  0.8062 bits/byte
+    k= 2496 (0.97 d)  0.8062 bits/byte
+    k= 2560 (1.00 d)  0.8060 bits/byte
+# phase3_fine: squash test (k* within 0.01 bits/byte of unmodified)
+
+| Model | checkpoint | d | baseline bits/byte | input k* | input k*/d |
+|---|---|---|---|---|---|
+| pythia-1b | final | 2048 | 0.9089 | 1984 | 0.97 |
+| pythia-1.4b | final | 2048 | 0.8635 | 1664 | 0.81 |
+| pythia-2.8b | final | 2560 | 0.8060 | 1664 | 0.65 |

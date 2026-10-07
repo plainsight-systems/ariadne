@@ -30,6 +30,25 @@
       "repo": "EleutherAI/pythia-2.8b",
       "revision": "2a259cdd96a4beb1cdf467512e3904197345f6a9",
       "step0_revision": "bd55df2208f3b31d01673d546f786be9cc3c4ba5"
+    },
+    {
+      "repo": "EleutherAI/pythia-6.9b",
+      "revision": "c0e3eee36dc47af0c49f361c74cfe459c09f7f23"
+    },
+    {
+      "repo": "EleutherAI/pythia-12b",
+      "revision": "bb1e3e710cdf6b524461d543cfb5ba773f0a81b6"
     }
-  ]
+  ],
+  "checkpoints": {
+    "EleutherAI/pythia-2.8b": {
+      "step1000": "cc81f94ea2acd24862163f15126427b85b98caac",
+      "step8000": "58ebdb26dabaec03e422e9dac74730ed45e7ae3e",
+      "step16000": "d86be5ee6523ec46075f22dd2230b8e346524d4f",
+      "step33000": "0a571f9334e5fdca5949321f584b252d02ef2b41",
+      "step66000": "7673c318263a587cf343f7a3c9518362472cedb9",
+      "step100000": "668bcb3f3a13a908d6c5e21566fa2bdc2d9c8c65",
+      "step143000": "dbe7ae300a54abcdc475a33907b3dff81d25709f"
+    }
+  }
 }
