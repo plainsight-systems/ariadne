@@ -1,0 +1,184 @@
+TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T on mps
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 20708.80it/s]
+  V=32000 table rows=32000 tokens=19366 bytes/token=3.63 unmodified=0.8528 bits/byte
+  input table
+    k=  256  2.9864 bits/byte
+    k=  320  2.8588 bits/byte
+    k=  384  2.7335 bits/byte
+    k=  448  2.5796 bits/byte
+    k=  512  2.4251 bits/byte
+    k=  576  2.2502 bits/byte
+    k=  640  2.0949 bits/byte
+    k=  704  1.9221 bits/byte
+    k=  768  1.7628 bits/byte
+    k=  832  1.6168 bits/byte
+    k=  896  1.4976 bits/byte
+    k=  960  1.3810 bits/byte
+    k= 1024  1.2843 bits/byte
+    k= 1088  1.2163 bits/byte
+    k= 1152  1.1628 bits/byte
+    k= 1216  1.1217 bits/byte
+    k= 1280  1.0694 bits/byte
+    k= 1344  1.0279 bits/byte
+    k= 1408  0.9912 bits/byte
+    k= 1472  0.9554 bits/byte
+    k= 1536  0.9313 bits/byte
+    k= 1600  0.9141 bits/byte
+    k= 1664  0.9023 bits/byte
+    k= 1728  0.8916 bits/byte
+    k= 1792  0.8846 bits/byte
+    k= 1856  0.8814 bits/byte
+    k= 1920  0.8776 bits/byte
+    k= 1984  0.8747 bits/byte
+    k= 2048  0.8528 bits/byte
+  output table
+    k= 1024  1.6534 bits/byte
+    k= 1152  1.6002 bits/byte
+    k= 1280  1.5454 bits/byte
+    k= 1408  1.4933 bits/byte
+    k= 1536  1.4446 bits/byte
+    k= 1664  1.3989 bits/byte
+    k= 1792  1.3454 bits/byte
+    k= 1920  1.2779 bits/byte
+    k= 2048  0.8528 bits/byte
+EleutherAI/pythia-1b on mps
+Loading weights:   0%|          | 0/196 [00:00<?, ?it/s]Loading weights:   1%|          | 1/196 [00:00<00:49,  3.96it/s]Loading weights:  31%|███       | 60/196 [00:00<00:00, 196.83it/s]Loading weights:  45%|████▍     | 88/196 [00:00<00:00, 166.41it/s]Loading weights:  56%|█████▌    | 110/196 [00:00<00:00, 170.13it/s]Loading weights:  66%|██████▋   | 130/196 [00:00<00:00, 175.55it/s]Loading weights:  77%|███████▋  | 150/196 [00:00<00:00, 167.25it/s]Loading weights:  86%|████████▌ | 169/196 [00:01<00:00, 166.54it/s]Loading weights:  95%|█████████▌| 187/196 [00:01<00:00, 169.67it/s]Loading weights: 100%|██████████| 196/196 [00:01<00:00, 164.47it/s]
+  V=50277 table rows=50304 tokens=16273 bytes/token=4.31 unmodified=0.9096 bits/byte
+  input table
+    k=  256  2.5285 bits/byte
+    k=  320  2.4707 bits/byte
+    k=  384  2.3917 bits/byte
+    k=  448  2.3119 bits/byte
+    k=  512  2.2542 bits/byte
+    k=  576  2.1824 bits/byte
+    k=  640  2.1151 bits/byte
+    k=  704  2.0319 bits/byte
+    k=  768  1.9530 bits/byte
+    k=  832  1.8841 bits/byte
+    k=  896  1.7943 bits/byte
+    k=  960  1.7134 bits/byte
+    k= 1024  1.6452 bits/byte
+    k= 1088  1.5450 bits/byte
+    k= 1152  1.4462 bits/byte
+    k= 1216  1.3662 bits/byte
+    k= 1280  1.2806 bits/byte
+    k= 1344  1.2144 bits/byte
+    k= 1408  1.1512 bits/byte
+    k= 1472  1.0928 bits/byte
+    k= 1536  1.0484 bits/byte
+    k= 1600  1.0100 bits/byte
+    k= 1664  0.9843 bits/byte
+    k= 1728  0.9592 bits/byte
+    k= 1792  0.9449 bits/byte
+    k= 1856  0.9330 bits/byte
+    k= 1920  0.9197 bits/byte
+    k= 1984  0.9118 bits/byte
+    k= 2048  0.9096 bits/byte
+  output table
+    k= 1024  1.4235 bits/byte
+    k= 1152  1.3781 bits/byte
+    k= 1280  1.3390 bits/byte
+    k= 1408  1.3066 bits/byte
+    k= 1536  1.2709 bits/byte
+    k= 1664  1.2356 bits/byte
+    k= 1792  1.2097 bits/byte
+    k= 1920  1.1783 bits/byte
+    k= 2048  0.9096 bits/byte
+EleutherAI/pythia-1.4b on mps
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:   0%|          | 1/292 [00:00<00:52,  5.53it/s]Loading weights:  29%|██▉       | 86/292 [00:00<00:00, 371.31it/s]Loading weights:  49%|████▉     | 144/292 [00:00<00:00, 426.77it/s]Loading weights:  66%|██████▋   | 194/292 [00:00<00:00, 437.86it/s]Loading weights:  85%|████████▍ | 248/292 [00:00<00:00, 469.85it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 421.18it/s]
+  V=50277 table rows=50304 tokens=16273 bytes/token=4.31 unmodified=0.8643 bits/byte
+  input table
+    k=  256  2.4661 bits/byte
+    k=  320  2.3605 bits/byte
+    k=  384  2.2658 bits/byte
+    k=  448  2.1556 bits/byte
+    k=  512  2.0687 bits/byte
+    k=  576  1.9919 bits/byte
+    k=  640  1.9045 bits/byte
+    k=  704  1.8062 bits/byte
+    k=  768  1.7122 bits/byte
+    k=  832  1.6224 bits/byte
+    k=  896  1.5124 bits/byte
+    k=  960  1.4163 bits/byte
+    k= 1024  1.3335 bits/byte
+    k= 1088  1.2389 bits/byte
+    k= 1152  1.1656 bits/byte
+    k= 1216  1.0976 bits/byte
+    k= 1280  1.0401 bits/byte
+    k= 1344  0.9805 bits/byte
+    k= 1408  0.9406 bits/byte
+    k= 1472  0.9170 bits/byte
+    k= 1536  0.8991 bits/byte
+    k= 1600  0.8808 bits/byte
+    k= 1664  0.8729 bits/byte
+    k= 1728  0.8701 bits/byte
+    k= 1792  0.8677 bits/byte
+    k= 1856  0.8657 bits/byte
+    k= 1920  0.8646 bits/byte
+    k= 1984  0.8645 bits/byte
+    k= 2048  0.8643 bits/byte
+  output table
+    k= 1024  1.4195 bits/byte
+    k= 1152  1.3770 bits/byte
+    k= 1280  1.3328 bits/byte
+    k= 1408  1.2941 bits/byte
+    k= 1536  1.2614 bits/byte
+    k= 1664  1.2293 bits/byte
+    k= 1792  1.1946 bits/byte
+    k= 1920  1.1540 bits/byte
+    k= 2048  0.8643 bits/byte
+allenai/OLMo-2-0425-1B on mps
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files:  50%|█████     | 1/2 [01:12<01:12, 72.57s/it]Fetching 2 files: 100%|██████████| 2/2 [01:22<00:00, 35.84s/it]Fetching 2 files: 100%|██████████| 2/2 [01:22<00:00, 41.35s/it]
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 29947.36it/s]
+  V=100278 table rows=100352 tokens=16678 bytes/token=4.21 unmodified=0.7757 bits/byte
+  input table
+    k=  256  2.3713 bits/byte
+    k=  320  2.3016 bits/byte
+    k=  384  2.2282 bits/byte
+    k=  448  2.1805 bits/byte
+    k=  512  2.1276 bits/byte
+    k=  576  2.0755 bits/byte
+    k=  640  2.0430 bits/byte
+    k=  704  2.0000 bits/byte
+    k=  768  1.9669 bits/byte
+    k=  832  1.9157 bits/byte
+    k=  896  1.8810 bits/byte
+    k=  960  1.8452 bits/byte
+    k= 1024  1.7961 bits/byte
+    k= 1088  1.7559 bits/byte
+    k= 1152  1.7214 bits/byte
+    k= 1216  1.6867 bits/byte
+    k= 1280  1.6439 bits/byte
+    k= 1344  1.6074 bits/byte
+    k= 1408  1.5716 bits/byte
+    k= 1472  1.5399 bits/byte
+    k= 1536  1.5021 bits/byte
+    k= 1600  1.4662 bits/byte
+    k= 1664  1.4279 bits/byte
+    k= 1728  1.3780 bits/byte
+    k= 1792  1.3314 bits/byte
+    k= 1856  1.2768 bits/byte
+    k= 1920  1.2222 bits/byte
+    k= 1984  1.1222 bits/byte
+    k= 2048  0.7757 bits/byte
+  output table
+    k= 1024  1.7870 bits/byte
+    k= 1152  1.6914 bits/byte
+    k= 1280  1.6010 bits/byte
+    k= 1408  1.5235 bits/byte
+    k= 1536  1.4572 bits/byte
+    k= 1664  1.3963 bits/byte
+    k= 1792  1.3293 bits/byte
+    k= 1920  1.2187 bits/byte
+    k= 2048  0.7757 bits/byte
+# Same room, different vocabularies (d = 2048)
+
+First 70,000 characters of WikiText-103 test for every model. Input table: directions
+needed to stay within each tolerance (bits per byte) of the unmodified model, interpolated.
+
+| Model | V | trained on | bytes/token | bits/byte | k +0.1 | k +0.03 | k +0.01 | k +0.003 | output k +0.01 |
+|---|---|---|---|---|---|---|---|---|---|
+| TinyLlama-1.1B-intermediate-step-1431k-3T | 32,000 | 3T | 3.63 | 0.853 | 1479 | 1828 | 2019 | 2039 | 2045 |
+| pythia-1b | 50,277 | 300B | 4.31 | 0.910 | 1601 | 1821 | 1921 | 1977 | 2043 |
+| pythia-1.4b | 50,277 | 300B | 4.31 | 0.864 | 1370 | 1553 | 1652 | 1804 | 2044 |
+| OLMo-2-0425-1B | 100,278 | ~4T | 4.21 | 0.776 | 2030 | 2042 | 2046 | 2047 | 2045 |
