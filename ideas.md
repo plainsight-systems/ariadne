@@ -18,6 +18,58 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-08: Attention as relaxed selection; reasoning blocks as recoding
+
+Softmax is the solution of an optimization: for scores s, softmax(s) =
+argmax over distributions p of <p, s> + H(p), linear selection plus an
+entropy term, with the 1/sqrt(d) scaling acting as temperature. So attention
+is a barrier-regularized relaxation of choosing which earlier tokens to
+read, held at a fixed temperature. An interior-point method drives its
+barrier to zero to reach the exact selection; attention never does. The
+entropy term is literally information-theoretic: what sets the temperature,
+and is sqrt(d) derived or convention?
+
+From: Markus Hartikainen's LinkedIn post (2026-10-08) on test-time compute
+as mathematical programming over reusable token blocks, solved by GPU
+interior-point methods; his follow-up: "the search space and solver
+architecture matter just as much as the base model."
+Rough notes from talking it through:
+- His proposal in Ariadne's terms: recoding. Same reasoning, coarser units
+  (blocks instead of tokens), for a searcher that cannot handle the fine
+  alphabet. Variable-to-fixed, like Tunstall: variable-length strings, one
+  fixed decision each. Recoding loses no information; what changes is what
+  a bounded searcher can use (questions 2 and 3).
+- Block library = vocabulary; the solver's constraints = grammar made
+  explicit (the 2026-10-05 vocabulary/order split, one level up). In an LLM
+  grammar lives implicitly in order and weights; here it moves into
+  constraints solved exactly.
+- A new receiver kind for the table: a reasoning searcher (model plus
+  solver), limited by search depth and compute; the alphabet question
+  becomes block granularity. Spectrum: tokens (fine, discrete), blocks
+  (coarse, discrete), latent world-model states (continuous, no alphabet).
+- Block granularity is a new hyperparameter: too fine is token branching,
+  too coarse and the library balloons and blocks stop composing. Predict a
+  knee; can it be derived from the searcher's budget (H2)?
+- A MIP solver reports a bound on how far it may be from optimal, so moving
+  reasoning onto solvers would make the optimization term (Bottou and
+  Bousquet) measurable. LLM sampling never reports it.
+- The block library is learned, so it inherits the exposure floor:
+  rarely seen blocks are poorly formed.
+- Where blocks would live, and why it matters: as text (reusable anywhere,
+  a fresh prefill per assembly), as KV segments (cheap, but past layer 1
+  each encodes the context it was computed in, so exact only in its
+  original position and order; CacheBlend, arXiv:2405.16444, and EPIC,
+  arXiv:2410.15332, patch reuse by recomputing part of each chunk), as
+  vocabulary macro-tokens (native, one step each, grows V), or as latent
+  vectors (toward the continuous side). His post does not say which.
+- Attention couples blocks: block B's value depends on what came before it,
+  so a solver's objective needs pairwise terms, a block-to-block
+  compatibility matrix, which is what qK^T computes between tokens.
+- Confidence: the softmax identity is standard. "Frozen partway along the
+  central path" is an analogy, not a theorem: the entropic barrier is a
+  valid barrier for the simplex, but attention does not run an
+  interior-point method.
+
 ## 2026-10-08: Is the strict limit a limit, or a hold on spread?
 
 The input's directions-needed count grows with d at strict tolerances,
