@@ -18,6 +18,48 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-08: Blocks as a vocabulary over the vocabulary (to explore)
+
+Markus Hartikainen's reasoning blocks are structurally a second vocabulary
+on top of the token vocabulary: each block is a string of base tokens
+chosen as one unit, the move BPE makes one level up (a phrase dictionary
+over the token alphabet, like LZ78 or Tunstall over characters). In his
+version they are not trained, and the model never sees them as units.
+
+From: Markus's reply on his test-time-compute post (2026-10-08): the block
+library is "text, or token ids, because those are what the solver is
+allowed to reorder"; KV segments go stale past the first divergence, and
+prefix sharing across sibling assemblies still works.
+Rough notes from talking it through:
+- A two-level code: the model is the receiver at the token level, the
+  solver at the block level. For the searcher the blocks are a recoding;
+  for the model nothing changed (no embedding per block, read as its
+  component tokens).
+- Differs from the model's vocabulary: BPE is chosen once by frequency
+  (compression) and segments text one fixed way; blocks are chosen by
+  meaning and verification at inference time and overlap, so choosing
+  among them is the solver's job.
+- Two ways to train them, very different: mined (BPE over reasoning traces:
+  keep the token sequences that recur in good solutions, frequency-chosen)
+  or learned into the model as macro-tokens (an embedding row each). The
+  second moves them out of the solver's vocabulary into the model's: in the
+  2026-10-05 terms, structure moves out of order and into the vocabulary,
+  and the vocabulary-size question comes with it.
+- Recursive blocks (blocks built from blocks, Mika Korhonen's suggestion in
+  the same thread) are grammar-based compression: Re-Pair, Sequitur, the
+  smallest grammar problem (Charikar et al. 2005), already in the credit
+  list. A recursive block library is a grammar over the token vocabulary,
+  which is the vocabulary/grammar line: where to cut between units and
+  rules.
+- Branching order and the prefix cache: if the solver fixes blocks in token
+  order, each child reuses its parent's whole prefix and pays prefill only
+  for the block it adds; branching on later positions first re-prefills
+  most of each candidate. The cache becomes part of the solver's cost model
+  (asked Markus whether that cost should shape the branching order).
+- To explore: where the cut between block vocabulary and solver grammar
+  should go for a bounded searcher, and whether a two-level code (tokens
+  for the model, blocks for the solver) has a derivable granularity.
+
 ## 2026-10-08: Attention as relaxed selection; reasoning blocks as recoding
 
 Softmax is the solution of an optimization: for scores s, softmax(s) =
