@@ -89,6 +89,14 @@ Observations only, from the runs below. No interpretation here.
 9. Among tokens that occur in ordinary text, input nearest-neighbour
    crowding rises with vocabulary size: 3.2x (32K), 4.1-4.2x (50K), 4.8x
    (100K).
+10. Through training (pythia-2.8b input table), spread does not grow
+    with the directions needed. From the random start, training first
+    concentrates the table (share of d covered: 0.99 at step 0 to 0.89 at
+    step 33,000; directions for 90% of variance: 0.85 d to 0.65 d) while
+    nearest neighbours pull close (0.09 to 0.49). After that, spread edges
+    back up (0.89 to 0.91) and crowding levels off (about 0.51), while the
+    directions needed keep rising (observation 4). (`through_training.py`,
+    `results/through_training.md`.)
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
