@@ -76,6 +76,10 @@ Rough notes from talking it through:
   runs are cheap, then confirm on a larger open-weight model. Only if that
   holds, the larger question: do vocabulary and grammar drive the effective
   dimension?
+- Experiment C has run (experiments/c-empty-dimensions/). Its observed
+  trends are listed there under "Observed trends", kept apart from
+  interpretation. Next: check the trends point one way, then theory, then
+  hypotheses derived from it.
 - Non-neural version: a receiver that sees the last m tokens sees as much
   grammar as fits in m; longer tokens pull grammar into range (experiment A).
 
