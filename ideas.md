@@ -18,6 +18,35 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-07: Semantic core vs pedantic refinement
+
+Of course training expands into the dimensions: through exposure the model
+keeps learning the differences between tokens. At some point the
+differences become pedantic rather than semantic. Spatially that means
+that while more dimensions are used, the empty space grows.
+
+From: experiment C, directions needed through training
+Rough notes from talking it through:
+- Hint already in the data: at the loose tolerance (0.1 bits per byte) the
+  directions needed through training climb then flatten; at the strict
+  tolerance (0.01) they keep climbing. Loose = semantic core (saturates);
+  strict adds pedantic refinements (each real, each worth little).
+  Observation 10: late directions don't change spread or crowding, so they
+  are thin, low-variance refinements, not new major axes.
+- "More used, emptier": volume grows exponentially with dimension, so the
+  same tokens separated along more directions occupy a shrinking fraction
+  of the room. Measurable: nearest-neighbour distance within the top k
+  directions as k grows past the core.
+- Might rescue the natural dimension: the plateau failed for the strict
+  count but may hold for the semantic core; past it, pedantic refinement
+  keeps growing as long as training continues.
+- Links to "the loss from source to signal is the meaning": which
+  differences matter is the semantic/pedantic line.
+- Caution: small contribution to average loss is a proxy for pedantic, not
+  a definition (rare but genuinely different words also contribute little).
+  A better line between semantic and pedantic is itself a theory question.
+- Next (2026-10-08): frame it up.
+
 ## 2026-10-06: The knob held fixed in a paper about the knob
 
 Pulipaka 2026 (arXiv:2608.07727, in the library as pulipaka2026) asks how vocabulary and capacity should be
