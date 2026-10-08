@@ -59,6 +59,25 @@ Next: finer k steps around the knee for 1b, 1.4b and 2.8b; then pythia-6.9b
 1.8-1.9K dimensions for this vocabulary, k* should stay near there while d
 doubles.
 
+## Observed trends (as of 2026-10-07)
+
+Observations only, from the runs below. No interpretation here.
+
+1. The vocabulary stretches to fill the room it is given: trained tables
+   spread over 91-98% of d at every size, needed or not.
+2. The input side has slack once the room is big enough: small rooms are
+   fully used; past a point part of the room can be removed without loss,
+   and the share used falls as d grows at fixed vocabulary (1.0 down to
+   about 0.6-0.7).
+3. The output side never has slack: it uses all of d in every model, size
+   and vocabulary tested.
+4. Used input room grows with exposure: through training it keeps climbing
+   and has not stopped at 300B tokens.
+5. Used input room grows with model size at fixed vocabulary, slower than
+   d (about 1.7K, 2.8K, 3.1K at d = 2.5K, 4K, 5K).
+6. A bigger vocabulary uses more room at the same d: core about 1.5K for
+   32K and 50K vocabularies; all 2048 for 100K.
+
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
 `refine.py`; results in `results/phase3_*.md`, `.json`, `.png`, `.log`.
