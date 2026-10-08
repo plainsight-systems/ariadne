@@ -36,6 +36,7 @@ pinned revisions in `models.json`.
 
 | `refine.py` | Finer k steps, larger models, checkpoints | `results/phase3_*` |
 | `cross_vocab.py` | Same d, different vocabularies (TinyLlama, Pythia, OLMo-2) | `results/cross_vocab.*` |
+| `interference.py` | Crowding of token vectors in the d = 2048 models | `results/interference.*` |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
 ## What we have so far (2026-10-07)
@@ -77,6 +78,17 @@ Observations only, from the runs below. No interpretation here.
    d (about 1.7K, 2.8K, 3.1K at d = 2.5K, 4K, 5K).
 6. A bigger vocabulary uses more room at the same d: core about 1.5K for
    32K and 50K vocabularies; all 2048 for 100K.
+7. Token vectors are, on average, about as separate as random vectors in
+   the same room (input: mean pairwise overlap 1.1-1.5x random), but almost
+   every token has a close neighbour (nearest-neighbour overlap 3-6x
+   random). The crowding is local, not general. (`interference.py`,
+   `results/interference.md`; d = 2048 models.)
+8. The output side is more crowded than the input side, most of all among
+   tokens that occur in ordinary text (mean overlap 2.6-2.7x random for
+   TinyLlama and Pythia, 7.7x for OLMo-2).
+9. Among tokens that occur in ordinary text, input nearest-neighbour
+   crowding rises with vocabulary size: 3.2x (32K), 4.1-4.2x (50K), 4.8x
+   (100K).
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
