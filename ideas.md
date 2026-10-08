@@ -18,6 +18,43 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-08: Is the strict limit a limit, or a hold on spread?
+
+The input's directions-needed count grows with d at strict tolerances,
+which may be trivial: training spreads every vector across all of d, and
+the larger models keep more of their random start. Squashing any spread-out
+variance costs a little loss, and the later layers were trained on
+whatever is there. So the strict count may measure dependence, not need.
+The loose count is the part that isn't trivial: it stops growing.
+
+From: drafting the LinkedIn post on experiment C (2026-10-08)
+Rough notes from talking it through:
+- Evidence the strict count is inflated by spread: at step 1000 (table
+  still near random) pythia-2.8b needs 2304 of 2560 directions at +0.003
+  but 768 at +0.1. A flat random spectrum makes every direction cost
+  something at a strict tolerance.
+- Larger tables are rewritten less completely: mean cosine of trained row
+  to step-0 row about 0.03 at d = 512, about 0.2 at d = 2560 (phase 1b
+  correction).
+- The loose count holds: 6.9b and 12b need the same 2048 at +0.1 and 2560
+  at +0.03, although 12b has 1024 more dimensions. Only the strict counts
+  (+0.01, +0.003) keep scaling with d.
+- Question: is the strict limit a real limit, or a pedantic hold on
+  spread-out, partly random structure? That is the semantic/pedantic cliff
+  question itself.
+- Test 1: cost of removing a trained direction against removing one from a
+  random table of the same shape (does the trained table's tail cost more
+  than random variance would?).
+- Test 2: squash, then retrain briefly; if the model recovers from losing
+  the strict directions, they held dependence, not need.
+- Prior art checked the same day: input-embedding redundancy is known
+  (ALBERT 2019; Kataiwa et al. 2025, arXiv:2503.02142, Pythia token
+  embeddings ID about 25; Quemy 2026, arXiv:2608.29702, ID 10-17 at every
+  size once a hub of short rows is removed). The gap between geometric ID
+  (tens) and the loss-based count (thousands) is its own thread. Output
+  full use is consistent with the softmax bottleneck (Yang et al. 2018;
+  Godey et al. 2024, arXiv:2404.07647) but not shown by it.
+
 ## 2026-10-07: Semantic core vs pedantic refinement
 
 Of course training expands into the dimensions: through exposure the model
