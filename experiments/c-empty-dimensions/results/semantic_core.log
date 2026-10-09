@@ -1,0 +1,90 @@
+EleutherAI/pythia-2.8b  k_core = 1344
+Loading weights:   0%|          | 0/388 [00:00<?, ?it/s]Loading weights:   0%|          | 1/388 [00:00<01:50,  3.52it/s]Loading weights:  14%|█▍        | 56/388 [00:00<00:01, 184.88it/s]Loading weights:  23%|██▎       | 88/388 [00:00<00:01, 205.05it/s]Loading weights:  30%|███       | 117/388 [00:00<00:01, 217.22it/s]Loading weights:  37%|███▋      | 144/388 [00:00<00:01, 217.48it/s]Loading weights:  44%|████▍     | 170/388 [00:00<00:01, 212.23it/s]Loading weights:  53%|█████▎    | 204/388 [00:01<00:00, 241.35it/s]Loading weights:  59%|█████▉    | 230/388 [00:01<00:00, 228.97it/s]Loading weights:  67%|██████▋   | 260/388 [00:01<00:00, 239.74it/s]Loading weights:  74%|███████▍  | 288/388 [00:01<00:00, 233.80it/s]Loading weights:  81%|████████  | 314/388 [00:01<00:00, 224.99it/s]Loading weights:  90%|████████▉ | 348/388 [00:01<00:00, 243.88it/s]Loading weights:  96%|█████████▌| 373/388 [00:01<00:00, 239.59it/s]Loading weights: 100%|██████████| 388/388 [00:01<00:00, 220.96it/s]
+  table observations
+  content or spread
+    original                     0.8060
+    tail zeroed                  0.8776
+    tail shuffled                0.8882
+    tail random, matched         0.8939
+    tail zeroed, lengths kept    0.9067
+    core shuffled                3.7110
+EleutherAI/pythia-6.9b  k_core = 2048
+Loading weights:   0%|          | 0/388 [00:00<?, ?it/s]Loading weights:   0%|          | 1/388 [00:00<02:18,  2.78it/s]Loading weights:   8%|▊         | 32/388 [00:00<00:04, 83.68it/s]Loading weights:  12%|█▏        | 47/388 [00:00<00:03, 95.45it/s]Loading weights:  16%|█▌        | 61/388 [00:00<00:03, 87.75it/s]Loading weights:  19%|█▉        | 73/388 [00:00<00:03, 85.37it/s]Loading weights:  22%|██▏       | 84/388 [00:01<00:03, 84.04it/s]Loading weights:  25%|██▍       | 96/388 [00:01<00:03, 88.74it/s]Loading weights:  28%|██▊       | 108/388 [00:01<00:03, 86.68it/s]Loading weights:  31%|███       | 120/388 [00:01<00:02, 89.40it/s]Loading weights:  34%|███▍      | 132/388 [00:01<00:02, 87.72it/s]Loading weights:  37%|███▋      | 144/388 [00:01<00:02, 85.10it/s]Loading weights:  40%|████      | 156/388 [00:01<00:02, 85.81it/s]Loading weights:  43%|████▎     | 168/388 [00:02<00:02, 86.97it/s]Loading weights:  46%|████▋     | 180/388 [00:02<00:02, 85.73it/s]Loading weights:  49%|████▉     | 192/388 [00:02<00:02, 84.73it/s]Loading weights:  53%|█████▎    | 204/388 [00:02<00:02, 88.05it/s]Loading weights:  56%|█████▌    | 216/388 [00:02<00:02, 85.33it/s]Loading weights:  59%|█████▉    | 228/388 [00:02<00:01, 86.27it/s]Loading weights:  62%|██████▏   | 240/388 [00:02<00:01, 89.92it/s]Loading weights:  65%|██████▍   | 252/388 [00:03<00:01, 86.87it/s]Loading weights:  68%|██████▊   | 264/388 [00:03<00:01, 83.79it/s]Loading weights:  71%|███████   | 276/388 [00:03<00:01, 81.65it/s]Loading weights:  74%|███████▍  | 288/388 [00:03<00:01, 68.09it/s]Loading weights:  76%|███████▋  | 296/388 [00:03<00:01, 70.15it/s]Loading weights:  78%|███████▊  | 304/388 [00:03<00:01, 58.56it/s]Loading weights:  80%|████████  | 312/388 [00:04<00:01, 55.36it/s]Loading weights:  82%|████████▏ | 318/388 [00:04<00:01, 51.58it/s]Loading weights:  84%|████████▎ | 324/388 [00:04<00:01, 51.53it/s]Loading weights:  86%|████████▌ | 332/388 [00:04<00:00, 57.85it/s]Loading weights:  87%|████████▋ | 339/388 [00:04<00:00, 53.74it/s]Loading weights:  90%|████████▉ | 348/388 [00:04<00:00, 58.40it/s]Loading weights:  92%|█████████▏| 356/388 [00:04<00:00, 60.86it/s]Loading weights:  94%|█████████▎| 363/388 [00:04<00:00, 56.23it/s]Loading weights:  96%|█████████▌| 372/388 [00:05<00:00, 56.27it/s]Loading weights:  99%|█████████▉| 386/388 [00:05<00:00, 73.83it/s]Loading weights: 100%|██████████| 388/388 [00:05<00:00, 74.37it/s]
+  table observations
+  content or spread
+    original                     0.7770
+    tail zeroed                  0.8384
+    tail shuffled                0.8990
+    tail random, matched         0.8875
+    tail zeroed, lengths kept    0.8243
+    core shuffled                3.8261
+EleutherAI/pythia-12b  k_core = 2048
+Loading weights:   0%|          | 0/436 [00:00<?, ?it/s]Loading weights:   0%|          | 1/436 [00:00<03:22,  2.15it/s]Loading weights:   6%|▌         | 24/436 [00:00<00:08, 50.86it/s]Loading weights:   8%|▊         | 34/436 [00:00<00:07, 56.33it/s]Loading weights:  10%|▉         | 43/436 [00:00<00:06, 59.12it/s]Loading weights:  12%|█▏        | 51/436 [00:01<00:07, 48.76it/s]Loading weights:  14%|█▍        | 60/436 [00:01<00:07, 53.66it/s]Loading weights:  16%|█▌        | 68/436 [00:01<00:06, 54.11it/s]Loading weights:  17%|█▋        | 75/436 [00:01<00:06, 53.34it/s]Loading weights:  19%|█▉        | 84/436 [00:01<00:06, 54.41it/s]Loading weights:  21%|██        | 92/436 [00:01<00:05, 57.68it/s]Loading weights:  23%|██▎       | 99/436 [00:01<00:06, 53.70it/s]Loading weights:  25%|██▍       | 108/436 [00:02<00:05, 59.91it/s]Loading weights:  27%|██▋       | 116/436 [00:02<00:05, 58.03it/s]Loading weights:  28%|██▊       | 123/436 [00:02<00:05, 55.75it/s]Loading weights:  30%|███       | 132/436 [00:02<00:05, 56.06it/s]Loading weights:  32%|███▏      | 140/436 [00:02<00:05, 58.69it/s]Loading weights:  33%|███▎      | 146/436 [00:02<00:05, 53.66it/s]Loading weights:  36%|███▌      | 156/436 [00:02<00:04, 57.03it/s]Loading weights:  38%|███▊      | 164/436 [00:03<00:04, 60.37it/s]Loading weights:  39%|███▉      | 171/436 [00:03<00:04, 60.89it/s]Loading weights:  42%|████▏     | 182/436 [00:03<00:03, 66.45it/s]Loading weights:  44%|████▍     | 192/436 [00:03<00:03, 67.23it/s]Loading weights:  46%|████▌     | 200/436 [00:03<00:03, 65.66it/s]Loading weights:  47%|████▋     | 207/436 [00:03<00:03, 60.01it/s]Loading weights:  50%|████▉     | 216/436 [00:03<00:03, 60.81it/s]Loading weights:  51%|█████▏    | 224/436 [00:04<00:03, 59.77it/s]Loading weights:  53%|█████▎    | 230/436 [00:04<00:04, 49.21it/s]Loading weights:  55%|█████▌    | 240/436 [00:04<00:03, 51.44it/s]Loading weights:  56%|█████▋    | 246/436 [00:04<00:03, 50.38it/s]Loading weights:  58%|█████▊    | 252/436 [00:04<00:04, 41.78it/s]Loading weights:  60%|█████▉    | 260/436 [00:04<00:04, 41.13it/s]Loading weights:  61%|██████    | 265/436 [00:05<00:04, 41.15it/s]Loading weights:  62%|██████▏   | 270/436 [00:05<00:04, 40.66it/s]Loading weights:  63%|██████▎   | 276/436 [00:05<00:04, 36.91it/s]Loading weights:  64%|██████▍   | 280/436 [00:05<00:04, 36.93it/s]Loading weights:  65%|██████▌   | 284/436 [00:05<00:04, 36.66it/s]Loading weights:  66%|██████▌   | 288/436 [00:05<00:04, 34.68it/s]Loading weights:  68%|██████▊   | 296/436 [00:05<00:03, 38.01it/s]Loading weights:  69%|██████▉   | 300/436 [00:06<00:03, 36.62it/s]Loading weights:  70%|██████▉   | 304/436 [00:06<00:03, 35.10it/s]Loading weights:  72%|███████▏  | 312/436 [00:06<00:03, 37.37it/s]Loading weights:  72%|███████▏  | 316/436 [00:06<00:03, 37.05it/s]Loading weights:  74%|███████▍  | 324/436 [00:06<00:03, 35.88it/s]Loading weights:  75%|███████▌  | 328/436 [00:06<00:02, 36.46it/s]Loading weights:  77%|███████▋  | 336/436 [00:07<00:02, 34.42it/s]Loading weights:  78%|███████▊  | 340/436 [00:07<00:03, 31.58it/s]Loading weights:  79%|███████▉  | 344/436 [00:07<00:02, 31.02it/s]Loading weights:  80%|███████▉  | 348/436 [00:07<00:03, 27.85it/s]Loading weights:  81%|████████  | 351/436 [00:07<00:03, 22.37it/s]Loading weights:  82%|████████▏ | 356/436 [00:08<00:04, 18.94it/s]Loading weights:  83%|████████▎ | 360/436 [00:08<00:03, 19.11it/s]Loading weights:  84%|████████▍ | 368/436 [00:08<00:02, 25.18it/s]Loading weights:  85%|████████▌ | 372/436 [00:08<00:02, 22.94it/s]Loading weights:  86%|████████▌ | 375/436 [00:08<00:03, 20.32it/s]Loading weights:  87%|████████▋ | 380/436 [00:09<00:02, 22.28it/s]Loading weights:  88%|████████▊ | 384/436 [00:09<00:02, 21.43it/s]Loading weights:  89%|████████▉ | 387/436 [00:12<00:13,  3.67it/s]Loading weights:  91%|█████████ | 396/436 [00:12<00:05,  6.82it/s]Loading weights:  93%|█████████▎| 404/436 [00:12<00:03, 10.36it/s]Loading weights:  94%|█████████▍| 410/436 [00:12<00:01, 13.09it/s]Loading weights:  96%|█████████▋| 420/436 [00:13<00:00, 19.51it/s]Loading weights:  98%|█████████▊| 428/436 [00:14<00:00, 10.98it/s]Loading weights: 100%|██████████| 436/436 [00:14<00:00, 29.89it/s]
+  table observations
+  content or spread
+    original                     0.7444
+    tail zeroed                  0.8437
+    tail shuffled                1.0316
+    tail random, matched         1.0468
+    tail zeroed, lengths kept    0.8214
+    core shuffled                3.5699
+# Semantic core vs pedantic refinement (Pythia input tables)
+
+k_core = directions needed at +0.1 bits per byte. Loss in bits per byte on the phase-2 text.
+
+## 1. Content or spread
+
+| Model | d | k_core | original | tail zeroed | tail shuffled | tail random | zeroed, lengths kept | core shuffled |
+|---|---|---|---|---|---|---|---|---|
+| pythia-1.4b | 2048 | 1408 | 0.863 | 0.940 | 0.961 | 0.960 | 0.930 | 3.629 |
+| pythia-2.8b | 2560 | 1344 | 0.806 | 0.878 | 0.888 | 0.894 | 0.907 | 3.711 |
+| pythia-6.9b | 4096 | 2048 | 0.777 | 0.838 | 0.899 | 0.888 | 0.824 | 3.826 |
+| pythia-12b | 5120 | 2048 | 0.744 | 0.844 | 1.032 | 1.047 | 0.821 | 3.570 |
+
+## 2. What the tail separates
+
+Nearest neighbour in the core directions; tail push = core cosine minus full cosine.
+
+| Model | class | share of pairs | core cos | full cos | tail push |
+|---|---|---|---|---|---|
+| pythia-1.4b | surface | 0.19 | 0.549 | 0.503 | 0.046 |
+| pythia-1.4b | stem | 0.20 | 0.521 | 0.481 | 0.040 |
+| pythia-1.4b | other | 0.60 | 0.322 | 0.291 | 0.031 |
+| pythia-2.8b | surface | 0.19 | 0.563 | 0.493 | 0.070 |
+| pythia-2.8b | stem | 0.21 | 0.525 | 0.465 | 0.060 |
+| pythia-2.8b | other | 0.60 | 0.330 | 0.282 | 0.048 |
+| pythia-6.9b | surface | 0.18 | 0.443 | 0.357 | 0.087 |
+| pythia-6.9b | stem | 0.20 | 0.408 | 0.332 | 0.077 |
+| pythia-6.9b | other | 0.63 | 0.255 | 0.196 | 0.058 |
+| pythia-12b | surface | 0.18 | 0.454 | 0.344 | 0.110 |
+| pythia-12b | stem | 0.19 | 0.399 | 0.304 | 0.094 |
+| pythia-12b | other | 0.63 | 0.261 | 0.186 | 0.075 |
+
+## 3. More used, emptier
+
+Median nearest-neighbour cosine using only the top k directions.
+
+| Model | k=64 | k=128 | k=256 | k=512 | k=768 | k=1024 | k=1536 | k=2048 | k=2560 | k=3072 | k=4096 | k=5120 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| pythia-1.4b | 0.698 | 0.627 | 0.563 | 0.494 | 0.451 | 0.418 | 0.372 | 0.345 |  |  |  |  |
+| pythia-2.8b | 0.691 | 0.629 | 0.562 | 0.495 | 0.454 | 0.423 | 0.381 | 0.352 | 0.335 |  |  |  |
+| pythia-6.9b | 0.716 | 0.636 | 0.554 | 0.468 | 0.416 | 0.376 | 0.326 | 0.291 | 0.265 | 0.249 | 0.226 |  |
+| pythia-12b | 0.717 | 0.648 | 0.569 | 0.477 | 0.422 | 0.385 | 0.330 | 0.294 | 0.270 | 0.251 | 0.225 | 0.210 |
+
+## Pairs the tail separates most (2.8b)
+
+- '.' / ',' (other): core 0.69, full 0.49
+- ' -' / '-' (surface): core 0.50, full 0.32
+- ' "' / " '" (other): core 0.60, full 0.42
+- " '" / ' "' (other): core 0.60, full 0.42
+- ' +' / ' -' (other): core 0.42, full 0.26
+- ' ,' / ',' (surface): core 0.38, full 0.22
+- ' and' / ',' (other): core 0.63, full 0.47
+- ' .' / ' ,' (other): core 0.36, full 0.22
+- '-' / ' to' (other): core 0.64, full 0.51
+- ' was' / ' were' (other): core 0.62, full 0.49
+- ' were' / ' was' (other): core 0.62, full 0.49
+- ',' / ' to' (other): core 0.69, full 0.56
+- ' 0' / ' 1' (other): core 0.48, full 0.35
+- ' the' / ' to' (other): core 0.67, full 0.55
+- ' by' / ' to' (other): core 0.58, full 0.46
