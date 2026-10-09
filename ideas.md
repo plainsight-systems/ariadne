@@ -18,6 +18,24 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-09: The tail isn't identity
+
+Not a fully formed idea, but the data indicates the tail isn't identity.
+
+From: experiment C, identity information (observations 14, 15, 20, 21)
+Rough notes:
+- Token identity of every kind measured so far is essentially complete
+  within a few hundred directions: which token (14), which spelling variant
+  (15, 20), which grammatical role and which word within it (21).
+- Yet the network depends on thousands of input directions (2, 5), and the
+  tail past the loose core carries token-specific content: shuffling it
+  costs as much as or more than deleting it (11).
+- So the tail holds something token-specific that is not about telling
+  tokens apart. Open: what is it? Candidates not yet tested: graded
+  similarity (how alike tokens are, not whether they differ), information
+  the later layers read as features rather than as identity, or the
+  model's use of exact values (precision) rather than distinctions.
+
 ## 2026-10-08: Blocks as a vocabulary over the vocabulary (to explore)
 
 Markus Hartikainen's reasoning blocks are structurally a second vocabulary
