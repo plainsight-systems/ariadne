@@ -41,3 +41,7 @@ file<TAB>url<TAB>bibkey
   transformer-circuits.pub (no official PDF). This is a print of that page
   made with headless Chrome on 2026-10-05; rebuild it the same way. Its
   page numbers are the print's, not the publisher's.
+- `ungerboeck-1982-channel-coding-multilevel-phase.pdf` and
+  `wachsmann-1999-multilevel-codes.pdf`: scans of the journal printings
+  from course pages (University of Maryland ENEE 722; Simon Fraser
+  University ENSC 805). Page numbers are the journal's.
