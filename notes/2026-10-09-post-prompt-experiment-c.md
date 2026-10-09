@@ -7,13 +7,21 @@ from the files linked next to it; check a figure there before changing it.*
 
 ---
 
-You are helping me (Andrew P Hunter) write a post about my research
-program Ariadne: what I have found so far and where it goes next. It is
-most likely a LinkedIn post that links to the repository; if the material
-wants more room, tell me and we can make it an article for
-andrewphunter.com instead. An earlier LinkedIn post on the first part of
-experiment C was drafted on 2026-10-08; if you have it, avoid repeating it
-and build on it.
+You are helping me (Andrew P Hunter) write a post about my research: what
+I have found so far and where it goes next. It is most likely a LinkedIn
+post; if the material wants more room, tell me and we can make it an
+article for andrewphunter.com instead. Do not name the program (Ariadne)
+in the post; ask me before linking the repository.
+
+The previous post, "where I was wrong" on dimensions, went out on
+2026-10-08 (https://www.linkedin.com/feed/update/urn:li:activity:7514028818534334464/).
+It covered: the expectation that d is usually too large at a fixed
+vocabulary; 20-40% of the input embedding removable in the larger Pythia
+models; the strict count growing with size (60-70% of d) as a possible
+pedantic floor; the loose count at 2,048 for both 6.9B and 12B as a
+candidate semantic core; and the picture of tokens pushed apart into a
+mostly empty volume, with a cliff from semantic to pedantic. Do not repeat
+it; build on it. Its output-table paragraph was cut (see "Do not claim").
 
 ## Voice (my rules, not negotiable)
 
@@ -90,10 +98,12 @@ interpretation). The key ones:
   Fischer and Huber 1999); the capacity ceiling matches the coding rate in
   MCR² (Yu et al. 2020). What may be new is sweeping it over directions and
   pointing it at a receiver's table.
-- Input-embedding redundancy is known (ALBERT 2019; Kataiwa et al. 2025).
-  Output full use fits the softmax bottleneck (Yang et al. 2018).
-- Hidden size of at least the language's rank: Borenstein, Cotterell et al.,
-  ACL 2024.
+- Input-embedding redundancy is known (ALBERT 2019; Kataiwa et al. 2025;
+  Quemy 2026, arXiv:2608.29702).
+- On languages with known automata, a language's rank predicts how well
+  models learn it, better than state count or alphabet size: Borenstein,
+  Cotterell et al., ACL 2024. Cite the empirical result only, not their
+  hidden-size bound (see "Do not claim").
 - An exact derived number for a finite receiver already exists in 1970:
   Hellman and Cover, "Learning with Finite Memory": the best error for an
   m-state learner is 1 / (1 + gamma^((m-1)/2)) with equal priors.
@@ -120,9 +130,11 @@ whose statistics he knew. The small models I have been probing learned
 languages that are too advanced to start from; even was/were is advanced.
 So the next step is a designed toddler language. My 2-year-old uses
 "bubble" for about five things (a vocabulary smaller than the world;
-linguists call it overextension, Rescorla 1980), and says "here you go da
-da" when she hands me something, because we always said "here you go" to
-her (a frame with a slot, Braine; Tomasello; Lieven, Pine and Baldwin).
+linguists call it overextension, Rescorla 1980). And when I hand her
+something she wants, she says "here you go da da", because her whole life,
+when we hand her things, we say "here you go" and her name: she uses our
+frame from the receiving side and puts the giver's name in the slot (frames
+with slots: Braine; Tomasello; Lieven, Pine and Baldwin).
 The plan: a small world, a vocabulary smaller than the world, a few frames
 with slots, known probabilities, so entropy and grammar are exact before
 any receiver sees it. Check the measure first on a toy codebook whose
@@ -135,6 +147,11 @@ use it; the post does not have to.
 
 ## Do not claim
 
+- Anything that explains the output table using all of its room. Leave it
+  as an observation. Do not cite the softmax bottleneck or any rank bound
+  on hidden size: it is a trivial rank bound, and the output table reads
+  the full residual stream, so squashing it measures the stream, not the
+  vocabulary (my decision, 2026-10-08).
 - That a natural embedding dimension has been found. The plateau
   prediction failed.
 - A theory of how networks work. Ariadne follows the "why is it this way"

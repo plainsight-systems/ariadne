@@ -54,7 +54,8 @@ pinned revisions in `models.json`.
   1.00, 1.00, 1.00, 0.95, 0.90, 0.70. At 2.8b the knee sits between 1280 and
   1792 directions.
 - Need (phase 2), output table: all of d is needed at every size. Dropping
-  the weakest 5% costs 0.06 to 0.62 bits per byte.
+  the weakest 5% costs 0.08 to 0.42 bits per byte (70m to 2.8b; corrected
+  2026-10-09 from "0.06 to 0.62", which was wrong).
 - Rough reading: for this vocabulary, the input side seems to want about
   1.8-1.9K dimensions and leaves the rest empty; the output side uses
   everything it is given. Resolution is coarse (k in steps of 0.05 to 0.1 of
