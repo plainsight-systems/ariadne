@@ -10,12 +10,8 @@ resolution epsilon, estimate along k:
   I_B(k)  = I(G; Y_k)      between surface-variant classes
   I_W(k)  = I(k) - I_B(k)  within classes
   C(k)    capacity ceiling from the spectrum; efficiency I/C
-  k_x     crossover: first k interval where the between-class gain per
-          direction falls below the within-class gain (as defined; dominated
-          by class sizes, since within-class identity is at most H(V) - H(G))
-  k_B50, k_W50  added diagnostic: smallest k at which I_B, or I_W, reaches
-          half its own value at k = d (compares how fast each part fills
-          relative to its own total)
+  k_B50, k_W50  half-fill dimensions (definitions.md 1.3): smallest k at
+          which I_B, or I_W, reaches half its own value at k = d
 
 Estimator (definitions.md 1.5): draw v ~ p and z ~ N(0, sigma^2 I_d) once
 (fixed seed); for each k use the first k coordinates of both, and the exact
@@ -119,14 +115,8 @@ def measure_view(w, p, cls, ks, rng):
             rows.append({"k": k, "I": float(i_all), "I_se": float(hvy.std() / math.sqrt(SAMPLES)),
                          "I_B": float(i_b), "I_B_se": float(hgy.std() / math.sqrt(SAMPLES)),
                          "I_W": float(i_all - i_b), "C": cap, "eff": float(i_all / cap) if cap > 0 else None})
-        kx = None
-        for a, b in zip(rows, rows[1:]):
-            dk = b["k"] - a["k"]
-            if (b["I_B"] - a["I_B"]) / dk < (b["I_W"] - a["I_W"]) / dk:
-                kx = [a["k"], b["k"]]
-                break
         half = lambda key: next(r["k"] for r in rows if r[key] >= rows[-1][key] / 2)
-        out["eps"][str(eps)] = {"sigma": sigma, "curve": rows, "k_cross": kx,
+        out["eps"][str(eps)] = {"sigma": sigma, "curve": rows,
                                 "k_B50": half("I_B"), "k_W50": half("I_W")}
     return out
 
@@ -166,12 +156,12 @@ def main():
 
 def write_report(rows):
     lines = ["# Identity information of the Pythia embedding tables", "",
-             "definitions.md section 1. Classes: surface variants. I in bits; k_x = crossover interval.", ""]
+             "definitions.md section 1. Classes: surface variants. I in bits; k_B50, k_W50 = half-fill dimensions.", ""]
     for view in ("dictionary", "text"):
         for eps in EPSILONS:
             lines += [f"## {view} view, epsilon = {eps}", "",
-                      "| Model | d | table | H(V) | I(d) | I_B(d) | I_W(d) | I/C at d | k for half of I(d) | k_B50 | k_W50 | k_x |",
-                      "|---|---|---|---|---|---|---|---|---|---|---|---|"]
+                      "| Model | d | table | H(V) | I(d) | I_B(d) | I_W(d) | I/C at d | k for half of I(d) | k_B50 | k_W50 |",
+                      "|---|---|---|---|---|---|---|---|---|---|---|"]
             for r in rows:
                 for side in TABLES:
                     v = r[f"{side}/{view}"]
@@ -179,10 +169,9 @@ def write_report(rows):
                     cur = e["curve"]
                     last = cur[-1]
                     half = next(c["k"] for c in cur if c["I"] >= last["I"] / 2)
-                    kx = f"{e['k_cross'][0]}-{e['k_cross'][1]}" if e["k_cross"] else "none"
                     lines.append(f"| {r['repo'].split('/')[1]} | {r['d']} | {side} | {v['H_V']:.2f} | "
                                  f"{last['I']:.2f} | {last['I_B']:.2f} | {last['I_W']:.2f} | {last['eff']:.3f} | "
-                                 f"{half} | {e['k_B50']} | {e['k_W50']} | {kx} |")
+                                 f"{half} | {e['k_B50']} | {e['k_W50']} |")
             lines.append("")
     (RESULTS / "identity_info.md").write_text("\n".join(lines) + "\n")
 

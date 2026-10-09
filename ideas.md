@@ -183,8 +183,8 @@ Rough notes from talking it through:
 - Next (2026-10-08): frame it up.
 Moved to: measurements in experiments/c-empty-dimensions (observations
 11-13, `semantic_core.py`, 2026-10-09); the measure of density in
-definitions.md section 1 (identity information, with a crossover dimension
-as a candidate semantic/pedantic line).
+definitions.md section 1 (identity information, with half-fill dimensions
+comparing how fast between-word and within-word distinctions fill).
 
 ## 2026-10-06: The knob held fixed in a paper about the knob
 
