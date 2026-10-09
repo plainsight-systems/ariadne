@@ -141,6 +141,10 @@ Rough notes from talking it through:
   than random variance would?).
 - Test 2: squash, then retrain briefly; if the model recovers from losing
   the strict directions, they held dependence, not need.
+- Test 1 run 2026-10-09 (`semantic_core.py`): giving tokens another
+  token's tail, or matched random values, costs at least as much as zeroing
+  it, so the tail carries token-specific content, not only spread
+  (experiment C observation 11). Test 2 not run.
 - Prior art checked the same day: input-embedding redundancy is known
   (ALBERT 2019; Kataiwa et al. 2025, arXiv:2503.02142, Pythia token
   embeddings ID about 25; Quemy 2026, arXiv:2608.29702, ID 10-17 at every
@@ -177,6 +181,10 @@ Rough notes from talking it through:
   a definition (rare but genuinely different words also contribute little).
   A better line between semantic and pedantic is itself a theory question.
 - Next (2026-10-08): frame it up.
+Moved to: measurements in experiments/c-empty-dimensions (observations
+11-13, `semantic_core.py`, 2026-10-09); the measure of density in
+definitions.md section 1 (identity information, with a crossover dimension
+as a candidate semantic/pedantic line).
 
 ## 2026-10-06: The knob held fixed in a paper about the knob
 
