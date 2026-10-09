@@ -74,6 +74,81 @@ designed toddler language is a Shannon source we write ourselves, so every
 quantity is known before any receiver sees it: start where the field
 started.
 
+Prior art, searched 2026-10-09 (computational; developmental linguistics).
+Checked on arXiv, Crossref or publisher pages unless marked.
+
+Computational, most important:
+- The derived dimension is probably rank, not V plus states. Borenstein,
+  Svete, Chan, Valvoda, Nowak, Augenstein, Chodroff, Cotterell, "What
+  Languages are Easy to Language-Model? A Perspective from Learning
+  Probabilistic Regular Languages", ACL 2024, arXiv:2406.04289: any
+  language model built on a hidden representation needs hidden size at
+  least R, the rank of the language (of a minimal full-support
+  deterministic probabilistic automaton); on random automata (states and
+  alphabet 2 to 16) with RNNs and transformers at several hidden sizes,
+  rank predicts learnability better than state count or alphabet size.
+  Direct antecedent; frame the toddler experiment against R.
+- Svete and Cotterell, "Recurrent Neural Language Models as Probabilistic
+  Finite-state Automata", EMNLP 2023, arXiv:2310.05161: an arbitrary
+  deterministic finite-state LM with N states needs on the order of N|V|
+  neurons in an RNN.
+- Hewitt, Hahn, Ganguli, Liang, Manning, EMNLP 2020, arXiv:2010.07515:
+  Dyck-(k,m) needs and gets Theta(m log k) hidden units. Classical automaton
+  simulation bounds (Alon, Dewdney and Ott 1991; Horne and Hush 1996;
+  Indyk 1995; partly unverified) and transformer upper bounds (Rizvi et al.
+  2024, arXiv:2403.09728).
+- Design-method background: Elman, "Finding Structure in Time", 1990 (small
+  hand-built grammars into a recurrent net); White and Cotterell 2021,
+  arXiv:2106.01044 (artificial languages varying one feature); TinyStories;
+  BabyLM and BabyBERTa (real child-directed corpora). The softmax bottleneck
+  (Yang et al. 2018) already ties hidden size to the rank of the next-token
+  log-probability matrix.
+- Toy codebook: not new (Ungerboeck 1982; Wachsmann et al. 1999).
+- Not found (about 70%): a designed, semantically grounded language (a world
+  of referents, vocabulary smaller than the world, role-filled frames,
+  word-referent information as a controlled variable); a measured minimum
+  width at the exact entropy floor compared against a derived bound (R,
+  sqrt(m), m log k); polysemy swept in a dimension study; neural and n-gram
+  receivers side by side on the same exact-entropy source.
+
+Developmental linguistics (well established; names to use):
+- "Bubble" is overextension (categorical overinclusion, analogical
+  overextension): Rescorla, "Overextension in early language development",
+  J. Child Language 7, 1980, doi:10.1017/S0305000900002658 (about a third of
+  first 75 words ever overextended); Clark 1973, 1978. Formal model:
+  Ferreira Pinto and Xu, "A computational theory of child overextension",
+  Cognition 206, 2021, doi:10.1016/j.cognition.2020.104472 (probabilistic
+  inference, not information theory).
+- Frames with slots: Braine 1963 (pivot grammar); Braine 1976, "Children's
+  first word combinations", doi:10.2307/1165959 (limited-scope formulae);
+  Lieven, Pine and Baldwin 1997, doi:10.1017/S0305000996002930
+  (slot-and-frame patterns about 60% of multiword utterances, ages 1-3);
+  Tomasello 1992, 2003 (verb islands, item-based constructions).
+- Known probabilities for frames have an empirical basis: Cameron-Faulkner,
+  Lieven and Tomasello, "A construction based analysis of child directed
+  speech", Cognitive Science 27, 2003, doi:10.1207/s15516709cog2706_2 (51%
+  of mothers' utterances began with one of 52 item-based frames).
+- Chunks learned whole: Peters 1983 (gestalt route); Pine and Lieven 1993
+  (rote-learned phrases later given slots); Bannard and Matthews 2008
+  (frequent chunks repeated more accurately).
+- Not found: a child correctly filling a memorized frame's name slot by
+  role ("here you go da da"). Pronoun-reversal work studies the opposite
+  (copying the slot verbatim); closest anchor: Charney 1980,
+  doi:10.1017/S0305000900002816 (early role terms understood first from the
+  child's own role).
+- Information-theoretic: Zaslavsky et al. 2018 (adult naming as lossy
+  compression); Tal, Grossman and Arnon 2024, Cognition 249,
+  doi:10.1016/j.cognition.2024.105817 (entropy rate of infant-directed
+  speech falls as infants grow).
+
+CHILDES terms (talkbank.org ground rules, checked 2026-10-09): CC BY-NC-SA
+3.0 unless marked; no commercial use (LLMs named); cite each corpus (Brown
+1973 for Adam, Eve, Sarah; corpus doi:10.21415/T5HK5G) and MacWhinney 2000;
+data may go to web AI services only through an API that guarantees it is
+not stored. That last rule decides whether Claude can read the transcripts
+directly: Andrew to settle before plan (b). Eve (1;6 to 2;3) matches a
+2-year-old.
+
 ## 2026-10-09: Next step on the measure: real noise, then the tail
 
 Where the main line resumes (measure and tail), from asking what Shannon
