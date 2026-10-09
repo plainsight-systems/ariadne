@@ -72,10 +72,20 @@ function $g$, with $G = g(V)$:
 - *between-class information:* $I_B(k) = I(G; Y_k)$
 - *within-class information:* $I_W(k) = I(V; Y_k \mid G)$
 
-**Crossover dimension:** $k_\times$, the smallest $k$ at which the marginal
-between-class information falls below the marginal within-class
-information, $\Delta I_B(k) < \Delta I_W(k)$. Past $k_\times$, each added
-direction buys more distinction within classes than between them.
+**Half-fill dimensions:** for each part, the smallest $k$ at which it
+reaches half of its own value in the full room:
+
+$$k_{B,1/2} = \min\{k : I_B(k) \ge \tfrac12 I_B(d)\}, \qquad
+k_{W,1/2} = \min\{k : I_W(k) \ge \tfrac12 I_W(d)\}.$$
+
+Comparing them says which kind of distinction the codebook fills first:
+$k_{B,1/2} < k_{W,1/2}$ means between-class distinctions sit in the
+leading directions and within-class distinctions further down;
+$k_{W,1/2} \le k_{B,1/2}$ means the reverse. Each part is measured against
+its own total, so the comparison does not depend on how many bits each
+class split holds. (This replaces a first "crossover dimension", which
+compared marginal bits in absolute terms and so mostly reported class
+sizes; see 1.9.)
 
 **First class definition, surface variants.** $g(v)$ is the decoded text of
 $v$ with surrounding whitespace removed and letters lowercased, so " The",
@@ -117,6 +127,9 @@ error, reported with each estimate.
 - the symbol distribution $p$ (dictionary or text view, and which text)
 - the resolution $\varepsilon$
 - the class function $g$
+- the fraction in the half-fill dimensions (one half), and that each part is
+  measured against its own value at $k = d$, which itself depends on
+  $\varepsilon$ and $d$
 - Gaussian noise, isotropic in the projected coordinates (a modelling
   choice; it treats every direction as equally noisy)
 - the order in which directions are added: by principal variance. For a
@@ -223,18 +236,22 @@ session):
 - $I(k)$ traced as a function of the number of principal directions kept,
   for a fixed codebook (existing work runs along SNR or power allocation).
 - The efficiency $\eta(k) = I/C$ as a curve in $k$.
-- The crossover dimension $k_\times$.
+- A comparison of how fast between-class and within-class information fill
+  (searched as a "crossover"; the half-fill comparison that replaced it has
+  not been searched separately).
 - Any of this applied to a receiver's codebook such as an embedding table,
   or reporting where surface-variant distinctions sit in its spectrum.
 
 So the definition reuses established objects; what may be new is the sweep
-over directions, the crossover, and the application to receivers' tables.
+over directions, the half-fill comparison, and the application to
+receivers' tables.
 Not yet searched: hierarchical information bottleneck, and usage studies of
 vector-quantization codebooks.
 
 ### 1.9 Found in first use (Pythia, 2026-10-09)
 
-Recorded here, not yet folded into the definition; Andrew decides.
+Recorded as found. The second item was resolved on 2026-10-09: the
+half-fill dimensions replace the crossover in 1.3 (Andrew's decision).
 
 - **Useful resolutions.** At $\varepsilon \le 1$ every Pythia table
   carries nearly all of $H(V)$ in its top 8 directions, so the curve has no
@@ -250,4 +267,4 @@ Recorded here, not yet folded into the definition; Andrew decides.
   fast each part fills relative to its own total: $k_{B,1/2}$ and
   $k_{W,1/2}$, the smallest $k$ at which $I_B(k) \ge \tfrac12 I_B(d)$ and
   $I_W(k) \ge \tfrac12 I_W(d)$. It was reported alongside $k_\times$ in the
-  first measurement. The one-half is itself a knob.
+  first measurement. The one-half is itself a knob. Adopted (see 1.3).
