@@ -37,6 +37,8 @@ pinned revisions in `models.json`.
 | `refine.py` | Finer k steps, larger models, checkpoints | `results/phase3_*` |
 | `cross_vocab.py` | Same d, different vocabularies (TinyLlama, Pythia, OLMo-2) | `results/cross_vocab.*` |
 | `interference.py` | Crowding of token vectors in the d = 2048 models | `results/interference.*` |
+| `through_training.py` | Spread and crowding of 2.8b's input table through training | `results/through_training.*` |
+| `semantic_core.py` | Semantic core vs pedantic refinement: tail content, what the tail separates, emptiness | `results/semantic_core.*` |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
 ## What we have so far (2026-10-07)
@@ -97,6 +99,25 @@ Observations only, from the runs below. No interpretation here.
     back up (0.89 to 0.91) and crowding levels off (about 0.51), while the
     directions needed keep rising (observation 4). (`through_training.py`,
     `results/through_training.md`.)
+11. The tail (input directions past the loose-tolerance core) carries
+    token-specific content, not only spread. Giving each token another
+    token's tail, or matched random values, costs at least as much as
+    zeroing the tail in every model, and much more in the largest (12b:
+    zeroed +0.10, shuffled +0.29, random +0.30 bits per byte). Wrong tail
+    values are worse than none. Restoring row lengths after zeroing helps
+    in three models and hurts in one (2.8b). (`semantic_core.py`,
+    `results/semantic_core.md`.)
+12. For each token's nearest neighbour in the core, the tail pushes the
+    pair apart most when they are surface variants of one word (case,
+    leading space), less for shared stems, least for different words, in
+    every model (12b: 0.110, 0.094, 0.075 in cosine). The push grows with
+    model size. The pairs it separates most are punctuation and function
+    words that the core nearly merges ('.'/',', ' was'/' were',
+    ' the'/' to', ' 0'/' 1').
+13. Nearest neighbours get steadily further apart as directions are added
+    (median cosine about 0.70 at 64 directions to 0.21-0.35 at full d),
+    with no break at the core boundary. At the same number of directions,
+    the larger models are emptier.
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
