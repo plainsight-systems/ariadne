@@ -26,6 +26,7 @@ labyrinth.
 | Path | What it holds |
 |---|---|
 | `brief.md` | The program: question, positions, hypotheses, pieces, experiments, prior art, risks |
+| `definitions.md` | Formal definitions of the measures used, with their knobs stated |
 | `ideas.md` | Half-formed thoughts and questions to explore; not hypotheses |
 | `notes/` | Dated research notes, `YYYY-MM-DD-topic.md`. Notes are a record: add new ones rather than rewriting old conclusions |
 | `references/refs.bib` | One bibliography shared by every piece |
