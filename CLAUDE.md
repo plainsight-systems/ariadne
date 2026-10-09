@@ -26,8 +26,11 @@ as evidence).
   4. Outline piece 1.
   5. Convert the brief's credit list into verified `references/refs.bib` entries
      (only four exist so far).
-  6. Experiment C: measure identity information on the tables already
-     studied, then take the trends toward theory.
+  6. Experiment C, measure and tail (identity information is measured;
+     23 observed trends): next, tie the measure's noise to each table's real
+     interference, recast the comparison as multilevel-coding rates, check it
+     on a toy, then ask what the tail carries (graded similarity first). See
+     the ideas entry "Next step on the measure: real noise, then the tail".
 
 ### Known gaps
 

@@ -18,6 +18,32 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-09: Next step on the measure: real noise, then the tail
+
+Where the main line resumes (measure and tail), from asking what Shannon
+would make of the two comparison measures.
+
+- Pin the noise to the receiver. Shannon's results always start from the
+  channel's actual noise; epsilon is a dial. In an embedding table the
+  noise has concrete sources: finite numeric precision, and interference
+  from the other tokens packed into the same room (observation 7's
+  overlap). Set sigma from the table's measured interference and epsilon
+  stops being a knob: a derived property of the receiver, which is the
+  hyperparameter point itself.
+- Recast the comparison operationally. Rather than crossover or half-fill,
+  ask at what rate a receiver with k dimensions can carry "which word" and
+  "which variant" (or "which role" and "which word") as separate streams:
+  the multilevel-coding rates (Wachsmann et al. 1999). No arbitrary
+  one-half.
+- Check on a toy first: the smallest codebook where the answer is known in
+  advance, and confirm the measure recovers it before trusting it on
+  Pythia.
+- Then point it at the tail: with real noise, ask what the tail carries.
+  First candidate is graded similarity (do full-room similarities track
+  how alike two tokens' usage is, better than core-only similarities?).
+- "The Bandwagon" warning applies throughout: information-theory labels on
+  embeddings prove nothing unless the channel model is real.
+
 ## 2026-10-09: Hellman and Cover 1970: what an m-state receiver can learn
 
 Read closely: Hellman and Cover, "Learning with Finite Memory", Annals of
