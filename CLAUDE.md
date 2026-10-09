@@ -31,6 +31,11 @@ as evidence).
      interference, recast the comparison as multilevel-coding rates, check it
      on a toy, then ask what the tail carries (graded similarity first). See
      the ideas entry "Next step on the measure: real noise, then the tail".
+  7. The pivot Andrew chose (2026-10-09): a designed toddler language (tiny
+     vocabulary smaller than the world, a few frames with slots, known
+     probabilities) and a two-level hypercube codebook with exact answers.
+     See the ideas entry "A toddler language, and a toy codebook with known
+     answers".
 
 ### Known gaps
 
