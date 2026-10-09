@@ -49,7 +49,8 @@ reported for several values of $\varepsilon$.
 
 ### 1.3 Definitions
 
-**Identity information** (bits):
+**Identity information** (bits; at a fixed $k$ this is the
+constellation-constrained mutual information of the codebook, see 1.8):
 
 $$I(k) = I(V; Y_k) = H(V) - H(V \mid Y_k).$$
 
@@ -118,6 +119,11 @@ error, reported with each estimate.
 - the class function $g$
 - Gaussian noise, isotropic in the projected coordinates (a modelling
   choice; it treats every direction as equally noisy)
+- the order in which directions are added: by principal variance. For a
+  discrete codebook this is not the order that maximizes mutual information
+  (non-diagonal precoders can do better even on parallel channels; Pérez-Cruz,
+  Rodrigues and Verdú 2010), so the principal ordering is a choice, not an
+  optimum.
 
 ### 1.7 Relation to the loss-based count
 
@@ -129,7 +135,91 @@ its table can express.
 
 ### 1.8 Prior art
 
-Mutual information through a Gaussian channel and the capacity bound are
-Shannon (1948, 1949); the chain-rule split is standard. Whether this exact
-measure on embedding tables, or the crossover dimension, has a name in
-existing work has not been searched yet.
+Searched 2026-10-09 (communications and information theory; machine
+learning and NLP). Bibliographic fields checked against Crossref, arXiv or
+the publisher's abstract page. Content claims marked *(secondary)* rest on
+citing papers, course notes or memory and must be checked against the paper
+before any piece cites them.
+
+**Established under other names:**
+
+- **$I(k)$ at a fixed $k$** is the *constellation-constrained capacity*
+  (also called coded-modulation capacity) of a finite signal set on the
+  Gaussian channel, with uniform $p$; with non-uniform $p$, the mutual
+  information of a probabilistically shaped constellation. Ungerboeck,
+  "Channel coding with multilevel/phase signals", IEEE Trans. Inf. Theory
+  28(1), 1982, doi:10.1109/TIT.1982.1056454 *(secondary)*.
+- **The estimator** (Monte Carlo with the exact posterior over all
+  constellation points) is standard practice in that literature *(no single
+  canonical citation found)*.
+- **$C(k)$ and $I \le C$** are the Gaussian-input capacity of parallel
+  channels and the maximum-entropy bound. "Shaping gap" or "gap to capacity"
+  is the family of names for $C - I$ (Forney and Ungerboeck, "Modulation and
+  coding for linear Gaussian channels", IEEE Trans. Inf. Theory 44(6), 1998,
+  doi:10.1109/18.720542 *(secondary)*), with a caveat: the familiar 1.53 dB
+  figure is a high-SNR limit for uniform cubic constellations, while
+  $C(k) - I(k)$ here also contains the saturation at $H(V)$.
+- **The class split** is the multilevel-coding chain rule over
+  set-partition levels: Imai and Hirakawa, IEEE Trans. Inf. Theory 23(3),
+  1977, doi:10.1109/TIT.1977.1055718; Wachsmann, Fischer and Huber,
+  "Multilevel codes: theoretical concepts and practical design rules", IEEE
+  Trans. Inf. Theory 45(5), 1999, doi:10.1109/18.771140 *(secondary)*.
+  $I_B$ is the first-level (coarse-partition) mutual information. One
+  difference: there the partition is designed to separate distances; here
+  $g$ is imposed from outside.
+- **Saturation at small $arepsilon$:** $H(V) - I$ decays like a Q-function
+  of the minimum distance (Alvarado, Brännström, Agrell and Koch, IEEE Trans.
+  Inf. Theory 60(2), 2014, doi:10.1109/TIT.2013.2291865, arXiv:1212.6526).
+- **Per-channel allocation with discrete inputs** (mercury/waterfilling):
+  Lozano, Tulino and Verdú, IEEE Trans. Inf. Theory 52(7), 2006,
+  doi:10.1109/TIT.2006.876220. Close to the per-direction view, but with
+  independent inputs per channel.
+- **Derivative along SNR, not dimension** (I-MMSE): Guo, Shamai and Verdú,
+  IEEE Trans. Inf. Theory 51(4), 2005, doi:10.1109/TIT.2005.844072.
+
+**Close, in machine learning:**
+
+- **Coding rate** $	frac12\log\det(I + c\,ZZ^	op/arepsilon^2)$, the same
+  form as $C(k)$, with a whole-minus-within-class structure, used as a
+  training objective: Yu, Chan, You, Song and Ma, "Learning Diverse and
+  Discriminative Representations via the Principle of Maximal Coding Rate
+  Reduction", arXiv:2006.08558, 2020. Credit for the log-det ceiling and the
+  split's structure.
+- **Noise to make mutual information meaningful for a deterministic map**,
+  estimated from the resulting mixture: Goldfeld et al., "Estimating
+  Information Flow in Deep Neural Networks", arXiv:1810.05728 (ICML 2019).
+  Credit for the noisy-channel method.
+- **Conditional usable information** beyond a baseline: Hewitt, Ethayarajh,
+  Liang and Manning, "Conditional probing", arXiv:2109.09234 (EMNLP 2021).
+  Close in spirit to $I_W$.
+- **Principal-component variance is a poor guide to linguistic content**:
+  Raunak, Kumar, Gupta and Metze, "On Dimensional Linguistic Properties of the
+  Word Embedding Space", RepL4NLP 2020, doi:10.18653/v1/2020.repl4nlp-1.19.
+  Consistent with a low-variance tail still carrying distinctions.
+- **Surface variants** sit near a base form plus a linear offset in input and
+  output embeddings: Reif, Kaplan and Schwartz, "Vocab Diet",
+  arXiv:2510.17001. Capitalized and space-prefixed variants are about 15% and
+  12% of a 32K BPE vocabulary: Reif, Kaplan and Schwartz, "More Than Words:
+  Compositional Tokenization", arXiv:2610.05597.
+- **Background:** information-theoretic and MDL probing (Pimentel et al.
+  2020, arXiv:2004.03061; Voita and Titov 2020, arXiv:2003.12298; Hewitt and
+  Liang 2019, arXiv:1909.03368); neural collapse, a geometric
+  between/within-class split (Papyan, Han and Donoho 2020,
+  doi:10.1073/pnas.2015509117; Wu and Papyan 2024, arXiv:2405.17767);
+  token embeddings encode their characters (Kaushal and Mahowald,
+  arXiv:2206.02608).
+
+**Not found** (moderate confidence, about 60 to 70%, two searches in one
+session):
+
+- $I(k)$ traced as a function of the number of principal directions kept,
+  for a fixed codebook (existing work runs along SNR or power allocation).
+- The efficiency $\eta(k) = I/C$ as a curve in $k$.
+- The crossover dimension $k_	imes$.
+- Any of this applied to a receiver's codebook such as an embedding table,
+  or reporting where surface-variant distinctions sit in its spectrum.
+
+So the definition reuses established objects; what may be new is the sweep
+over directions, the crossover, and the application to receivers' tables.
+Not yet searched: hierarchical information bottleneck, and usage studies of
+vector-quantization codebooks.
