@@ -45,8 +45,8 @@ as evidence).
   entry checked against the paper before any piece cites it.
   `references/library.tsv` already names a bibkey for each downloaded paper;
   use those keys.
-- **The reading library is not in git.** `references/library/` (49 PDFs) exists
-  only on Andrew's machine. On another machine, rebuild it from
+- **The reading library is not in git.** `references/library/` (49 PDFs, 48 of them
+  official) exists only on Andrew's machine. On another machine, rebuild it from
   `references/library.tsv`; papers Andrew downloaded by hand (Creutz and Lagus
   2007 from ACM) cannot be fetched by script.
 
@@ -81,13 +81,17 @@ as evidence).
   something the paper does not say.
 - **Technical asides must be as right as the main claim.** Check slogan-level
   contrasts (lossless vs lossy, deterministic vs not) against the mechanism.
-- **The reading library** (`references/library/`, git-ignored) holds only
-  legitimate copies: open access, author copies, institutional repositories, or
-  files Andrew downloads himself. Record each one in `references/library.tsv`.
+- **The official reading library** is what `references/library.tsv` records:
+  legitimate copies only (open access, author copies, institutional
+  repositories, or files Andrew downloads himself). Record each one there.
+  Andrew may also keep personal reading copies in `references/library/`
+  under his own fair-use judgment; those are not recorded in `library.tsv`,
+  not part of the official library, and never committed or distributed.
   - Ask before downloading anything new.
-  - No pirated copies. The Internet Archive user upload of Shannon's *Collected
-    Papers* and the copy on jonglage.net are both unauthorized; the legitimate
-    copy is ASU Noble Library, TK5101 .S448 1993.
+  - No pirated copies in the official library. The Internet Archive user upload
+    of Shannon's *Collected Papers* and the copy on jonglage.net are not
+    official copies; the legitimate copy is ASU Noble Library, TK5101 .S448
+    1993. (Andrew keeps the jonglage copy as a personal reading copy.)
   - Never get around bot protection or CAPTCHAs (for example by copying a
     browser's anti-bot cookies). Use an author or repository copy instead.
   - If a site needs a login, Andrew creates it. Nothing is bought.
