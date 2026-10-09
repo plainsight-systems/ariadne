@@ -167,7 +167,7 @@ before any piece cites them.
   $I_B$ is the first-level (coarse-partition) mutual information. One
   difference: there the partition is designed to separate distances; here
   $g$ is imposed from outside.
-- **Saturation at small $arepsilon$:** $H(V) - I$ decays like a Q-function
+- **Saturation at small $\varepsilon$:** $H(V) - I$ decays like a Q-function
   of the minimum distance (Alvarado, Brännström, Agrell and Koch, IEEE Trans.
   Inf. Theory 60(2), 2014, doi:10.1109/TIT.2013.2291865, arXiv:1212.6526).
 - **Per-channel allocation with discrete inputs** (mercury/waterfilling):
@@ -179,7 +179,7 @@ before any piece cites them.
 
 **Close, in machine learning:**
 
-- **Coding rate** $	frac12\log\det(I + c\,ZZ^	op/arepsilon^2)$, the same
+- **Coding rate** $\tfrac12\log\det(I + c\,ZZ^\top/\varepsilon^2)$, the same
   form as $C(k)$, with a whole-minus-within-class structure, used as a
   training objective: Yu, Chan, You, Song and Ma, "Learning Diverse and
   Discriminative Representations via the Principle of Maximal Coding Rate
@@ -215,7 +215,7 @@ session):
 - $I(k)$ traced as a function of the number of principal directions kept,
   for a fixed codebook (existing work runs along SNR or power allocation).
 - The efficiency $\eta(k) = I/C$ as a curve in $k$.
-- The crossover dimension $k_	imes$.
+- The crossover dimension $k_\times$.
 - Any of this applied to a receiver's codebook such as an embedding table,
   or reporting where surface-variant distinctions sit in its spectrum.
 
