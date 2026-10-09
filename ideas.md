@@ -18,6 +18,62 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-09: A toddler language, and a toy codebook with known answers
+
+The small models still use languages that are too advanced to start from:
+grammar too complex, vocabulary too broad. Even was/were is advanced. We
+need something like a toddler language. My 2-year-old uses "bubble" for
+about 5 different things. And when I hand her something she wants she says
+"here you go da da", because her whole life, when we hand her things, we
+say "here you go Ellie". This feels like the right pivot toward Shannon.
+
+From: thinking about step 3 of "Next step on the measure" (check on a toy
+first)
+Rough notes from talking it through:
+
+Toy codebook (answer known before measuring):
+- Two-level hypercube: each symbol has a binary address; the first bits are
+  its class (the semantic level), the rest its variant (the pedantic
+  level). Each bit is +/- an amplitude on its own dimension, large for
+  class bits, small for variant bits.
+- Independent dimensions, so the channel splits into one-dimensional binary
+  channels: exact I(k), I_B, I_W and multilevel-coding rates are sums of
+  scalar capacities (one integral each). The spectrum order is known
+  (large amplitudes first). Ungerboeck's set partitioning in its simplest
+  form.
+- Use: the Monte Carlo estimator and every comparison (crossover,
+  half-fill, rates) must reproduce the exact values before any is used on
+  a real table; sweep the amplitude ratio to see what each responds to.
+
+Toddler language:
+- "Bubble" is a vocabulary smaller than the world: several referents on one
+  word, so the loss from world to word is visible (the 2026-10-04 "loss is
+  the meaning" entry, made concrete).
+- "Here you go da da" is a chunk with a slot: a phrase stored as one unit
+  from exposure, the slot filled by role (whoever receives). The
+  vocabulary/grammar line from 2026-10-05 at its first appearance;
+  exposure doing the work. Developmental names, from memory, to check:
+  Braine's pivot grammar (1963); Tomasello's item-based constructions.
+- (a) Design one first: a small world (people, objects, actions); a
+  vocabulary deliberately smaller than the world with controlled
+  polysemy; a handful of frames with slots ("more X", "X gone", "want X",
+  "here you go Y"); known probabilities. Finite-state, so entropy, the
+  number of grammar states and word-referent information are exact. Knobs:
+  vocabulary size, frames, polysemy, world size. Train tiny models and
+  non-neural receivers (n-gram counters) on it and see whether the
+  dimension they need follows V and the grammar's state count: experiment
+  C's step 2, controlled.
+- (b) Then real toddler speech as the check: the CHILDES archive (children
+  around age 2 with caregivers; from memory, Brown's Adam, Eve and Sarah),
+  free for research under TalkBank's ground rules.
+
+Why it is a pivot toward Shannon (inference): Shannon built English up from
+constructed sources with known statistics (his series of approximations)
+and modelled sources and coders as finite-state machines (section 8). A
+designed toddler language is a Shannon source we write ourselves, so every
+quantity is known before any receiver sees it: start where the field
+started.
+
 ## 2026-10-09: Next step on the measure: real noise, then the tail
 
 Where the main line resumes (measure and tail), from asking what Shannon
