@@ -44,6 +44,7 @@ pinned revisions in `models.json`.
 | `identity_roles.py` | Identity information with grammatical-role classes, all ten models | `results/identity_roles.*` |
 | `pinned_noise.py` | Noise derived from the receiver (definitions.md 1.10) for all Pythia input tables | `results/pinned_noise.*` |
 | `identity_pinned.py` | 99% point of identity information at the pinned noise | `results/identity_pinned.*` |
+| `identity_pinned_text.py` | The same in the text view, noise fixed in absolute terms, in the squash-test basis and the frequency-weighted basis | `results/identity_pinned_text.*` |
 | `nonlinear_echo.py` | Is the tail a nonlinear echo of the core: kNN, MLP and OLS prediction of the tail from the core; core-tail geometry correlation | `results/nonlinear_echo.*` |
 | `tail_identity.py` | What the tail resolves on its own, against shuffled and random tails; redundancy with the core | `results/tail_identity.*` (the first run's role view permuted across all tokens; rerun permuting within the view's tokens, `results/tail_identity_role_rerun.log`) |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
@@ -229,6 +230,29 @@ Observations only, from the runs below. No interpretation here.
     -0.032, -0.033), against shuffled-tail baselines within 0.001 of zero.
     Pairs that are close in the core tend, slightly, to be farther apart
     in the tail.
+32. Identity in the text view at the pinned noise (`identity_pinned_text.py`,
+    `results/identity_pinned_text.md`). With the noise held at the same
+    absolute sigma_res, the text view's own scale is 7-9% below the full
+    table's, so eps in text terms is 2.39-4.67 (full-table eps 2.20-4.20).
+    The text view has about 3,500 token types and H(V) = 9.43 bits; I(d) at
+    sigma_res is 99.83-100% of it in every model and basis.
+33. In the unweighted (squash-test) basis at sigma_res, k95 / k99 / k99.9
+    are: 70m 384 / 512 / 512; 160m 384 / 768 / 768; 410m 128 / 384 / 768;
+    1b 768 / 1,536 / 1,984; 1.4b 512 / 1,024 / 1,536; 2.8b 384 / 768 or
+    1,024 / 1,536; 6.9b 256 / 512 / 1,280; 12b 256 / 384 / 768. Against
+    k*(0.01): k99 is below it in 1b (1,536 vs 1,984), 1.4b (1,024 vs 1,664),
+    2.8b (768-1,024 vs 1,664), 6.9b (512 vs 2,816), 12b (384 vs 3,072) and
+    410m (384 vs 1,024, with k* taken as d); it equals k* (= d) in 70m (512)
+    and 160m (768). In 1b, k99.9 equals k*. I(k*) is at least 99.9% of I(d)
+    in every model; the largest gain past k* is 0.0093 +/- 0.0028 bits (1b).
+34. In the frequency-weighted basis at sigma_res, k99 is 128-256 in all
+    eight models (k95 64-256, k99.9 256-384).
+35. At the fp16 floor, k99 is 8 directions in every model and both bases.
+    Draws: 4,000 by default; 16,000 where the 99% point could not be
+    separated from the neighbouring grid point (410m basis A; 160m and 12b
+    basis B); 64,000 for 2.8b and 6.9b basis A. At 64,000, 2.8b's k99 is
+    still unresolved between 768 and 1,024 (margin +0.0023 +/- 0.0022 bits
+    at 768).
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
