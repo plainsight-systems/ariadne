@@ -296,3 +296,49 @@ decision).
   NLTK), tagged in context for the text view and from a lexicon for the
   dictionary view; details and coverage in experiment C's
   `identity_roles.py`.
+
+### 1.10 Pinned noise: deriving $\sigma$ from the receiver
+
+Written 2026-10-09, before any number was computed with it. It replaces the
+resolution $\varepsilon$ (a choice) with noise levels measured from the
+receiver itself. None is fitted to a result. Each gives
+$\varepsilon = \sigma / s$, with $s$ from the full table as in 1.2, so it
+can be placed against the earlier $\varepsilon$ = 2, 4, 8.
+
+**Primary: residual-stream interference, $\sigma_{\text{res}}$.** A
+language model reads its input table only through the residual stream.
+At the input to the second block, a reader sees the token's vector $e_v$
+plus what the first block added at that position, $a_t = h_1(t) - e_{v_t}$,
+which depends on the context as well as the token. From the point of view
+of recovering which token it is, the part of $a_t$ that the token does not
+determine is interference. Define
+
+$$\sigma_{\text{res}}^2 = \frac{1}{d}\,\operatorname{tr}\Big(\text{pooled within-token covariance of } a_t\Big),$$
+
+the per-coordinate variance of $a_t$ around its mean for the same token,
+pooled over tokens that occur at least twice, measured on the phase-2
+evaluation text (WikiText-103 test, first 16 x 1,024 tokens). The total
+per-coordinate variance of $a_t$ (token-determined part included) is
+reported alongside.
+
+Assumptions: (i) the context-driven part of the first block's output is
+treated as noise for identity, though it carries context; (ii) it is
+approximated as isotropic Gaussian, though it is neither; (iii) only the
+first block is counted, so later blocks would add more and this is the
+smallest residual-stream interference; (iv) one text, one position
+sample.
+
+**Floor: numeric precision, $\sigma_{\text{prec}}$.** The Pythia tables
+are stored in fp16 (checked in the released files). Rounding a value $w$
+to fp16 leaves an error spread evenly over one unit in the last place,
+$\operatorname{ulp}(w) = 2^{\lfloor \log_2 |w| \rfloor - 10}$ for normal
+numbers, with variance $\operatorname{ulp}(w)^2/12$. Define
+$\sigma_{\text{prec}}^2$ as the mean of that over the table's entries.
+Assumes rounding errors independent across entries and of the token. It
+is the least noise any reader of the stored table faces.
+
+**Reference, not computed: one competing codeword.** If the reader's
+input could contain another token's vector from the same table at equal
+strength, the noise covariance would be $\Sigma$, whose per-coordinate
+variance is $\operatorname{tr}\Sigma / d = s^2$: $\varepsilon = 1$ by
+definition, under the isotropic approximation.
