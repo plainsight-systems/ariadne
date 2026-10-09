@@ -5,9 +5,17 @@ program. `README.md` has the layout. `notes/2026-09-30-bpe-information-theory-se
 is the detailed research record the brief cites (superseded as a framing, kept
 as evidence).
 
-## Where things stand (2026-10-04)
+## Where things stand (2026-10-09)
 
-- Program defined; nothing written or built yet.
+- Program defined; nothing published yet.
+- Experiment C (`experiments/c-empty-dimensions/`) has run on Pythia,
+  TinyLlama and OLMo-2: 13 observed trends listed in its README under
+  "Observed trends", kept apart from interpretation. The method agreed with
+  Andrew: gather trends, check they point one way, then theory, then
+  hypotheses derived from it.
+- `definitions.md` holds the first formal measure (identity information of
+  a codebook) with its knobs and prior art; defined, not yet measured.
+- H2 is "partly anticipated" (Nixon 2026; see the brief).
 - Andrew is reading John R. Pierce, *An Introduction to Information Theory:
   Symbols, Signals and Noise*, then going to the source: Shannon 1948, 1949, 1951
   (all in `references/library/`).
@@ -18,6 +26,8 @@ as evidence).
   4. Outline piece 1.
   5. Convert the brief's credit list into verified `references/refs.bib` entries
      (only four exist so far).
+  6. Experiment C: measure identity information on the tables already
+     studied, then take the trends toward theory.
 
 ### Known gaps
 
@@ -27,7 +37,7 @@ as evidence).
   entry checked against the paper before any piece cites it.
   `references/library.tsv` already names a bibkey for each downloaded paper;
   use those keys.
-- **The reading library is not in git.** `references/library/` (38 PDFs) exists
+- **The reading library is not in git.** `references/library/` (49 PDFs) exists
   only on Andrew's machine. On another machine, rebuild it from
   `references/library.tsv`; papers Andrew downloaded by hand (Creutz and Lagus
   2007 from ACM) cannot be fetched by script.
