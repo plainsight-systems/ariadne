@@ -44,6 +44,7 @@ pinned revisions in `models.json`.
 | `identity_roles.py` | Identity information with grammatical-role classes, all ten models | `results/identity_roles.*` |
 | `pinned_noise.py` | Noise derived from the receiver (definitions.md 1.10) for all Pythia input tables | `results/pinned_noise.*` |
 | `identity_pinned.py` | 99% point of identity information at the pinned noise | `results/identity_pinned.*` |
+| `nonlinear_echo.py` | Is the tail a nonlinear echo of the core: kNN, MLP and OLS prediction of the tail from the core; core-tail geometry correlation | `results/nonlinear_echo.*` |
 | `tail_identity.py` | What the tail resolves on its own, against shuffled and random tails; redundancy with the core | `results/tail_identity.*` (the first run's role view permuted across all tokens; rerun permuting within the view's tokens, `results/tail_identity_role_rerun.log`) |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
@@ -209,6 +210,25 @@ Observations only, from the runs below. No interpretation here.
     10.62 vs 10.26 bits; 12b, eps 8: 14.09 vs 13.95). The true tail is not
     isotropic, and its structure lowers distinguishability; by
     observation 27 that structure is not surface-variant or role structure.
+29. Nearest neighbours in the core have tails more alike than chance.
+    Predicting held-out tokens' tail coordinates from their nearest
+    neighbours in the core gives R^2 well above the shuffled-tail baseline
+    in every model (k = 5: +0.036, +0.032, -0.056, -0.054 against -0.200 to
+    -0.201 for 1.4b, 2.8b, 6.9b, 12b; k = 20: +0.013, +0.011, -0.017, -0.013
+    against -0.050; spread across permutations under 0.005). In absolute
+    terms the core predicts almost none of the tail: every R^2 is within
+    0.06 of zero. (`nonlinear_echo.py`, `results/nonlinear_echo.md`.)
+30. A small MLP from core to tail does no better than on a shuffled tail
+    (held-out R^2 -0.072 vs -0.068, -0.044 vs -0.044, -0.053 vs -0.044,
+    -0.044 vs -0.035). Ordinary least squares is below its shuffled
+    baseline (-0.067 vs -0.036 at 1.4b), as expected: principal coordinates
+    are uncorrelated over the whole vocabulary, so any correlation fitted on
+    the training tokens is reversed on the held-out ones.
+31. Over the evaluation-text tokens (3,536), pairwise cosines in the core
+    and in the tail are weakly anti-correlated (Spearman -0.024, -0.030,
+    -0.032, -0.033), against shuffled-tail baselines within 0.001 of zero.
+    Pairs that are close in the core tend, slightly, to be farther apart
+    in the tail.
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
