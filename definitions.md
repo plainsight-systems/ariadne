@@ -284,3 +284,15 @@ decision).
   of zero. A crossover should count only where at least one gain exceeds
   its sampling error; with that rule, none has been found for
   surface-variant classes.
+- **The crossover tracks class sizes in both directions.** With
+  grammatical-role classes (about 2-3 bits between, 7-12 within) it
+  appears at once, at 8-16 directions, in every case; with surface-variant
+  classes (about 15 bits between, under 1 within) no real one appears.
+  The half-fill comparison gave different, view-dependent orders for the
+  same tables (experiment C, observations 21-22), so it is the one that
+  carries information about the codebook.
+- **Second class definition, grammatical role.** $g(v)$ is the 12-tag
+  universal part of speech (Petrov, Das and McDonald 2012, as mapped by
+  NLTK), tagged in context for the text view and from a lexicon for the
+  dictionary view; details and coverage in experiment C's
+  `identity_roles.py`.

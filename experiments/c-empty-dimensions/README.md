@@ -41,6 +41,7 @@ pinned revisions in `models.json`.
 | `semantic_core.py` | Semantic core vs pedantic refinement: tail content, what the tail separates, emptiness | `results/semantic_core.*` |
 | `identity_info.py` | Identity information (definitions.md section 1) on all Pythia tables | `results/identity_info.*` |
 | `identity_info_xvocab.py` | The same on TinyLlama and OLMo-2 (d = 2048), with both the crossover and the half-fill comparison | `results/identity_info_xvocab.*` |
+| `identity_roles.py` | Identity information with grammatical-role classes, all ten models | `results/identity_roles.*` |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
 ## What we have so far (2026-10-07)
@@ -156,6 +157,21 @@ Observations only, from the runs below. No interpretation here.
     information in their top 8 directions in all three families (epsilon 4,
     dictionary); the input tables reach half of it at 32 (TinyLlama,
     Pythia) to 64 (OLMo-2) directions.
+21. With grammatical-role classes (12-tag universal part of speech, tagged
+    in context; `identity_roles.py`, `results/identity_roles.md`), in the
+    text view grammatical role fills before the word within the role: role
+    first in 53 of 60 cases (10 models x 2 tables x 3 resolutions), tied in
+    7, never later. At epsilon 4, role reaches half its value by 8-16
+    directions (OLMo-2 input: 32); the word within the role by 32-64.
+22. In the dictionary view (every token with a known role counted equally;
+    roles from a lexicon, covering 34-48% of each vocabulary) there is no
+    consistent order: role first in 11 of 60 cases, tied in 27, word first
+    in 22.
+23. With role classes the crossover appears in all 120 cases, at 8-16 (or
+    16-32) directions, never within sampling noise. Role carries about 2-3
+    bits and the word within a role about 7-12, so absolute within-class
+    gains overtake at once. With surface-variant classes (observation 19)
+    the reverse holds and no real crossover appears.
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
