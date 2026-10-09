@@ -1,0 +1,78 @@
+EleutherAI/pythia-1.4b  core 1408
+  eps 2   (2) C core 268.1 tail 42.9 | surface I core 15.60 tail 15.57
+  eps 4   (4) C core 76.4 tail 11.1 | surface I core 15.58 tail 10.26
+  eps 8   (8) C core 19.9 tail 2.8 | surface I core 14.47 tail 2.71
+  eps res (3.96) C core 77.9 tail 11.3 | surface I core 15.58 tail 10.42
+EleutherAI/pythia-2.8b  core 1344
+  eps 2   (2) C core 302.6 tail 74.8 | surface I core 15.61 tail 15.61
+  eps 4   (4) C core 88.7 tail 19.4 | surface I core 15.59 tail 14.21
+  eps 8   (8) C core 23.4 tail 4.9 | surface I core 15.04 tail 4.85
+  eps res (4.1) C core 84.9 tail 18.5 | surface I core 15.59 tail 13.98
+EleutherAI/pythia-6.9b  core 2048
+  eps 2   (2) C core 444.1 tail 172.0 | surface I core 15.62 tail 15.62
+  eps 4   (4) C core 129.0 tail 45.0 | surface I core 15.62 tail 15.62
+  eps 8   (8) C core 34.0 tail 11.4 | surface I core 15.55 tail 10.62
+  eps res (3.53) C core 162.6 tail 57.5 | surface I core 15.62 tail 15.62
+EleutherAI/pythia-12b  core 2048
+  eps 2   (2) C core 492.0 tail 271.3 | surface I core 15.62 tail 15.62
+  eps 4   (4) C core 145.1 tail 71.3 | surface I core 15.62 tail 15.62
+  eps 8   (8) C core 38.6 tail 18.1 | surface I core 15.58 tail 13.95
+  eps res (3.69) C core 168.3 tail 83.5 | surface I core 15.62 tail 15.62
+# Gaussian capacity of the input core and tail (Pythia 1.4B-12B)
+
+C = sum_i 0.5 log2(1 + lambda_i / sigma^2) over each block's unweighted principal directions,
+lambda_i over all real rows; sigma = eps * s, s from the full table. Measured I from
+results/tail_identity.json (4,000 draws, ± one standard error). Bits.
+
+## Surface view (uniform over all real tokens)
+
+| Model | eps | H(V) | C(core) | I(core) | C(tail) | I(tail) |
+|---|---|---|---|---|---|---|
+| pythia-1.4b | 2 | 15.618 | 268.1 | 15.603 ± 0.005 | 42.9 | 15.574 ± 0.009 |
+| pythia-1.4b | 4 | 15.618 | 76.4 | 15.585 ± 0.008 | 11.1 | 10.259 ± 0.071 |
+| pythia-1.4b | 8 | 15.618 | 19.9 | 14.468 ± 0.042 | 2.8 | 2.710 ± 0.044 |
+| pythia-1.4b | res 3.96 | 15.618 | 77.9 | 15.585 ± 0.008 | 11.3 | 10.424 ± 0.071 |
+| pythia-2.8b | 2 | 15.618 | 302.6 | 15.613 ± 0.002 | 74.8 | 15.610 ± 0.003 |
+| pythia-2.8b | 4 | 15.618 | 88.7 | 15.591 ± 0.006 | 19.4 | 14.214 ± 0.045 |
+| pythia-2.8b | 8 | 15.618 | 23.4 | 15.044 ± 0.030 | 4.9 | 4.855 ± 0.060 |
+| pythia-2.8b | res 4.1 | 15.618 | 84.9 | 15.590 ± 0.006 | 18.5 | 13.978 ± 0.049 |
+| pythia-6.9b | 2 | 15.618 | 444.1 | 15.618 ± 0.000 | 172.0 | 15.618 ± 0.000 |
+| pythia-6.9b | 4 | 15.618 | 129.0 | 15.618 ± 0.000 | 45.0 | 15.616 ± 0.001 |
+| pythia-6.9b | 8 | 15.618 | 34.0 | 15.546 ± 0.011 | 11.4 | 10.617 ± 0.071 |
+| pythia-6.9b | res 3.53 | 15.618 | 162.6 | 15.618 ± 0.000 | 57.5 | 15.618 ± 0.000 |
+| pythia-12b | 2 | 15.618 | 492.0 | 15.618 ± 0.000 | 271.3 | 15.618 ± 0.000 |
+| pythia-12b | 4 | 15.618 | 145.1 | 15.618 ± 0.000 | 71.3 | 15.618 ± 0.000 |
+| pythia-12b | 8 | 15.618 | 38.6 | 15.580 ± 0.008 | 18.1 | 13.954 ± 0.048 |
+| pythia-12b | res 3.69 | 15.618 | 168.3 | 15.618 ± 0.000 | 83.5 | 15.618 ± 0.000 |
+
+## Role view (uniform over tokens with a lexicon role)
+
+C_members: eigenvalues of the role tokens' own covariance within each block.
+
+| Model | eps | H(V) | C(core) | C_members(core) | I(core) | C(tail) | C_members(tail) | I(tail) |
+|---|---|---|---|---|---|---|---|---|
+| pythia-1.4b | 2 | 14.555 | 268.1 | 262.5 | 14.533 ± 0.005 | 42.9 | 43.6 | 14.501 ± 0.009 |
+| pythia-1.4b | 4 | 14.555 | 76.4 | 75.4 | 14.502 ± 0.009 | 11.1 | 11.3 | 10.289 ± 0.068 |
+| pythia-1.4b | 8 | 14.555 | 19.9 | 19.8 | 13.603 ± 0.038 | 2.8 | 2.9 | 2.878 ± 0.046 |
+| pythia-1.4b | res 3.96 | 14.555 | 77.9 | 76.9 | 14.503 ± 0.009 | 11.3 | 11.5 | 10.434 ± 0.068 |
+| pythia-2.8b | 2 | 14.555 | 302.6 | 294.9 | 14.543 ± 0.004 | 74.8 | 77.7 | 14.538 ± 0.005 |
+| pythia-2.8b | 4 | 14.555 | 88.7 | 87.0 | 14.507 ± 0.009 | 19.4 | 20.2 | 13.634 ± 0.037 |
+| pythia-2.8b | 8 | 14.555 | 23.4 | 23.1 | 14.047 ± 0.028 | 4.9 | 5.1 | 5.110 ± 0.061 |
+| pythia-2.8b | res 4.1 | 14.555 | 84.9 | 83.3 | 14.506 ± 0.009 | 18.5 | 19.3 | 13.463 ± 0.040 |
+| pythia-6.9b | 2 | 14.555 | 444.1 | 432.4 | 14.555 ± 0.000 | 172.0 | 177.0 | 14.555 ± 0.000 |
+| pythia-6.9b | 4 | 14.555 | 129.0 | 126.1 | 14.555 ± 0.000 | 45.0 | 46.5 | 14.553 ± 0.001 |
+| pythia-6.9b | 8 | 14.555 | 34.0 | 33.4 | 14.486 ± 0.010 | 11.4 | 11.8 | 10.624 ± 0.066 |
+| pythia-6.9b | res 3.53 | 14.555 | 162.6 | 158.8 | 14.555 ± 0.000 | 57.5 | 59.3 | 14.555 ± 0.000 |
+| pythia-12b | 2 | 14.555 | 492.0 | 478.1 | 14.555 ± 0.000 | 271.3 | 277.5 | 14.555 ± 0.000 |
+| pythia-12b | 4 | 14.555 | 145.1 | 141.6 | 14.555 ± 0.000 | 71.3 | 73.2 | 14.555 ± 0.000 |
+| pythia-12b | 8 | 14.555 | 38.6 | 37.8 | 14.514 ± 0.008 | 18.1 | 18.6 | 13.416 ± 0.040 |
+| pythia-12b | res 3.69 | 14.555 | 168.3 | 164.1 | 14.555 ± 0.000 | 83.5 | 85.7 | 14.555 ± 0.000 |
+
+## Block power (sum of lambda_i)
+
+| Model | core / tail dims | core power | tail power | tail share | role members |
+|---|---|---|---|---|---|
+| pythia-1.4b | 1408 / 640 | 0.8375 | 0.1163 | 0.1220 | 24074 |
+| pythia-2.8b | 1344 / 1216 | 0.8165 | 0.1674 | 0.1701 | 24074 |
+| pythia-6.9b | 2048 / 2048 | 1.0292 | 0.3393 | 0.2479 | 24074 |
+| pythia-12b | 2048 / 3072 | 1.1530 | 0.5290 | 0.3145 | 24074 |

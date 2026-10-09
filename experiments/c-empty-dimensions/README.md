@@ -47,6 +47,7 @@ pinned revisions in `models.json`.
 | `identity_pinned_text.py` | The same in the text view, noise fixed in absolute terms, in the squash-test basis and the frequency-weighted basis | `results/identity_pinned_text.*` |
 | `nonlinear_echo.py` | Is the tail a nonlinear echo of the core: kNN, MLP and OLS prediction of the tail from the core; core-tail geometry correlation | `results/nonlinear_echo.*` |
 | `tail_identity.py` | What the tail resolves on its own, against shuffled and random tails; redundancy with the core | `results/tail_identity.*` (the first run's role view permuted across all tokens; rerun permuting within the view's tokens, `results/tail_identity_role_rerun.log`) |
+| `tail_capacity.py` | Gaussian capacity of the core and the tail beside their measured identity (no new draws) | `results/tail_capacity.*` |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
 ## What we have so far (2026-10-07)
@@ -253,6 +254,23 @@ Observations only, from the runs below. No interpretation here.
     basis B); 64,000 for 2.8b and 6.9b basis A. At 64,000, 2.8b's k99 is
     still unresolved between 768 and 1,024 (margin +0.0023 +/- 0.0022 bits
     at 768).
+36. Gaussian capacity of the core and tail (`tail_capacity.py`,
+    `results/tail_capacity.md`), C = sum 0.5 log2(1 + lambda_i / sigma^2)
+    over each block's unweighted principal directions, sigma = eps * s.
+    C(core) is 20-492 bits across models and eps (78-168 at eps_res),
+    above H(V) = 15.62 everywhere; I(core) is 3-73% of C(core). C(tail) at
+    eps_res is 11.3 (1.4b), 18.5 (2.8b), 57.5 (6.9b) and 83.5 (12b) bits.
+    Tail power is 12%, 17%, 25% and 31% of the table's total.
+37. Where C(tail) is below H(V) (1.4b at eps 4, 8 and eps_res; 2.8b and
+    6.9b at eps 8), the measured I(tail) in the surface view is 92-99% of
+    C(tail): 1.4b 0.92 / 0.97 / 0.92, 2.8b 0.99, 6.9b 0.93. Where C(tail)
+    is above H(V) but I(tail) is still short of H(V) (2.8b at eps 4 and
+    eps_res, 12b at eps 8), it is 73-77% of C(tail).
+38. In the role view at eps 8, I(tail) exceeds the all-token C(tail) in
+    1.4b (2.878 +/- 0.046 vs 2.81) and 2.8b (5.110 +/- 0.061 vs 4.89); it
+    is within 0.4 standard errors of the capacity from the role tokens'
+    own covariance (2.86 and 5.09). No measured I exceeds that capacity by
+    more than 0.4 standard errors anywhere.
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
