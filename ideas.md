@@ -30,9 +30,16 @@ content. The vocabulary question is in the founding paper, as an aside.
 
 From: asking what Shannon would say about the two comparison measures
 (crossover and half-fill), 2026-10-09
-Source: Shannon 1948, Part I, section 7, p. 399 (BSTJ 27(3)); read in the
-library's OCR copy. Check the wording against the original scan before
-quoting (the OCR has "Joyces'" and garbles the book title).
+Source: Shannon 1948, Part I, section 7, p. 399 (BSTJ 27(3)). Checked
+against the original scan (shannon-1948-part1.pdf, page 21) on
+2026-10-09: the quoted words are exact, and the printing itself reads
+"James Joyces' book "Finigans Wake."", so quote it with [sic], not
+corrected.
+- The next section on the same page (section 8) models the transmitter
+  and receiver as discrete transducers with a finite internal memory, "a
+  finite number m of possible states". Shannon did give the coder a finite
+  memory there; his capacity results still let block length, and so the
+  codebook, grow without limit. Worth a closer read for piece 1.
 Rough notes:
 - Same section defines relative entropy (a source's entropy over the
   maximum with the same symbols) and redundancy (one minus that), and
