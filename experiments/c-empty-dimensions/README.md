@@ -42,6 +42,9 @@ pinned revisions in `models.json`.
 | `identity_info.py` | Identity information (definitions.md section 1) on all Pythia tables | `results/identity_info.*` |
 | `identity_info_xvocab.py` | The same on TinyLlama and OLMo-2 (d = 2048), with both the crossover and the half-fill comparison | `results/identity_info_xvocab.*` |
 | `identity_roles.py` | Identity information with grammatical-role classes, all ten models | `results/identity_roles.*` |
+| `pinned_noise.py` | Noise derived from the receiver (definitions.md 1.10) for all Pythia input tables | `results/pinned_noise.*` |
+| `identity_pinned.py` | 99% point of identity information at the pinned noise | `results/identity_pinned.*` |
+| `tail_identity.py` | What the tail resolves on its own, against shuffled and random tails; redundancy with the core | `results/tail_identity.*` (the first run's role view permuted across all tokens; rerun permuting within the view's tokens, `results/tail_identity_role_rerun.log`) |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
 ## What we have so far (2026-10-07)
@@ -173,6 +176,39 @@ Observations only, from the runs below. No interpretation here.
     bits and the word within a role about 7-12, so absolute within-class
     gains overtake at once. With surface-variant classes (observation 19)
     the reverse holds and no real crossover appears.
+24. Pinned noise (definitions.md 1.10, derived before computing;
+    `pinned_noise.py`, `results/pinned_noise.md`). Residual-stream
+    interference, the context-driven part of what the first block adds to
+    a token's vector, gives eps_res = 2.2-2.8 for 70m-410m and 3.5-4.2 from
+    1b up. Counting the token-determined part too gives 8.1-20.9. The fp16
+    storage floor gives 2.1e-4.
+25. At eps_res, identity information reaches 99% of its full-room value by
+    128-512 directions in all eight Pythia input tables (dictionary view;
+    `identity_pinned.py`, `results/identity_pinned.md`). At eps = 8 the same
+    point is 1,280-1,792 directions (512-1,024 for the three smallest).
+26. On its own, the input tail (directions past the k*(0.1) core) resolves
+    most of the token's identity: at eps_res 10.4 of 15.6 bits (1.4b), 14.0
+    (2.8b), essentially all (6.9b, 12b). Nearly all of it is shared with
+    the core: the redundancy R is within 0.01 bits of I(tail) at eps_res;
+    at eps = 8 the tail adds 0.46 (1.4b), 0.35 (2.8b), 0.06 (6.9b) and 0.03
+    (12b) bits beyond the core. (`tail_identity.py`,
+    `results/tail_identity.md`.)
+27. The tail's class structure matches a shuffled tail. Wherever the tail
+    does not already resolve the token (1.4b and 2.8b at eps 4, 8, res;
+    6.9b and 12b at eps 8), the true tail's between-class information is
+    within two standard errors of all five shuffled tails for
+    surface-variant classes in every case, and for role classes in all but
+    one: in 12b at eps 8 the true tail carries less role information than
+    shuffled (-0.5 to -2.6 standard errors). Gaps above two standard errors
+    appear only for role classes at eps = 2 in 1.4b and 2.8b, where the
+    tail already resolves 99.6-99.9% of identity, and amount to about 0.01
+    bits. Where the tail resolves all of it (6.9b and 12b at eps 2, 4 and
+    res; every model at the fp16 floor) the comparison has no power.
+28. A Gaussian tail with the true tail's per-direction variances resolves
+    more identity than the true tail in the surface view (1.4b, eps 4:
+    10.62 vs 10.26 bits; 12b, eps 8: 14.09 vs 13.95). The true tail is not
+    isotropic, and its structure lowers distinguishability; by
+    observation 27 that structure is not surface-variant or role structure.
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
