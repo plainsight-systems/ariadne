@@ -149,6 +149,36 @@ not stored. That last rule decides whether Claude can read the transcripts
 directly: Andrew to settle before plan (b). Eve (1;6 to 2;3) matches a
 2-year-old.
 
+Parked inference (2026-10-09): how rank R fits the embedding-dimension
+picture. Not the first experiment; kept so it is not lost. The first
+experiments follow Shannon's precedent: build the source, know its
+statistics exactly, then bring in receivers.
+- R is the rank of the language's table of next-token log-probabilities
+  (rows: contexts or grammar states; columns: tokens). A model's scores are
+  hidden state x output table, so it cannot exceed rank about d: d >= R
+  (the softmax bottleneck, +1 for normalization).
+- R is an output-side number. Likely why the output tables use all of d
+  in every model tested (experiment C observation 3): real English's R is
+  far above 5,120, so the output end is always the limit.
+- The input side needs something else: enough to tell the network how each
+  token changes the state. Tokens that act on the grammar alike could share
+  a vector, so the input need is about the number of distinct token
+  actions, smaller than R. Fits the input-side slack (observation 2) and
+  gives H3's two numbers a definite form: output bounded by the language's
+  rank, input by the variety of token actions plus exposure.
+- R <= min(number of grammar states, V): vocabulary and grammar together cap
+  the dimension, neither alone. "Bubble" merges columns (can lower R); a
+  chunk like "here you go" moves structure from order into vocabulary,
+  changing both. All computable for a designed language.
+- The singular values of the log-probability table grade the rank: large
+  ones the main ways predictions differ (semantic core), small ones the
+  fine distinctions (pedantic tail). The output squash test was in effect
+  measuring this graded rank at a loss tolerance.
+- Candidate for what the input tail carries (see "The tail isn't
+  identity"): prediction-relevant structure, how a token shifts the state,
+  along small singular directions. Testable once the toddler language's
+  true spectrum is known.
+
 ## 2026-10-09: Next step on the measure: real noise, then the tail
 
 Where the main line resumes (measure and tail), from asking what Shannon
