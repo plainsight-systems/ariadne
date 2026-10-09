@@ -22,3 +22,6 @@ copied.
 
 Every published piece carries: copyright Andrew P Hunter, CC BY 4.0, published
 by Plainsight Systems.
+
+Before Andrew sees a draft, and after any substantive revision, the paper goes
+through the three-lens audit in `AUDIT.md`, each reviewer in a fresh context.

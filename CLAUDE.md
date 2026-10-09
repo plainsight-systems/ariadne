@@ -116,6 +116,16 @@ mechanism underneath, a name with lineage (Theseus, then Ariadne), prior art
 credited, original art only (no film stills, no likenesses, no Shannon
 likeness).
 
+## Paper audit (Andrew's rule)
+
+Every paper gets the three-lens audit in `pieces/AUDIT.md` (facts, citations and
+prior art, mathematical rigor) before Andrew sees a draft, and again after any
+substantive revision. Each reviewer runs in a fresh context: a new agent with
+none of the drafting conversation, given only the paper, the cited commit, its
+lens and the known-failures list. Reviewers are read-only and never see each
+other's reports; the author applies and verifies the fixes and records what
+changed.
+
 ## Publishing
 
 - This repository is public. Writing is CC BY 4.0 and code is Apache 2.0,
