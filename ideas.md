@@ -18,6 +18,37 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-09: Shannon tied vocabulary size to redundancy (anchor for piece 1)
+
+In the 1948 paper itself, Shannon puts vocabulary size next to redundancy.
+Basic English, with its vocabulary limited to 850 words, has very high
+redundancy, seen in the expansion when a passage is translated into it;
+Joyce enlarges the vocabulary and "is alleged to achieve a compression of
+semantic content". So the man who said meaning is irrelevant to the
+engineering problem also says a bigger vocabulary compresses semantic
+content. The vocabulary question is in the founding paper, as an aside.
+
+From: asking what Shannon would say about the two comparison measures
+(crossover and half-fill), 2026-10-09
+Source: Shannon 1948, Part I, section 7, p. 399 (BSTJ 27(3)); read in the
+library's OCR copy. Check the wording against the original scan before
+quoting (the OCR has "Joyces'" and garbles the book title).
+Rough notes:
+- Same section defines relative entropy (a source's entropy over the
+  maximum with the same symbols) and redundancy (one minus that), and
+  gives English at roughly 50%. Half-fill is a normalization in that
+  spirit; the crossover compares raw bits.
+- His third requirement for H (breaking a choice into two successive
+  choices; section 6) is exactly the between-class plus within-class
+  split both measures rest on.
+- Information belongs to the source: the text view (source
+  probabilities) is the Shannon view, the dictionary view describes the
+  alphabet. Experiment C's text view gives a clean order (role before
+  word, observation 21); the dictionary view gives none (22).
+- Use in piece 1: start where the field started; the field's founder
+  already saw vocabulary size trade against redundancy and semantic
+  compression, and nobody derived the size.
+
 ## 2026-10-09: The tail isn't identity
 
 Not a fully formed idea, but the data indicates the tail isn't identity.
