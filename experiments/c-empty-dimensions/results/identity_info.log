@@ -1,0 +1,170 @@
+EleutherAI/pythia-70m
+  input  dictionary I(d) at eps 4 = 14.88 of 15.62 bits (I_B 13.98, I_W 0.89)
+  input  text       I(d) at eps 4 = 9.29 of 9.43 bits (I_B 8.98, I_W 0.32)
+  output dictionary I(d) at eps 4 = 14.25 of 15.62 bits (I_B 13.37, I_W 0.88)
+  output text       I(d) at eps 4 = 9.11 of 9.43 bits (I_B 8.79, I_W 0.32)
+EleutherAI/pythia-160m
+  input  dictionary I(d) at eps 4 = 15.53 of 15.62 bits (I_B 14.63, I_W 0.91)
+  input  text       I(d) at eps 4 = 9.39 of 9.43 bits (I_B 9.06, I_W 0.33)
+  output dictionary I(d) at eps 4 = 15.25 of 15.62 bits (I_B 14.34, I_W 0.91)
+  output text       I(d) at eps 4 = 9.38 of 9.43 bits (I_B 9.05, I_W 0.33)
+EleutherAI/pythia-410m
+  input  dictionary I(d) at eps 4 = 15.58 of 15.62 bits (I_B 14.67, I_W 0.91)
+  input  text       I(d) at eps 4 = 9.43 of 9.43 bits (I_B 9.10, I_W 0.33)
+  output dictionary I(d) at eps 4 = 15.55 of 15.62 bits (I_B 14.64, I_W 0.91)
+  output text       I(d) at eps 4 = 9.42 of 9.43 bits (I_B 9.09, I_W 0.33)
+EleutherAI/pythia-1b
+  input  dictionary I(d) at eps 4 = 15.59 of 15.62 bits (I_B 14.68, I_W 0.91)
+  input  text       I(d) at eps 4 = 9.43 of 9.43 bits (I_B 9.10, I_W 0.33)
+  output dictionary I(d) at eps 4 = 15.59 of 15.62 bits (I_B 14.68, I_W 0.91)
+  output text       I(d) at eps 4 = 9.43 of 9.43 bits (I_B 9.10, I_W 0.33)
+EleutherAI/pythia-1.4b
+  input  dictionary I(d) at eps 4 = 15.59 of 15.62 bits (I_B 14.68, I_W 0.91)
+  input  text       I(d) at eps 4 = 9.43 of 9.43 bits (I_B 9.10, I_W 0.33)
+  output dictionary I(d) at eps 4 = 15.59 of 15.62 bits (I_B 14.68, I_W 0.91)
+  output text       I(d) at eps 4 = 9.43 of 9.43 bits (I_B 9.10, I_W 0.33)
+EleutherAI/pythia-2.8b
+  input  dictionary I(d) at eps 4 = 15.60 of 15.62 bits (I_B 14.69, I_W 0.91)
+  input  text       I(d) at eps 4 = 9.43 of 9.43 bits (I_B 9.10, I_W 0.33)
+  output dictionary I(d) at eps 4 = 15.59 of 15.62 bits (I_B 14.68, I_W 0.91)
+  output text       I(d) at eps 4 = 9.43 of 9.43 bits (I_B 9.10, I_W 0.33)
+EleutherAI/pythia-6.9b
+  input  dictionary I(d) at eps 4 = 15.62 of 15.62 bits (I_B 14.71, I_W 0.91)
+  input  text       I(d) at eps 4 = 9.43 of 9.43 bits (I_B 9.10, I_W 0.33)
+  output dictionary I(d) at eps 4 = 15.62 of 15.62 bits (I_B 14.71, I_W 0.91)
+  output text       I(d) at eps 4 = 9.43 of 9.43 bits (I_B 9.10, I_W 0.33)
+EleutherAI/pythia-12b
+  input  dictionary I(d) at eps 4 = 15.62 of 15.62 bits (I_B 14.71, I_W 0.91)
+  input  text       I(d) at eps 4 = 9.43 of 9.43 bits (I_B 9.10, I_W 0.33)
+  output dictionary I(d) at eps 4 = 15.62 of 15.62 bits (I_B 14.71, I_W 0.91)
+  output text       I(d) at eps 4 = 9.43 of 9.43 bits (I_B 9.10, I_W 0.33)
+# Identity information of the Pythia embedding tables
+
+definitions.md section 1. Classes: surface variants. I in bits; k_x = crossover interval.
+
+## dictionary view, epsilon = 2.0
+
+| Model | d | table | H(V) | I(d) | I_B(d) | I_W(d) | I/C at d | k for half of I(d) | k_B50 | k_W50 | k_x |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| pythia-70m | 512 | input | 15.62 | 15.58 | 14.67 | 0.91 | 0.195 | 32 | 32 | 8 | 256-384 |
+| pythia-70m | 512 | output | 15.62 | 15.58 | 14.66 | 0.91 | 0.210 | 16 | 16 | 8 | none |
+| pythia-160m | 768 | input | 15.62 | 15.58 | 14.67 | 0.91 | 0.129 | 32 | 32 | 16 | none |
+| pythia-160m | 768 | output | 15.62 | 15.58 | 14.67 | 0.91 | 0.150 | 16 | 32 | 8 | none |
+| pythia-410m | 1024 | input | 15.62 | 15.59 | 14.68 | 0.91 | 0.098 | 16 | 16 | 16 | 256-384 |
+| pythia-410m | 1024 | output | 15.62 | 15.59 | 14.67 | 0.91 | 0.097 | 32 | 32 | 8 | 768-1024 |
+| pythia-1b | 2048 | input | 15.62 | 15.60 | 14.68 | 0.91 | 0.050 | 16 | 16 | 8 | 256-384 |
+| pythia-1b | 2048 | output | 15.62 | 15.59 | 14.68 | 0.91 | 0.049 | 32 | 32 | 8 | 1024-1280 |
+| pythia-1.4b | 2048 | input | 15.62 | 15.61 | 14.70 | 0.91 | 0.050 | 16 | 16 | 8 | 1280-1536 |
+| pythia-1.4b | 2048 | output | 15.62 | 15.60 | 14.69 | 0.91 | 0.049 | 32 | 32 | 8 | none |
+| pythia-2.8b | 2560 | input | 15.62 | 15.62 | 14.71 | 0.91 | 0.041 | 16 | 16 | 8 | none |
+| pythia-2.8b | 2560 | output | 15.62 | 15.61 | 14.70 | 0.91 | 0.039 | 32 | 32 | 8 | none |
+| pythia-6.9b | 4096 | input | 15.62 | 15.62 | 14.71 | 0.91 | 0.025 | 8 | 8 | 8 | none |
+| pythia-6.9b | 4096 | output | 15.62 | 15.62 | 14.71 | 0.91 | 0.024 | 16 | 16 | 8 | none |
+| pythia-12b | 5120 | input | 15.62 | 15.62 | 14.71 | 0.91 | 0.020 | 8 | 8 | 8 | none |
+| pythia-12b | 5120 | output | 15.62 | 15.62 | 14.71 | 0.91 | 0.020 | 16 | 16 | 8 | none |
+
+## dictionary view, epsilon = 4.0
+
+| Model | d | table | H(V) | I(d) | I_B(d) | I_W(d) | I/C at d | k for half of I(d) | k_B50 | k_W50 | k_x |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| pythia-70m | 512 | input | 15.62 | 14.88 | 13.98 | 0.89 | 0.672 | 128 | 128 | 64 | none |
+| pythia-70m | 512 | output | 15.62 | 14.25 | 13.37 | 0.88 | 0.668 | 64 | 64 | 16 | none |
+| pythia-160m | 768 | input | 15.62 | 15.53 | 14.63 | 0.91 | 0.467 | 128 | 128 | 64 | none |
+| pythia-160m | 768 | output | 15.62 | 15.25 | 14.34 | 0.91 | 0.508 | 128 | 128 | 8 | none |
+| pythia-410m | 1024 | input | 15.62 | 15.58 | 14.67 | 0.91 | 0.352 | 128 | 128 | 64 | none |
+| pythia-410m | 1024 | output | 15.62 | 15.55 | 14.64 | 0.91 | 0.353 | 128 | 128 | 32 | none |
+| pythia-1b | 2048 | input | 15.62 | 15.59 | 14.68 | 0.91 | 0.177 | 64 | 64 | 32 | none |
+| pythia-1b | 2048 | output | 15.62 | 15.59 | 14.68 | 0.91 | 0.177 | 128 | 128 | 16 | none |
+| pythia-1.4b | 2048 | input | 15.62 | 15.59 | 14.68 | 0.91 | 0.178 | 64 | 64 | 32 | none |
+| pythia-1.4b | 2048 | output | 15.62 | 15.59 | 14.68 | 0.91 | 0.177 | 128 | 128 | 16 | none |
+| pythia-2.8b | 2560 | input | 15.62 | 15.60 | 14.69 | 0.91 | 0.144 | 32 | 32 | 32 | none |
+| pythia-2.8b | 2560 | output | 15.62 | 15.59 | 14.68 | 0.91 | 0.141 | 128 | 128 | 16 | none |
+| pythia-6.9b | 4096 | input | 15.62 | 15.62 | 14.71 | 0.91 | 0.090 | 32 | 32 | 16 | none |
+| pythia-6.9b | 4096 | output | 15.62 | 15.62 | 14.71 | 0.91 | 0.088 | 64 | 64 | 8 | none |
+| pythia-12b | 5120 | input | 15.62 | 15.62 | 14.71 | 0.91 | 0.072 | 32 | 32 | 16 | none |
+| pythia-12b | 5120 | output | 15.62 | 15.62 | 14.71 | 0.91 | 0.071 | 64 | 64 | 8 | none |
+
+## dictionary view, epsilon = 8.0
+
+| Model | d | table | H(V) | I(d) | I_B(d) | I_W(d) | I/C at d | k for half of I(d) | k_B50 | k_W50 | k_x |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| pythia-70m | 512 | input | 15.62 | 5.71 | 5.09 | 0.62 | 1.000 | 256 | 256 | 256 | none |
+| pythia-70m | 512 | output | 15.62 | 5.29 | 4.71 | 0.57 | 0.938 | 128 | 128 | 128 | none |
+| pythia-160m | 768 | input | 15.62 | 8.29 | 7.57 | 0.72 | 0.968 | 256 | 384 | 256 | none |
+| pythia-160m | 768 | output | 15.62 | 7.48 | 6.78 | 0.71 | 0.920 | 256 | 256 | 64 | none |
+| pythia-410m | 1024 | input | 15.62 | 10.58 | 9.79 | 0.79 | 0.927 | 384 | 384 | 256 | none |
+| pythia-410m | 1024 | output | 15.62 | 10.32 | 9.57 | 0.75 | 0.907 | 384 | 384 | 256 | none |
+| pythia-1b | 2048 | input | 15.62 | 14.99 | 14.09 | 0.89 | 0.658 | 384 | 384 | 256 | none |
+| pythia-1b | 2048 | output | 15.62 | 14.75 | 13.86 | 0.89 | 0.648 | 512 | 512 | 256 | none |
+| pythia-1.4b | 2048 | input | 15.62 | 14.98 | 14.09 | 0.89 | 0.658 | 256 | 256 | 256 | none |
+| pythia-1.4b | 2048 | output | 15.62 | 14.71 | 13.83 | 0.88 | 0.646 | 512 | 512 | 256 | none |
+| pythia-2.8b | 2560 | input | 15.62 | 15.43 | 14.53 | 0.90 | 0.545 | 256 | 256 | 256 | none |
+| pythia-2.8b | 2560 | output | 15.62 | 15.30 | 14.42 | 0.89 | 0.538 | 512 | 512 | 256 | none |
+| pythia-6.9b | 4096 | input | 15.62 | 15.61 | 14.70 | 0.91 | 0.344 | 256 | 256 | 128 | none |
+| pythia-6.9b | 4096 | output | 15.62 | 15.59 | 14.68 | 0.91 | 0.342 | 384 | 384 | 256 | none |
+| pythia-12b | 5120 | input | 15.62 | 15.62 | 14.70 | 0.91 | 0.276 | 128 | 128 | 128 | none |
+| pythia-12b | 5120 | output | 15.62 | 15.61 | 14.70 | 0.91 | 0.274 | 384 | 384 | 256 | none |
+
+## text view, epsilon = 2.0
+
+| Model | d | table | H(V) | I(d) | I_B(d) | I_W(d) | I/C at d | k for half of I(d) | k_B50 | k_W50 | k_x |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| pythia-70m | 512 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.137 | 16 | 16 | 8 | 384-512 |
+| pythia-70m | 512 | output | 9.43 | 9.42 | 9.09 | 0.33 | 0.150 | 8 | 16 | 8 | none |
+| pythia-160m | 768 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.093 | 16 | 16 | 8 | none |
+| pythia-160m | 768 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.100 | 16 | 16 | 8 | 512-768 |
+| pythia-410m | 1024 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.073 | 16 | 16 | 8 | none |
+| pythia-410m | 1024 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.082 | 16 | 16 | 8 | none |
+| pythia-1b | 2048 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.039 | 16 | 16 | 8 | none |
+| pythia-1b | 2048 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.043 | 8 | 8 | 8 | none |
+| pythia-1.4b | 2048 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.040 | 16 | 16 | 8 | none |
+| pythia-1.4b | 2048 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.044 | 8 | 8 | 8 | none |
+| pythia-2.8b | 2560 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.033 | 16 | 16 | 8 | 128-256 |
+| pythia-2.8b | 2560 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.036 | 8 | 8 | 8 | none |
+| pythia-6.9b | 4096 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.022 | 8 | 16 | 8 | none |
+| pythia-6.9b | 4096 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.023 | 8 | 8 | 8 | none |
+| pythia-12b | 5120 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.018 | 8 | 8 | 8 | none |
+| pythia-12b | 5120 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.019 | 8 | 8 | 8 | none |
+
+## text view, epsilon = 4.0
+
+| Model | d | table | H(V) | I(d) | I_B(d) | I_W(d) | I/C at d | k for half of I(d) | k_B50 | k_W50 | k_x |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| pythia-70m | 512 | input | 9.43 | 9.29 | 8.98 | 0.32 | 0.451 | 64 | 64 | 32 | none |
+| pythia-70m | 512 | output | 9.43 | 9.11 | 8.79 | 0.32 | 0.464 | 32 | 32 | 8 | none |
+| pythia-160m | 768 | input | 9.43 | 9.39 | 9.06 | 0.33 | 0.309 | 32 | 32 | 32 | none |
+| pythia-160m | 768 | output | 9.43 | 9.38 | 9.05 | 0.33 | 0.320 | 32 | 32 | 8 | none |
+| pythia-410m | 1024 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.237 | 32 | 32 | 32 | 512-768 |
+| pythia-410m | 1024 | output | 9.43 | 9.42 | 9.09 | 0.33 | 0.265 | 32 | 32 | 8 | none |
+| pythia-1b | 2048 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.126 | 32 | 32 | 8 | 384-512 |
+| pythia-1b | 2048 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.137 | 32 | 32 | 8 | none |
+| pythia-1.4b | 2048 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.127 | 32 | 32 | 8 | 384-512 |
+| pythia-1.4b | 2048 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.138 | 32 | 32 | 8 | 1280-1536 |
+| pythia-2.8b | 2560 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.104 | 32 | 32 | 8 | 256-384 |
+| pythia-2.8b | 2560 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.113 | 32 | 32 | 8 | none |
+| pythia-6.9b | 4096 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.068 | 16 | 32 | 8 | none |
+| pythia-6.9b | 4096 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.072 | 16 | 32 | 8 | none |
+| pythia-12b | 5120 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.056 | 16 | 16 | 8 | none |
+| pythia-12b | 5120 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.058 | 16 | 32 | 8 | none |
+
+## text view, epsilon = 8.0
+
+| Model | d | table | H(V) | I(d) | I_B(d) | I_W(d) | I/C at d | k for half of I(d) | k_B50 | k_W50 | k_x |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| pythia-70m | 512 | input | 9.43 | 5.15 | 4.93 | 0.22 | 0.925 | 64 | 64 | 64 | none |
+| pythia-70m | 512 | output | 9.43 | 4.92 | 4.70 | 0.22 | 0.900 | 64 | 64 | 16 | none |
+| pythia-160m | 768 | input | 9.43 | 6.95 | 6.68 | 0.27 | 0.839 | 128 | 128 | 64 | none |
+| pythia-160m | 768 | output | 9.43 | 6.54 | 6.27 | 0.27 | 0.801 | 64 | 64 | 16 | none |
+| pythia-410m | 1024 | input | 9.43 | 8.08 | 7.79 | 0.29 | 0.737 | 128 | 128 | 64 | none |
+| pythia-410m | 1024 | output | 9.43 | 7.62 | 7.34 | 0.28 | 0.747 | 64 | 64 | 32 | none |
+| pythia-1b | 2048 | input | 9.43 | 9.24 | 8.91 | 0.33 | 0.436 | 64 | 64 | 32 | none |
+| pythia-1b | 2048 | output | 9.43 | 9.25 | 8.93 | 0.32 | 0.461 | 64 | 64 | 16 | none |
+| pythia-1.4b | 2048 | input | 9.43 | 9.31 | 8.98 | 0.33 | 0.442 | 64 | 64 | 32 | none |
+| pythia-1.4b | 2048 | output | 9.43 | 9.25 | 8.93 | 0.32 | 0.464 | 64 | 64 | 16 | none |
+| pythia-2.8b | 2560 | input | 9.43 | 9.39 | 9.07 | 0.33 | 0.360 | 64 | 64 | 32 | none |
+| pythia-2.8b | 2560 | output | 9.43 | 9.37 | 9.04 | 0.33 | 0.382 | 64 | 64 | 16 | 2048-2560 |
+| pythia-6.9b | 4096 | input | 9.43 | 9.42 | 9.09 | 0.33 | 0.232 | 64 | 64 | 16 | 1792-2048 |
+| pythia-6.9b | 4096 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.243 | 64 | 64 | 8 | none |
+| pythia-12b | 5120 | input | 9.43 | 9.43 | 9.10 | 0.33 | 0.189 | 64 | 64 | 16 | 3584-4096 |
+| pythia-12b | 5120 | output | 9.43 | 9.43 | 9.10 | 0.33 | 0.194 | 64 | 64 | 8 | 2048-2560 |
+

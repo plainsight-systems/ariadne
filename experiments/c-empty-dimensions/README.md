@@ -39,6 +39,7 @@ pinned revisions in `models.json`.
 | `interference.py` | Crowding of token vectors in the d = 2048 models | `results/interference.*` |
 | `through_training.py` | Spread and crowding of 2.8b's input table through training | `results/through_training.*` |
 | `semantic_core.py` | Semantic core vs pedantic refinement: tail content, what the tail separates, emptiness | `results/semantic_core.*` |
+| `identity_info.py` | Identity information (definitions.md section 1) on all Pythia tables | `results/identity_info.*` |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
 ## What we have so far (2026-10-07)
@@ -118,6 +119,28 @@ Observations only, from the runs below. No interpretation here.
     (median cosine about 0.70 at 64 directions to 0.21-0.35 at full d),
     with no break at the core boundary. At the same number of directions,
     the larger models are emptier.
+14. Token identity needs few directions. Identity information
+    (definitions.md section 1; `identity_info.py`,
+    `results/identity_info.md`) at epsilon 4, dictionary view: the input
+    tables carry 6-14 of 15.6 bits in their top 64 directions and nearly
+    all of it by 256 to 1024, far below the thousands of directions the
+    loss-based test needs (observations 2, 5).
+15. Surface-variant information fills earlier than between-word
+    information. The within-class part reaches half its full-room value at
+    fewer directions than the between-class part in almost every model,
+    table and view (epsilon 4, dictionary: within at 8-64 directions,
+    between at 32-128; output tables at 8-16).
+16. Efficiency (identity carried over the spectrum's capacity ceiling) falls
+    as d grows: at epsilon 4, dictionary view, input table 0.67 at d = 512
+    down to 0.07 at d = 5120; the output tables match within 0.01-0.04.
+17. At the same number of directions, the input table carries more identity
+    than the output table (epsilon 4, dictionary, 64 directions: 9.5 vs 7.2
+    bits at 1b, 14.3 vs 9.2 at 12b).
+18. At the same number of directions, larger models carry more identity
+    (input, epsilon 4, dictionary, 64 directions: 6.2 bits at 70m to 14.3
+    at 12b). Part of this comes from the noise scale being set per model
+    (definitions.md 1.2), so cross-size comparisons at fixed epsilon are
+    not like for like.
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 

@@ -231,3 +231,23 @@ So the definition reuses established objects; what may be new is the sweep
 over directions, the crossover, and the application to receivers' tables.
 Not yet searched: hierarchical information bottleneck, and usage studies of
 vector-quantization codebooks.
+
+### 1.9 Found in first use (Pythia, 2026-10-09)
+
+Recorded here, not yet folded into the definition; Andrew decides.
+
+- **Useful resolutions.** At $\varepsilon \le 1$ every Pythia table
+  carries nearly all of $H(V)$ in its top 8 directions, so the curve has no
+  shape. $\varepsilon$ = 2 to 8 gives curves that rise across the room.
+  Because $s$ is the per-direction spread of the full table, the same
+  $\varepsilon$ is not the same noise for tables of different $d$ or
+  different spectra; compare across tables with care.
+- **The crossover as defined is dominated by class sizes.** Within-class
+  information is at most $H(V) - H(G)$ (about 0.9 bits of 15.6 for surface
+  variants over Pythia's vocabulary), so a direction almost always buys
+  more between-class bits than within-class bits in absolute terms, and
+  $k_\times$ mostly does not exist. A candidate replacement compares how
+  fast each part fills relative to its own total: $k_{B,1/2}$ and
+  $k_{W,1/2}$, the smallest $k$ at which $I_B(k) \ge \tfrac12 I_B(d)$ and
+  $I_W(k) \ge \tfrac12 I_W(d)$. It was reported alongside $k_\times$ in the
+  first measurement. The one-half is itself a knob.
