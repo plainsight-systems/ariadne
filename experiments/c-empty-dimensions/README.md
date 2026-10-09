@@ -126,10 +126,11 @@ Observations only, from the runs below. No interpretation here.
     all of it by 256 to 1024, far below the thousands of directions the
     loss-based test needs (observations 2, 5).
 15. Surface-variant information fills earlier than between-word
-    information. The within-class part reaches half its full-room value at
-    fewer directions than the between-class part in almost every model,
-    table and view (epsilon 4, dictionary: within at 8-64 directions,
-    between at 32-128; output tables at 8-16).
+    information. By the half-fill dimensions (definitions.md 1.3), the
+    within-class part reaches half its full-room value first in 78 of 96
+    cases (8 models x 2 tables x 2 views x 3 resolutions), at the same k in
+    the other 18, and never later (epsilon 4, dictionary: within at 8-64
+    directions, between at 32-128; output tables at 8-16).
 16. Efficiency (identity carried over the spectrum's capacity ceiling) falls
     as d grows: at epsilon 4, dictionary view, input table 0.67 at d = 512
     down to 0.07 at d = 5120; the output tables match within 0.01-0.04.
