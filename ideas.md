@@ -18,6 +18,77 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-09: Hellman and Cover 1970: what an m-state receiver can learn
+
+Read closely: Hellman and Cover, "Learning with Finite Memory", Annals of
+Mathematical Statistics 41(3), 765-782, 1970 (library scan, OCR'd for
+reading; the equal-prior formula below reproduces the paper's own Example
+1 numbers, 1/101 and 1/82, which checks the OCR). Facts first, then
+inferences.
+
+What the paper does:
+- Two-hypothesis testing (P0 vs P1) on an i.i.d. stream, with the data
+  summarized after each observation by a statistic T in {1, ..., m},
+  updated by a time-invariant (possibly randomized) rule T_n = f(T_{n-1},
+  X_n), and a decision d(T_n). The pair (f, d) is a finite-state machine
+  with m states. Loss: long-run probability of error as n goes to
+  infinity.
+- They reject two other notions of limited memory as not real
+  constraints: remembering the last k observations (the space of those
+  can be infinite) and remembering one real number such as the likelihood
+  ratio (infinitely many values).
+- The key statistic is gamma = (sup of the likelihood ratio) / (inf of it)
+  over events, "a natural measure of the resolvability of the two
+  hypotheses in the finite memory case".
+- Main result: the least achievable error is
+  P* = [2 sqrt(pi0 pi1 gamma^(m-1)) - 1] / (gamma^(m-1) - 1)
+  (when gamma^(m-1) exceeds the prior ratio); with equal priors,
+  P* = 1 / (1 + gamma^((m-1)/2)). An m-state machine's stationary state
+  likelihood ratios can spread by at most gamma^(m-1) (Theorem 2).
+- P* is the greatest lower bound but is not achieved by any machine for
+  m > 2 (Theorem 4); epsilon-optimal machines exist. They are saturating
+  counters: move up one state only on near-maximal likelihood-ratio
+  events, down only on near-minimal ones, ignore everything else, and
+  leave the end states only with small probability. In the discrete case
+  this needs artificial randomization, which they call surprising "since
+  randomization usually decreases information".
+- Examples: coins with p = 0.501 vs 0.499 give gamma = 1.008, so a 5-state
+  machine is little better than no memory, and about 500 states are needed
+  for 1% error; the difference |p0 - p1| is a poor measure of
+  resolvability with finite memory. Normal vs Cauchy location tests behave
+  alike with unlimited memory, but the normal case reaches zero error with
+  2 states while the Cauchy case stays at 0.15.
+- Conclusions: rounding a sufficient statistic to a few digits is far from
+  optimal, because the machine should wait for extreme events. With a
+  time-varying rule, Cover (1969) reaches zero error with m = 4, so time
+  invariance is part of the constraint. Finite sample size N is left open.
+
+Inferences for Ariadne (not in the paper):
+- A derived number from a receiver's capacity, in closed form, in a
+  non-neural receiver: invert the equal-prior bound and the memory needed
+  for error P is m = 1 + 2 ln((1 - P)/P) / ln(gamma). The form H2 wants,
+  for one receiver kind. Credit it as prior art for the shape of a
+  derivation.
+- What a bounded receiver can use is a different property of the source
+  than what an unbounded one can use. With unlimited memory the error
+  decays at a rate set by an information quantity (Chernoff information,
+  from the general theory, not this paper); with m states only gamma, the
+  extreme likelihood ratios, matters. Normal and Cauchy are the clean
+  example. This is H1 shown exactly, in 1970.
+- The optimal machine recodes the input into a three-letter alphabet
+  (extreme high, extreme low, everything else) before it counts. The
+  alphabet falls out of the receiver's limit and the source's extremes;
+  nothing is tuned, and its size is 3 for every m. A derived alphabet
+  (question 3), in a finite-state receiver. Check whether the brief's H2
+  should credit this directly.
+- "Rounding is far from optimal" says the best code for a finite receiver
+  is not the most faithful compression of the sufficient statistic; it
+  throws away the moderate events entirely. Compare "the loss from source
+  to signal is the meaning": the machine's meaning is in which events it
+  discards.
+- The finite-N case is open in the paper, and it is the realistic one
+  (Ariadne's exposure term). Look for later work on it.
+
 ## 2026-10-09: Shannon's section 8: coders as finite transducers
 
 Read closely from the original scan (shannon-1948-part1.pdf, pages 21-23;
