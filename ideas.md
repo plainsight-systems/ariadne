@@ -50,7 +50,10 @@ Toddler language:
   word, so the loss from world to word is visible (the 2026-10-04 "loss is
   the meaning" entry, made concrete).
 - "Here you go da da" is a chunk with a slot: a phrase stored as one unit
-  from exposure, the slot filled by role (whoever receives). The
+  from exposure. She says it when she is the one receiving, with the
+  giver's name in the slot: the caregivers' frame, used from the other side
+  of the exchange. (Corrected 2026-10-09; an earlier version of this note
+  said the slot was filled with whoever receives.) The
   vocabulary/grammar line from 2026-10-05 at its first appearance;
   exposure doing the work. Developmental names, from memory, to check:
   Braine's pivot grammar (1963); Tomasello's item-based constructions.
@@ -100,9 +103,8 @@ Computational, most important:
 - Design-method background: Elman, "Finding Structure in Time", 1990 (small
   hand-built grammars into a recurrent net); White and Cotterell 2021,
   arXiv:2106.01044 (artificial languages varying one feature); TinyStories;
-  BabyLM and BabyBERTa (real child-directed corpora). The softmax bottleneck
-  (Yang et al. 2018) already ties hidden size to the rank of the next-token
-  log-probability matrix.
+  BabyLM and BabyBERTa (real child-directed corpora). (Removed 2026-10-09: a
+  line citing the softmax bottleneck as relevant here; Andrew, 2026-10-08: the softmax bottleneck is a trivial rank bound, and the output table reads the full residual stream, so squashing it measures the stream, not the vocabulary.)
 - Toy codebook: not new (Ungerboeck 1982; Wachsmann et al. 1999).
 - Not found (about 70%): a designed, semantically grounded language (a world
   of referents, vocabulary smaller than the world, role-filled frames,
@@ -131,9 +133,10 @@ Developmental linguistics (well established; names to use):
 - Chunks learned whole: Peters 1983 (gestalt route); Pine and Lieven 1993
   (rote-learned phrases later given slots); Bannard and Matthews 2008
   (frequent chunks repeated more accurately).
-- Not found: a child correctly filling a memorized frame's name slot by
-  role ("here you go da da"). Pronoun-reversal work studies the opposite
-  (copying the slot verbatim); closest anchor: Charney 1980,
+- Not found: a child using a caregiver's frame from the other side of the
+  exchange, with the name slot filled by the other person in that event
+  ("here you go da da", said while receiving). Pronoun-reversal work
+  studies copying the slot verbatim; closest anchor: Charney 1980,
   doi:10.1017/S0305000900002816 (early role terms understood first from the
   child's own role).
 - Information-theoretic: Zaslavsky et al. 2018 (adult naming as lossy
@@ -154,20 +157,22 @@ picture. Not the first experiment; kept so it is not lost. The first
 experiments follow Shannon's precedent: build the source, know its
 statistics exactly, then bring in receivers.
 - R is the rank of the language's table of next-token log-probabilities
-  (rows: contexts or grammar states; columns: tokens). A model's scores are
-  hidden state x output table, so it cannot exceed rank about d: d >= R
-  (the softmax bottleneck, +1 for normalization).
-- R is an output-side number. Likely why the output tables use all of d
-  in every model tested (experiment C observation 3): real English's R is
-  far above 5,120, so the output end is always the limit.
+  (rows: contexts or grammar states; columns: tokens).
+- Retracted 2026-10-09: two bullets that argued d >= R from the
+  hidden-state x output-table product and used it to explain why the
+  output tables use all of d (observation 3). That argument is the
+  softmax bottleneck, which Andrew had already rejected (Andrew, 2026-10-08: the softmax bottleneck is a trivial rank bound, and the output table reads the full residual stream, so squashing it measures the stream, not the vocabulary). Observation 3 stays an observation with no explanation. Borenstein
+  et al.'s bound is the same argument in general form; their empirical
+  result (rank predicts learnability) is the part worth keeping.
 - The input side needs something else: enough to tell the network how each
   token changes the state. Tokens that act on the grammar alike could share
   a vector, so the input need is about the number of distinct token
   actions, smaller than R. Fits the input-side slack (observation 2) and
   gives H3's two numbers a definite form: output bounded by the language's
   rank, input by the variety of token actions plus exposure.
-- R <= min(number of grammar states, V): vocabulary and grammar together cap
-  the dimension, neither alone. "Bubble" merges columns (can lower R); a
+- R <= min(number of grammar states, V): a property of the language, set by
+  vocabulary and grammar together. (That it caps a model's dimension rests
+  on the retracted bound.) "Bubble" merges columns (can lower R); a
   chunk like "here you go" moves structure from order into vocabulary,
   changing both. All computable for a designed language.
 - The singular values of the log-probability table grade the rank: large
@@ -672,8 +677,8 @@ From: "The loss from source to signal is the meaning" (below)
 Leads (unchecked):
 - A language model is both ends: the input embedding receives tokens, the
   output head transmits them. H3's input/output split may be this
-  receiver/transmitter split under another name; the softmax bottleneck
-  (rank at most d + 1) is then a transmitter limit.
+  receiver/transmitter split under another name. (Removed 2026-10-09: "the
+  softmax bottleneck is then a transmitter limit"; Andrew, 2026-10-08: the softmax bottleneck is a trivial rank bound, and the output table reads the full residual stream, so squashing it measures the stream, not the vocabulary.)
 - V is not capped at d: superposition packs many more near-orthogonal
   directions than dimensions, at the cost of interference (Elhage et al.
   2022). The limit may be tolerable interference, not V <= d.
