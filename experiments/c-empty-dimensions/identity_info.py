@@ -10,6 +10,8 @@ resolution epsilon, estimate along k:
   I_B(k)  = I(G; Y_k)      between surface-variant classes
   I_W(k)  = I(k) - I_B(k)  within classes
   C(k)    capacity ceiling from the spectrum; efficiency I/C
+  k_x     crossover (definitions.md 1.3): first k interval where the
+          between-class gain per direction falls below the within-class gain
   k_B50, k_W50  half-fill dimensions (definitions.md 1.3): smallest k at
           which I_B, or I_W, reaches half its own value at k = d
 
@@ -116,9 +118,17 @@ def measure_view(w, p, cls, ks, rng):
                          "I_B": float(i_b), "I_B_se": float(hgy.std() / math.sqrt(SAMPLES)),
                          "I_W": float(i_all - i_b), "C": cap, "eff": float(i_all / cap) if cap > 0 else None})
         half = lambda key: next(r["k"] for r in rows if r[key] >= rows[-1][key] / 2)
-        out["eps"][str(eps)] = {"sigma": sigma, "curve": rows,
+        out["eps"][str(eps)] = {"sigma": sigma, "curve": rows, "k_cross": crossover(rows),
                                 "k_B50": half("I_B"), "k_W50": half("I_W")}
     return out
+
+
+def crossover(rows):
+    """First k interval where between-class bits per direction fall below within-class bits per direction."""
+    for a, b in zip(rows, rows[1:]):
+        if b["I_B"] - a["I_B"] < b["I_W"] - a["I_W"]:
+            return [a["k"], b["k"]]
+    return None
 
 
 def main():
@@ -156,12 +166,13 @@ def main():
 
 def write_report(rows):
     lines = ["# Identity information of the Pythia embedding tables", "",
-             "definitions.md section 1. Classes: surface variants. I in bits; k_B50, k_W50 = half-fill dimensions.", ""]
+             "definitions.md section 1. Classes: surface variants. I in bits; k_B50, k_W50 = half-fill dimensions;",
+             "k_x = crossover interval.", ""]
     for view in ("dictionary", "text"):
         for eps in EPSILONS:
             lines += [f"## {view} view, epsilon = {eps}", "",
-                      "| Model | d | table | H(V) | I(d) | I_B(d) | I_W(d) | I/C at d | k for half of I(d) | k_B50 | k_W50 |",
-                      "|---|---|---|---|---|---|---|---|---|---|---|"]
+                      "| Model | d | table | H(V) | I(d) | I_B(d) | I_W(d) | I/C at d | k for half of I(d) | k_B50 | k_W50 | k_x |",
+                      "|---|---|---|---|---|---|---|---|---|---|---|---|"]
             for r in rows:
                 for side in TABLES:
                     v = r[f"{side}/{view}"]
@@ -171,7 +182,8 @@ def write_report(rows):
                     half = next(c["k"] for c in cur if c["I"] >= last["I"] / 2)
                     lines.append(f"| {r['repo'].split('/')[1]} | {r['d']} | {side} | {v['H_V']:.2f} | "
                                  f"{last['I']:.2f} | {last['I_B']:.2f} | {last['I_W']:.2f} | {last['eff']:.3f} | "
-                                 f"{half} | {e['k_B50']} | {e['k_W50']} |")
+                                 f"{half} | {e['k_B50']} | {e['k_W50']} | "
+                                 f"{'-'.join(map(str, e['k_cross'])) if e['k_cross'] else 'none'} |")
             lines.append("")
     (RESULTS / "identity_info.md").write_text("\n".join(lines) + "\n")
 

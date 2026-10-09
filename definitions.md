@@ -72,6 +72,17 @@ function $g$, with $G = g(V)$:
 - *between-class information:* $I_B(k) = I(G; Y_k)$
 - *within-class information:* $I_W(k) = I(V; Y_k \mid G)$
 
+Two ways to compare the parts along $k$, kept side by side (Andrew,
+2026-10-09: explore both):
+
+**Crossover dimension:** $k_\times$, the smallest $k$ at which the marginal
+between-class information falls below the marginal within-class
+information, $\Delta I_B(k) < \Delta I_W(k)$. Past $k_\times$, each added
+direction buys more distinction within classes than between them, in
+absolute bits. Because within-class information is at most
+$H(V) - H(G)$, it is sensitive to class sizes (see 1.9); where it exists,
+it marks the point at which the between-class part has nearly run out.
+
 **Half-fill dimensions:** for each part, the smallest $k$ at which it
 reaches half of its own value in the full room:
 
@@ -83,9 +94,7 @@ $k_{B,1/2} < k_{W,1/2}$ means between-class distinctions sit in the
 leading directions and within-class distinctions further down;
 $k_{W,1/2} \le k_{B,1/2}$ means the reverse. Each part is measured against
 its own total, so the comparison does not depend on how many bits each
-class split holds. (This replaces a first "crossover dimension", which
-compared marginal bits in absolute terms and so mostly reported class
-sizes; see 1.9.)
+class split holds.
 
 **First class definition, surface variants.** $g(v)$ is the decoded text of
 $v$ with surrounding whitespace removed and letters lowercased, so " The",
@@ -236,22 +245,23 @@ session):
 - $I(k)$ traced as a function of the number of principal directions kept,
   for a fixed codebook (existing work runs along SNR or power allocation).
 - The efficiency $\eta(k) = I/C$ as a curve in $k$.
-- A comparison of how fast between-class and within-class information fill
-  (searched as a "crossover"; the half-fill comparison that replaced it has
-  not been searched separately).
+- The crossover dimension $k_\times$, or any comparison of how fast
+  between-class and within-class information fill (the half-fill
+  comparison has not been searched separately).
 - Any of this applied to a receiver's codebook such as an embedding table,
   or reporting where surface-variant distinctions sit in its spectrum.
 
 So the definition reuses established objects; what may be new is the sweep
-over directions, the half-fill comparison, and the application to
-receivers' tables.
+over directions, the crossover and half-fill comparisons, and the
+application to receivers' tables.
 Not yet searched: hierarchical information bottleneck, and usage studies of
 vector-quantization codebooks.
 
 ### 1.9 Found in first use (Pythia, 2026-10-09)
 
-Recorded as found. The second item was resolved on 2026-10-09: the
-half-fill dimensions replace the crossover in 1.3 (Andrew's decision).
+Recorded as found. Second item, 2026-10-09: both the crossover and the
+half-fill dimensions are kept in 1.3 and explored side by side (Andrew's
+decision).
 
 - **Useful resolutions.** At $\varepsilon \le 1$ every Pythia table
   carries nearly all of $H(V)$ in its top 8 directions, so the curve has no
@@ -267,4 +277,10 @@ half-fill dimensions replace the crossover in 1.3 (Andrew's decision).
   fast each part fills relative to its own total: $k_{B,1/2}$ and
   $k_{W,1/2}$, the smallest $k$ at which $I_B(k) \ge \tfrac12 I_B(d)$ and
   $I_W(k) \ge \tfrac12 I_W(d)$. It was reported alongside $k_\times$ in the
-  first measurement. The one-half is itself a knob. Adopted (see 1.3).
+  first measurement. The one-half is itself a knob. Both kept (see 1.3).
+- **Crossovers found so far are noise.** Across Pythia, TinyLlama and
+  OLMo-2 (144 cases), every crossover that appears falls after both parts
+  have saturated, with both per-direction gains within two standard errors
+  of zero. A crossover should count only where at least one gain exceeds
+  its sampling error; with that rule, none has been found for
+  surface-variant classes.

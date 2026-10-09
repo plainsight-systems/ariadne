@@ -40,6 +40,7 @@ pinned revisions in `models.json`.
 | `through_training.py` | Spread and crowding of 2.8b's input table through training | `results/through_training.*` |
 | `semantic_core.py` | Semantic core vs pedantic refinement: tail content, what the tail separates, emptiness | `results/semantic_core.*` |
 | `identity_info.py` | Identity information (definitions.md section 1) on all Pythia tables | `results/identity_info.*` |
+| `identity_info_xvocab.py` | The same on TinyLlama and OLMo-2 (d = 2048), with both the crossover and the half-fill comparison | `results/identity_info_xvocab.*` |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
 ## What we have so far (2026-10-07)
@@ -142,6 +143,19 @@ Observations only, from the runs below. No interpretation here.
     at 12b). Part of this comes from the noise scale being set per model
     (definitions.md 1.2), so cross-size comparisons at fixed epsilon are
     not like for like.
+19. No real crossover. With surface-variant classes, the crossover
+    (definitions.md 1.3) appears in 23 of 144 cases (Pythia, TinyLlama,
+    OLMo-2; 2 tables, 2 views, 3 resolutions), and in all 23 it falls after
+    both parts have saturated, where both per-direction gains are within
+    two standard errors of zero. Wherever either part is still growing,
+    each direction adds more between-word bits than within-word bits.
+    (`identity_info_xvocab.py`, `results/identity_info_xvocab.md`.)
+20. The half-fill order holds across vocabularies. In TinyLlama (32K) and
+    OLMo-2 (100K) as in Pythia (50K), the within-class part fills first or
+    at the same k, never later. The output tables put surface-variant
+    information in their top 8 directions in all three families (epsilon 4,
+    dictionary); the input tables reach half of it at 32 (TinyLlama,
+    Pythia) to 64 (OLMo-2) directions.
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
