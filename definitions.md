@@ -148,10 +148,13 @@ before any piece cites them.
   Gaussian channel, with uniform $p$; with non-uniform $p$, the mutual
   information of a probabilistically shaped constellation. Ungerboeck,
   "Channel coding with multilevel/phase signals", IEEE Trans. Inf. Theory
-  28(1), 1982, doi:10.1109/TIT.1982.1056454 *(secondary)*.
-- **The estimator** (Monte Carlo with the exact posterior over all
-  constellation points) is standard practice in that literature *(no single
-  canonical citation found)*.
+  28(1), 55-67, 1982, doi:10.1109/TIT.1982.1056454: equation (5) gives the
+  capacity $C^*$ of $N$ equiprobable discrete input signals with
+  continuous-valued Gaussian output, plotted against SNR in Fig. 2
+  (checked against the paper, 2026-10-09).
+- **The estimator:** the same paper evaluates $C^*$ "by Monte Carlo
+  averaging of (5)" with a Gaussian random number generator (checked). It
+  remains standard practice in that literature.
 - **$C(k)$ and $I \le C$** are the Gaussian-input capacity of parallel
   channels and the maximum-entropy bound. "Shaping gap" or "gap to capacity"
   is the family of names for $C - I$ (Forney and Ungerboeck, "Modulation and
@@ -161,12 +164,17 @@ before any piece cites them.
   $C(k) - I(k)$ here also contains the saturation at $H(V)$.
 - **The class split** is the multilevel-coding chain rule over
   set-partition levels: Imai and Hirakawa, IEEE Trans. Inf. Theory 23(3),
-  1977, doi:10.1109/TIT.1977.1055718; Wachsmann, Fischer and Huber,
-  "Multilevel codes: theoretical concepts and practical design rules", IEEE
-  Trans. Inf. Theory 45(5), 1999, doi:10.1109/18.771140 *(secondary)*.
-  $I_B$ is the first-level (coarse-partition) mutual information. One
-  difference: there the partition is designed to separate distances; here
-  $g$ is imposed from outside.
+  1977, doi:10.1109/TIT.1977.1055718 *(secondary)*; Wachsmann, Fischer and
+  Huber, "Multilevel codes: theoretical concepts and practical design
+  rules", IEEE Trans. Inf. Theory 45(5), 1361-1391, 1999,
+  doi:10.1109/18.771140: section II applies the chain rule of mutual
+  information over the set-partitioning levels (their equation 2), giving
+  one "equivalent channel" per level, and generalizes it to arbitrary
+  signal probabilities and labelings (checked against the paper,
+  2026-10-09). $I_B$ is the first-level (coarse-partition) mutual
+  information. One difference: there the labeling is chosen as part of the
+  code design; here $g$ is imposed from outside, by what counts as the same
+  word.
 - **Saturation at small $\varepsilon$:** $H(V) - I$ decays like a Q-function
   of the minimum distance (Alvarado, Brännström, Agrell and Koch, IEEE Trans.
   Inf. Theory 60(2), 2014, doi:10.1109/TIT.2013.2291865, arXiv:1212.6526).
