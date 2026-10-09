@@ -1,0 +1,96 @@
+EleutherAI/pythia-70m
+  A_unweighted: H(V) 9.43, draws 4000, I(d) 9.418 (0.9987), k95/99/99.9 384/512/512 vs k* 512, I(k*)/I(d) 1.00000, separates True
+  B_weighted: H(V) 9.43, draws 4000, I(d) 9.414 (0.9983), k95/99/99.9 128/256/256 vs k* 512, I(k*)/I(d) 1.00000, separates True
+EleutherAI/pythia-160m
+  A_unweighted: H(V) 9.43, draws 4000, I(d) 9.429 (0.9999), k95/99/99.9 384/768/768 vs k* 768, I(k*)/I(d) 1.00000, separates True
+  B_weighted: H(V) 9.43, draws 16000, I(d) 9.429 (0.9999), k95/99/99.9 128/256/256 vs k* 768, I(k*)/I(d) 1.00000, separates True
+EleutherAI/pythia-410m
+  A_unweighted: H(V) 9.43, draws 16000, I(d) 9.430 (1.0000), k95/99/99.9 128/384/768 vs k* 1024, I(k*)/I(d) 1.00000, separates True
+  B_weighted: H(V) 9.43, draws 4000, I(d) 9.430 (1.0000), k95/99/99.9 64/128/256 vs k* 1024, I(k*)/I(d) 1.00000, separates True
+EleutherAI/pythia-1b
+  A_unweighted: H(V) 9.43, draws 4000, I(d) 9.426 (0.9995), k95/99/99.9 768/1536/1984 vs k* 1984, I(k*)/I(d) 0.99902, separates True
+  B_weighted: H(V) 9.43, draws 4000, I(d) 9.424 (0.9994), k95/99/99.9 256/256/384 vs k* 1984, I(k*)/I(d) 1.00000, separates True
+EleutherAI/pythia-1.4b
+  A_unweighted: H(V) 9.43, draws 4000, I(d) 9.430 (1.0000), k95/99/99.9 512/1024/1536 vs k* 1664, I(k*)/I(d) 0.99967, separates True
+  B_weighted: H(V) 9.43, draws 4000, I(d) 9.430 (1.0000), k95/99/99.9 256/256/384 vs k* 1664, I(k*)/I(d) 1.00000, separates True
+EleutherAI/pythia-2.8b
+  A_unweighted: H(V) 9.43, draws 64000, I(d) 9.430 (1.0000), k95/99/99.9 384/768/1536 vs k* 1664, I(k*)/I(d) 0.99968, separates False
+  B_weighted: H(V) 9.43, draws 4000, I(d) 9.430 (1.0000), k95/99/99.9 128/256/384 vs k* 1664, I(k*)/I(d) 1.00000, separates True
+EleutherAI/pythia-6.9b
+  A_unweighted: H(V) 9.43, draws 64000, I(d) 9.430 (1.0000), k95/99/99.9 256/512/1280 vs k* 2816, I(k*)/I(d) 0.99998, separates True
+  B_weighted: H(V) 9.43, draws 4000, I(d) 9.430 (1.0000), k95/99/99.9 128/256/256 vs k* 2816, I(k*)/I(d) 1.00000, separates True
+EleutherAI/pythia-12b
+  A_unweighted: H(V) 9.43, draws 4000, I(d) 9.430 (1.0000), k95/99/99.9 256/384/768 vs k* 3072, I(k*)/I(d) 1.00000, separates True
+  B_weighted: H(V) 9.43, draws 16000, I(d) 9.430 (1.0000), k95/99/99.9 128/256/256 vs k* 3072, I(k*)/I(d) 1.00000, separates True
+# 99% point of identity in the text view, at the pinned noise (Pythia input tables)
+
+p = token frequencies in the phase-2 text; noise fixed in absolute terms (sigma = eps * s_full);
+basis A = unweighted principal directions (squash test's), B = frequency-weighted. Gains in bits,
+± one standard error from shared draws.
+
+## Noise conversion
+
+| Model | d | s_full | s_text | eps_res (full) | eps_res (text) | eps_prec (full) | eps_prec (text) |
+|---|---|---|---|---|---|---|---|
+| pythia-70m | 512 | 0.0311 | 0.0288 | 2.746 | 2.975 | 2.08e-04 | 2.26e-04 |
+| pythia-160m | 768 | 0.0285 | 0.0258 | 2.637 | 2.912 | 2.08e-04 | 2.30e-04 |
+| pythia-410m | 1024 | 0.0247 | 0.0228 | 2.202 | 2.389 | 2.07e-04 | 2.25e-04 |
+| pythia-1b | 2048 | 0.0233 | 0.0210 | 4.202 | 4.669 | 2.08e-04 | 2.31e-04 |
+| pythia-1.4b | 2048 | 0.0216 | 0.0199 | 3.960 | 4.294 | 2.07e-04 | 2.25e-04 |
+| pythia-2.8b | 2560 | 0.0196 | 0.0180 | 4.095 | 4.462 | 2.08e-04 | 2.27e-04 |
+| pythia-6.9b | 4096 | 0.0183 | 0.0167 | 3.532 | 3.866 | 2.08e-04 | 2.28e-04 |
+| pythia-12b | 5120 | 0.0181 | 0.0166 | 3.692 | 4.040 | 2.08e-04 | 2.28e-04 |
+
+## Basis A (primary): unweighted principal directions, at sigma_res
+
+| Model | H(V) | I(d) | share | k95 | k99 | k99.9 | k*(0.01) | I(k*)/I(d) | I(d)-I(k*) | I(d)-I(k99) | draws | separates | gap holds |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| pythia-70m | 9.430 | 9.418 | 0.9987 | 384 | 512 | 512 | 512 | 1.00000 | 0.0000 ± 0.0000 | 0.0000 ± 0.0000 | 4000 | True | NO |
+| pythia-160m | 9.430 | 9.429 | 0.9999 | 384 | 768 | 768 | 768 | 1.00000 | 0.0000 ± 0.0000 | 0.0000 ± 0.0000 | 4000 | True | NO |
+| pythia-410m | 9.430 | 9.430 | 1.0000 | 128 | 384 | 768 | 1024 | 1.00000 | 0.0000 ± 0.0000 | 0.0413 ± 0.0030 | 16000 | True | yes |
+| pythia-1b | 9.430 | 9.426 | 0.9995 | 768 | 1536 | 1984 | 1984 | 0.99902 | 0.0093 ± 0.0028 | 0.0723 ± 0.0081 | 4000 | True | yes |
+| pythia-1.4b | 9.430 | 9.430 | 1.0000 | 512 | 1024 | 1536 | 1664 | 0.99967 | 0.0031 ± 0.0021 | 0.0496 ± 0.0062 | 4000 | True | yes |
+| pythia-2.8b | 9.430 | 9.430 | 1.0000 | 384 | 768 | 1536 | 1664 | 0.99968 | 0.0030 ± 0.0004 | 0.0920 ± 0.0022 | 64000 | False | yes |
+| pythia-6.9b | 9.430 | 9.430 | 1.0000 | 256 | 512 | 1280 | 2816 | 0.99998 | 0.0002 ± 0.0001 | 0.0685 ± 0.0019 | 64000 | True | yes |
+| pythia-12b | 9.430 | 9.430 | 1.0000 | 256 | 384 | 768 | 3072 | 1.00000 | 0.0000 ± 0.0000 | 0.0751 ± 0.0074 | 4000 | True | yes |
+
+### Basis A (primary): unweighted principal directions, at the fp16 floor
+
+| Model | I(d) | share | k95 | k99 | k99.9 | I(k*)/I(d) |
+|---|---|---|---|---|---|---|
+| pythia-70m | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-160m | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-410m | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-1b | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-1.4b | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-2.8b | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-6.9b | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-12b | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+
+## Basis B (secondary): frequency-weighted principal directions, at sigma_res
+
+| Model | H(V) | I(d) | share | k95 | k99 | k99.9 | k*(0.01) | I(k*)/I(d) | I(d)-I(k*) | I(d)-I(k99) | draws | separates | gap holds |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| pythia-70m | 9.430 | 9.414 | 0.9983 | 128 | 256 | 256 | 512 | 1.00000 | 0.0000 ± 0.0000 | 0.0089 ± 0.0031 | 4000 | True |  |
+| pythia-160m | 9.430 | 9.429 | 0.9999 | 128 | 256 | 256 | 768 | 1.00000 | 0.0000 ± 0.0000 | 0.0036 ± 0.0007 | 16000 | True |  |
+| pythia-410m | 9.430 | 9.430 | 1.0000 | 64 | 128 | 256 | 1024 | 1.00000 | 0.0000 ± 0.0000 | 0.0105 ± 0.0033 | 4000 | True |  |
+| pythia-1b | 9.430 | 9.424 | 0.9994 | 256 | 256 | 384 | 1984 | 1.00000 | 0.0000 ± 0.0000 | 0.0514 ± 0.0074 | 4000 | True |  |
+| pythia-1.4b | 9.430 | 9.430 | 1.0000 | 256 | 256 | 384 | 1664 | 1.00000 | 0.0000 ± 0.0000 | 0.0269 ± 0.0053 | 4000 | True |  |
+| pythia-2.8b | 9.430 | 9.430 | 1.0000 | 128 | 256 | 384 | 1664 | 1.00000 | -0.0000 ± 0.0000 | 0.0118 ± 0.0032 | 4000 | True |  |
+| pythia-6.9b | 9.430 | 9.430 | 1.0000 | 128 | 256 | 256 | 2816 | 1.00000 | 0.0000 ± 0.0000 | 0.0032 ± 0.0013 | 4000 | True |  |
+| pythia-12b | 9.430 | 9.430 | 1.0000 | 128 | 256 | 256 | 3072 | 1.00000 | 0.0000 ± 0.0000 | 0.0020 ± 0.0007 | 16000 | True |  |
+
+### Basis B (secondary): frequency-weighted principal directions, at the fp16 floor
+
+| Model | I(d) | share | k95 | k99 | k99.9 | I(k*)/I(d) |
+|---|---|---|---|---|---|---|
+| pythia-70m | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-160m | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-410m | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-1b | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-1.4b | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-2.8b | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-6.9b | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+| pythia-12b | 9.430 | 1.0000 | 8 | 8 | 8 | 1.00000 |
+
+k*(0.01) for 70m, 160m, 410m is taken as d (the paper reports more than 95% of d).

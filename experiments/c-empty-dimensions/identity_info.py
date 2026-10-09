@@ -66,8 +66,17 @@ def entropy_bits(p):
     return float(-(p * np.log2(p)).sum())
 
 
-def measure_view(w, p, cls, ks, rng):
-    """All estimates for one table and one symbol distribution p (over rows of w)."""
+def measure_view(w, p, cls, ks, rng, basis=None, keep_samples=False):
+    """All estimates for one table and one symbol distribution p (over rows of w).
+
+    basis: optional d x d matrix whose columns are the directions to add, in
+    order. Default (None): the principal directions of the p-weighted
+    covariance, as in every earlier run. With a basis given, the per-direction
+    variance under p replaces the eigenvalues; the coordinates need not be
+    uncorrelated under p, so C(k) is then an upper bound, not the log-det.
+    keep_samples: also return the per-draw -log2 posteriors (key "_hv", per k),
+    so differences between k share draws for their standard errors.
+    """
     keep = p > 0
     w, p, cls = w[keep], p[keep] / p[keep].sum(), cls[keep]
     # relabel classes to 0..G-1 and the class distribution
@@ -80,6 +89,9 @@ def measure_view(w, p, cls, ks, rng):
     order = np.argsort(lam)[::-1]
     lam, vec = np.clip(lam[order], 0, None), vec[:, order]
     x = c @ vec  # coordinates in principal directions, columns in order
+    if basis is not None:
+        x = c @ basis
+        lam = np.clip((x * x * p[:, None]).sum(0), 0, None)
     d = w.shape[1]
     s = math.sqrt(lam.sum() / d)
     hv, hg = entropy_bits(p), entropy_bits(pg)
@@ -91,6 +103,8 @@ def measure_view(w, p, cls, ks, rng):
     z_unit = rng.standard_normal((SAMPLES, d))
 
     out = {"H_V": hv, "H_G": hg, "classes": int(len(pg)), "symbols": int(len(p)), "scale_s": s, "eps": {}}
+    if keep_samples:
+        out["_hv"] = {}
     for eps in EPSILONS:
         sigma = eps * s
         rows = []
@@ -112,6 +126,8 @@ def measure_view(w, p, cls, ks, rng):
                 tg = cls_t[ti]
                 hgy.append((-torch.log(pgy[torch.arange(len(idx), device=DEVICE), tg].clamp_min(1e-30)) / LN2).cpu())
             hvy, hgy = torch.cat(hvy).numpy(), torch.cat(hgy).numpy()
+            if keep_samples:
+                out["_hv"][(eps, k)] = hvy.astype(np.float64)
             i_all, i_b = hv - hvy.mean(), hg - hgy.mean()
             cap = float(0.5 * np.log2(1 + lam[:k] / sigma ** 2).sum())
             rows.append({"k": k, "I": float(i_all), "I_se": float(hvy.std() / math.sqrt(SAMPLES)),
