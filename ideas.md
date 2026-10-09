@@ -18,6 +18,52 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-09: Shannon's section 8: coders as finite transducers
+
+Read closely from the original scan (shannon-1948-part1.pdf, pages 21-23;
+BSTJ 27(3), pp. 399-401). Facts first, then inferences.
+
+What section 8 ("Representation of the Encoding and Decoding Operations")
+says:
+- The transmitter and the receiver are each a *discrete transducer*: input
+  a sequence of symbols, output a sequence of symbols, with an internal
+  memory, so the output depends on the present input and the past.
+- The memory is assumed finite: "a finite number m of possible states". A
+  transducer is two functions, output y_n = f(x_n, a_n) and next state
+  a_{n+1} = g(x_n, a_n), where a_n is the state.
+- Transducers connect in tandem. One whose output a second transducer can
+  turn back into the original input is *non-singular*; the second is its
+  inverse.
+- Theorem 7 (paraphrase): a finite-state transducer driven by a
+  finite-state statistical source outputs a finite-state statistical source
+  whose entropy per unit time is at most the input's, and equal when the
+  transducer is non-singular. Proved on the product state space of source
+  state and transducer state.
+- Theorem 8 (the rest of the section): for a channel given as a graph of
+  constraints, one assignment of transition probabilities maximizes the
+  entropy, and that maximum is the capacity C.
+- Section 9's converse then uses it: the transmitter must be non-singular,
+  so the channel input carries the source's entropy, which cannot exceed C.
+
+Inferences for Ariadne (not in the paper):
+- Theorem 7 is "recoding is lossless" in Shannon's own terms: an invertible
+  finite coder keeps the entropy exactly; any other can only lose it. A
+  deterministic tokenizer with a decoder is a non-singular transducer.
+  Credit Shannon for Andrew's position rather than state it as new.
+- The theorem bounds entropy, not use. It says nothing about whether the
+  receiver can exploit what arrives, which is where Ariadne starts.
+- The finite memory is a modelling convenience, not a limit. m can be any
+  finite number, and the coding theorem in section 9 works on blocks of N
+  symbols with N growing without bound; a transducer that buffers such
+  blocks needs a number of states that grows with N (exponentially in N
+  for a block code). So Shannon's coder is finite at every N but unbounded
+  across them: "finite but unlimited", the same idealization the brief
+  names for the receiver.
+- Section 8 is where a bounded receiver would enter Shannon's own
+  formalism: fix m, or tie it to a cost, and ask what Theorems 7 and 9
+  become. Hellman and Cover (1970, in the library) did the hypothesis-
+  testing version with S states.
+
 ## 2026-10-09: Shannon tied vocabulary size to redundancy (anchor for piece 1)
 
 In the 1948 paper itself, Shannon puts vocabulary size next to redundancy.
