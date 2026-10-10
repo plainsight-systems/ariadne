@@ -352,6 +352,11 @@ Observations only, from the runs below. No interpretation here.
 44. Against the fine k99, the capacity lower bound k_C (observation 41) is
     7.6-24 times smaller in the text view's weighted basis and 2.7-3.6
     times smaller in the dictionary view.
+45. After the fact, not part of the rule in identity_fine.py: a version of
+    Shannon's count rescaled by one fitted factor (c = 0.83) also loses to
+    the best constant in the primary test (mean |ln ratio| 0.230 vs 0.199).
+    Every constant from about 131 to 194 beats the unscaled count; the best
+    constants are 144-160. Computed from results/identity_fine.json.
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
