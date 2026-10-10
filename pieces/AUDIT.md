@@ -66,5 +66,9 @@ commit the paper cites.
 - Quantifier overreach: "the three smallest need nearly all" when one needed half; "about a third" true of one model only.
 - A regime argument used outside its regime (low-SNR) when the true reason was codebook size.
 - An echo/independence example stated without its distributional condition.
+- A count described as using "only" two quantities when its formula uses a third (Shannon's count also uses the
+  table's mean variance).
+- Agreement claimed on a grid too coarse to tell the prediction from a constant; a comparison made after the values
+  were known, with no rule set beforehand.
 
 Add to this list whenever an audit catches a new kind of failure.
