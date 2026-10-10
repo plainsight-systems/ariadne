@@ -18,6 +18,32 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-09: Identity is the vocabulary half; the gap is the candidate grammar half
+
+Andrew's guess is that d follows from vocabulary and grammar together. In
+Shannon's terms that is two parts. The vocabulary part is how many
+directions it takes to tell tokens apart through the receiver's noise, the
+1949 sphere-packing count turned around: n = 2 H(T) / log2(1 + P/N). The
+grammar part is what lowers the entropy of the next token below the
+single-token entropy (1951: F_1 down to F_N).
+
+- Fact (observations 39-41): in the text view's frequency-weighted basis,
+  n_flat from H(T) and sigma_res alone lands inside, or within 14% of, the
+  measured k99 interval in all eight Pythia tables. It has no d in it. The
+  real-spectrum capacity bound is true but 12-43 times too small.
+- Inference: identity information measures the vocabulary half only (an
+  i.i.d. source, F_1). The directions the network needs beyond identity's
+  (k99 to k*) are where the grammar half should show, if Andrew's guess is
+  right.
+- Hypothesis for the toddler language: the dimension a receiver needs is
+  about d_identity(H, sigma) + d_grammar(states, or rank R; see the
+  parked rank inference above), and dimensions beyond both stay empty.
+- Dropped: further tests on the tail beyond k*(0.1). That split is set by
+  k*, which the paper shows is a property of the trained network, not of
+  the language.
+
+From: Andrew, "figure out where we are deviating", after the paper landed.
+
 ## 2026-10-09: A toddler language, and a toy codebook with known answers
 
 The small models still use languages that are too advanced to start from:
