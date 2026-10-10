@@ -328,6 +328,11 @@ first block is counted, so later blocks would add more and this is the
 smallest residual-stream interference; (iv) one text, one position
 sample.
 
+Note added 2026-10-09, after computing (the text above is as committed in
+72f7e2d): assumption (iii) is weakened. Later blocks' interference was not
+measured and need not be larger; sigma_res is the interference a reader at
+the second block's input faces.
+
 **Floor: numeric precision, $\sigma_{\text{prec}}$.** The Pythia tables
 are stored in fp16 (checked in the released files). Rounding a value $w$
 to fp16 leaves an error spread evenly over one unit in the last place,
