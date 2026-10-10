@@ -18,6 +18,26 @@ From: what prompted it (optional)
 Moved to: brief.md H5 / notes/... (once it has moved)
 ```
 
+## 2026-10-09: A fixed-code arm for the toddler experiment
+
+Bochkov 2026 (arXiv 2610.04002) trains a 1.7B model with the input table
+replaced by each token ID's fixed 16-bit binary code, tiled to width, no
+trainable input parameters: it works, a little below a learned-table control
+(WikiText 0.79 vs 0.76 bits per byte, single runs). Squashing Pythia's
+trained tables to identity's directions costs more than 0.1. So what a
+trained network depends on is not what a receiver needs; a network denied
+the learned directions does their work elsewhere (plausibly the first
+layers, where Chang and Bergen find bigram subnetworks).
+
+For the toddler language: train receivers at several hidden widths with
+(a) a learned input table and (b) a fixed identity code (binary ID, tiled,
+or a designed code with known identity information). If both need the same
+width, the grammar half lives in the network, not the table; if (b) needs
+more, the table carried part of it. One extra arm; it separates "the input
+table needs these directions" from "the receiver needs this dimension".
+
+From: discussing Bochkov 2026 during the empty-dimensions revision.
+
 ## 2026-10-09: Identity is the vocabulary half; the gap is the candidate grammar half
 
 Andrew's guess is that d follows from vocabulary and grammar together. In
