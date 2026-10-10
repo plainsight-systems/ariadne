@@ -7,7 +7,9 @@ as evidence).
 
 ## Where things stand (2026-10-09)
 
-- Program defined; nothing published yet.
+- Program defined; nothing published yet. Working paper 1, "Do Language
+  Models Have Empty Dimensions?", lives in `pieces/empty-dimensions/`
+  (moved from the site repo 2026-10-09); papers are written here from now on.
 - Experiment C (`experiments/c-empty-dimensions/`) has run on Pythia,
   TinyLlama and OLMo-2: 13 observed trends listed in its README under
   "Observed trends", kept apart from interpretation. The method agreed with

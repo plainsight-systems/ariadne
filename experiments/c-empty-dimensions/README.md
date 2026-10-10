@@ -48,6 +48,7 @@ pinned revisions in `models.json`.
 | `nonlinear_echo.py` | Is the tail a nonlinear echo of the core: kNN, MLP and OLS prediction of the tail from the core; core-tail geometry correlation | `results/nonlinear_echo.*` |
 | `tail_identity.py` | What the tail resolves on its own, against shuffled and random tails; redundancy with the core | `results/tail_identity.*` (the first run's role view permuted across all tokens; rerun permuting within the view's tokens, `results/tail_identity_role_rerun.log`) |
 | `tail_capacity.py` | Gaussian capacity of the core and the tail beside their measured identity (no new draws) | `results/tail_capacity.*` |
+| `capacity_count.py` | Shannon's 1949 count (token entropy and noise only) and the capacity lower bound on the directions identity needs, beside the measured k99 (no new draws) | `results/capacity_count.*` |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
 ## What we have so far (2026-10-07)
@@ -216,10 +217,10 @@ Observations only, from the runs below. No interpretation here.
     (9.559 vs 9.560-9.706), 12b eps 8 (13.047 vs 13.081-13.160); and in
     three role-view cases: 1.4b eps 4 (0.8596 vs 0.8604-0.9106), 1.4b
     eps_res (0.893 vs 0.895-0.946), 12b eps 8 (1.754 vs 1.768-1.823).
-    *Superseded* by a planned measurement: the same question asked of the
-    block between k_0.99 (text view, squash basis, sigma_res) and
-    k*(0.01), with paired standard errors, a two-sided rule and a matched
-    null. This test measured the tail beyond k*(0.1).
+    *Superseded.* This test measured the tail beyond k*(0.1). A follow-up
+    on the block between k_0.99 and k*(0.01) was planned and dropped
+    (2026-10-09): the open question moved to what the grammar needs (see
+    the ideas entry "Identity is the vocabulary half").
 28. A Gaussian tail with the true tail's per-direction variances resolves
     more identity than the true tail in the surface view (1.4b, eps 4:
     10.62 vs 10.26 bits; 12b, eps 8: 14.09 vs 13.95), in every case where
@@ -240,10 +241,10 @@ Observations only, from the runs below. No interpretation here.
     against -0.050; spread across permutations under 0.005). In absolute
     terms the core predicts almost none of the tail: every R^2 is within
     0.06 of zero. (`nonlinear_echo.py`, `results/nonlinear_echo.md`.)
-    *Superseded* by a planned measurement: the same question asked of the
-    block between k_0.99 (text view, squash basis, sigma_res) and
-    k*(0.01), with paired standard errors, a two-sided rule and a matched
-    null. This test measured the tail beyond k*(0.1).
+    *Superseded.* This test measured the tail beyond k*(0.1). A follow-up
+    on the block between k_0.99 and k*(0.01) was planned and dropped
+    (2026-10-09): the open question moved to what the grammar needs (see
+    the ideas entry "Identity is the vocabulary half").
 30. A small MLP from core to tail does no better than on a shuffled tail
     (held-out R^2 -0.072 vs -0.068, -0.044 vs -0.044, -0.053 vs -0.044,
     -0.044 vs -0.035). Ordinary least squares is below its shuffled
@@ -256,10 +257,10 @@ Observations only, from the runs below. No interpretation here.
     true-tail R^2 is below all five shuffled tails at 1.4b (-0.0716 vs
     -0.0677 to -0.0672), 6.9b (-0.0530 vs -0.0439 to -0.0436) and 12b
     (-0.0438 vs -0.0347 to -0.0344).
-    *Superseded* by a planned measurement: the same question asked of the
-    block between k_0.99 (text view, squash basis, sigma_res) and
-    k*(0.01), with paired standard errors, a two-sided rule and a matched
-    null. This test measured the tail beyond k*(0.1).
+    *Superseded.* This test measured the tail beyond k*(0.1). A follow-up
+    on the block between k_0.99 and k*(0.01) was planned and dropped
+    (2026-10-09): the open question moved to what the grammar needs (see
+    the ideas entry "Identity is the vocabulary half").
 31. Over the evaluation-text tokens (3,536), pairwise cosines in the core
     and in the tail are weakly anti-correlated (Spearman -0.024 to -0.032:
     -0.0235, -0.0301, -0.0315, -0.0325), against shuffled-tail baselines
@@ -268,10 +269,10 @@ Observations only, from the runs below. No interpretation here.
     toward negative values even without structure. A matched null (a
     Gaussian table with the same spectrum, or a shuffle re-orthogonalized
     to the core) has not been run.
-    *Superseded* by a planned measurement: the same question asked of the
-    block between k_0.99 (text view, squash basis, sigma_res) and
-    k*(0.01), with paired standard errors, a two-sided rule and a matched
-    null. This test measured the tail beyond k*(0.1).
+    *Superseded.* This test measured the tail beyond k*(0.1). A follow-up
+    on the block between k_0.99 and k*(0.01) was planned and dropped
+    (2026-10-09): the open question moved to what the grammar needs (see
+    the ideas entry "Identity is the vocabulary half").
 32. Identity in the text view at the pinned noise (`identity_pinned_text.py`,
     `results/identity_pinned_text.md`). With the noise held at the same
     absolute sigma_res, the text view's own scale is 8-10% below the full
@@ -312,6 +313,24 @@ Observations only, from the runs below. No interpretation here.
     is within 0.4 standard errors of the capacity from the role tokens'
     own covariance (2.86 and 5.09). No measured I exceeds that capacity by
     more than 0.4 standard errors anywhere.
+39. Shannon's count, turned around (`capacity_count.py`,
+    `results/capacity_count.md`): n_flat = 2 H(T) / log2(1 + 1/eps^2), with
+    eps = sigma_res / s and s the view's own scale, is 115-393 in the
+    dictionary view (H(T) = 15.62) and 81-291 in the text view (H(T) =
+    9.43). It does not involve d.
+40. Against the measured k99 interval (grid point below, excluded, to
+    k99) at sigma_res: in the text view's frequency-weighted basis n_flat
+    is inside the interval at 410m, 1.4b, 6.9b and 12b, 4% and 14% above it
+    at 2.8b and 1b, 5% and 9% below it at 70m and 160m. In the dictionary
+    view it is inside at 160m, 410m, 1b and 1.4b, below at 70m (174 vs
+    (256, 384]), above at 2.8b, 6.9b and 12b (306 vs (64, 128] at 12b). In
+    the squash-test basis on the text it is below the interval in all
+    eight, by 1.2-4.4 times at the interval's lower end.
+41. The capacity lower bound k_C (smallest k with C(k) >= 0.99 I(d), C
+    from each table's own covariance in the view's basis, log-det in the
+    squash basis) is 6-21 directions in the weighted basis, 30-113 in the
+    squash basis and 36-129 in the dictionary view: 3-43 times below the
+    measured k99 (12-43 times in the weighted basis).
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 

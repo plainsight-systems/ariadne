@@ -1,7 +1,9 @@
 # Pieces
 
 One folder per piece of writing, numbered in the order the brief proposes:
-`01-receiver-shannon-left-out/`, `02-bounded-receivers/`, and so on.
+`01-receiver-shannon-left-out/`, `02-bounded-receivers/`, and so on. Working
+papers that came out of an experiment use their site slug instead
+(`empty-dimensions/`).
 
 Pieces bound for plainsight-systems.com use the site's paper format so they can
 go through its pipeline unchanged: `paper.md` with the site's front matter,
