@@ -185,7 +185,7 @@ Observations only, from the runs below. No interpretation here.
     a token's vector, gives eps_res = 2.2-2.8 for 70m-410m and 3.5-4.2 from
     1b up. Counting the token-determined part too gives 8.1-20.9. The fp16
     storage floor gives 2.1e-4.
-25. At eps_res, identity information reaches 99% of its full-room value by
+25. At eps_res, identity information reaches 99% of its value at k = d by
     128-512 directions in all eight Pythia input tables (dictionary view;
     `identity_pinned.py`, `results/identity_pinned.md`). At eps = 8 the same
     point is 1,280-1,792 directions (512-1,024 for the three smallest).
@@ -207,11 +207,31 @@ Observations only, from the runs below. No interpretation here.
     tail already resolves 99.6-99.9% of identity, and amount to about 0.01
     bits. Where the tail resolves all of it (6.9b and 12b at eps 2, 4 and
     res; every model at the fp16 floor) the comparison has no power.
+    Method: the "two standard errors" combine the true and shuffled errors
+    as if independent (hypot of the two), although both share the token
+    and noise draws; the error of their difference should come from paired
+    per-draw differences. The decision rule was one-sided (above only).
+    The true tail's I_B is below all five shuffled tails in three
+    surface-view cases: 1.4b eps 4 (9.396 vs 9.400-9.545), 1.4b eps_res
+    (9.559 vs 9.560-9.706), 12b eps 8 (13.047 vs 13.081-13.160); and in
+    three role-view cases: 1.4b eps 4 (0.8596 vs 0.8604-0.9106), 1.4b
+    eps_res (0.893 vs 0.895-0.946), 12b eps 8 (1.754 vs 1.768-1.823).
+    *Superseded* by a planned measurement: the same question asked of the
+    block between k_0.99 (text view, squash basis, sigma_res) and
+    k*(0.01), with paired standard errors, a two-sided rule and a matched
+    null. This test measured the tail beyond k*(0.1).
 28. A Gaussian tail with the true tail's per-direction variances resolves
     more identity than the true tail in the surface view (1.4b, eps 4:
-    10.62 vs 10.26 bits; 12b, eps 8: 14.09 vs 13.95). The true tail is not
-    isotropic, and its structure lowers distinguishability; by
-    observation 27 that structure is not surface-variant or role structure.
+    10.62 vs 10.26 bits; 12b, eps 8: 14.09 vs 13.95), in every case where
+    the tail does not already resolve the token. In the role view the
+    random tail resolves less than the true tail in 1.4b (eps 4, 8, res),
+    2.8b eps 8 (4.839 vs 5.110), 6.9b eps 8 (10.389 vs 10.624) and 12b
+    eps 8 (13.349 vs 13.416), and more in 2.8b eps 4 (13.678 vs 13.634) and
+    eps_res (13.487 vs 13.463). The random tail uses all-token variances,
+    while p in the role view covers only role tokens. One random draw per
+    case. The true tail is not isotropic, and its structure lowers
+    distinguishability; by observation 27 that structure is not
+    surface-variant or role structure.
 29. Nearest neighbours in the core have tails more alike than chance.
     Predicting held-out tokens' tail coordinates from their nearest
     neighbours in the core gives R^2 well above the shuffled-tail baseline
@@ -220,20 +240,41 @@ Observations only, from the runs below. No interpretation here.
     against -0.050; spread across permutations under 0.005). In absolute
     terms the core predicts almost none of the tail: every R^2 is within
     0.06 of zero. (`nonlinear_echo.py`, `results/nonlinear_echo.md`.)
+    *Superseded* by a planned measurement: the same question asked of the
+    block between k_0.99 (text view, squash basis, sigma_res) and
+    k*(0.01), with paired standard errors, a two-sided rule and a matched
+    null. This test measured the tail beyond k*(0.1).
 30. A small MLP from core to tail does no better than on a shuffled tail
     (held-out R^2 -0.072 vs -0.068, -0.044 vs -0.044, -0.053 vs -0.044,
     -0.044 vs -0.035). Ordinary least squares is below its shuffled
     baseline (-0.067 vs -0.036 at 1.4b), as expected: principal coordinates
     are uncorrelated over the whole vocabulary, so any correlation fitted on
-    the training tokens is reversed on the held-out ones.
+    the training tokens is reversed on the held-out ones. The same
+    train/held-out reversal lowers any fitted predictor's held-out R^2 on
+    the true tail relative to a shuffled tail, so "no better than
+    shuffled" bounds a nonlinear echo only up to that bias. The MLP's
+    true-tail R^2 is below all five shuffled tails at 1.4b (-0.0716 vs
+    -0.0677 to -0.0672), 6.9b (-0.0530 vs -0.0439 to -0.0436) and 12b
+    (-0.0438 vs -0.0347 to -0.0344).
+    *Superseded* by a planned measurement: the same question asked of the
+    block between k_0.99 (text view, squash basis, sigma_res) and
+    k*(0.01), with paired standard errors, a two-sided rule and a matched
+    null. This test measured the tail beyond k*(0.1).
 31. Over the evaluation-text tokens (3,536), pairwise cosines in the core
-    and in the tail are weakly anti-correlated (Spearman -0.024, -0.030,
-    -0.032, -0.033), against shuffled-tail baselines within 0.001 of zero.
-    Pairs that are close in the core tend, slightly, to be farther apart
-    in the tail.
+    and in the tail are weakly anti-correlated (Spearman -0.024 to -0.032:
+    -0.0235, -0.0301, -0.0315, -0.0325), against shuffled-tail baselines
+    within 0.001 of zero. The shuffled tail is not a matched baseline: zero
+    core-tail cross-covariance over the vocabulary pushes the true pairing
+    toward negative values even without structure. A matched null (a
+    Gaussian table with the same spectrum, or a shuffle re-orthogonalized
+    to the core) has not been run.
+    *Superseded* by a planned measurement: the same question asked of the
+    block between k_0.99 (text view, squash basis, sigma_res) and
+    k*(0.01), with paired standard errors, a two-sided rule and a matched
+    null. This test measured the tail beyond k*(0.1).
 32. Identity in the text view at the pinned noise (`identity_pinned_text.py`,
     `results/identity_pinned_text.md`). With the noise held at the same
-    absolute sigma_res, the text view's own scale is 7-9% below the full
+    absolute sigma_res, the text view's own scale is 8-10% below the full
     table's, so eps in text terms is 2.39-4.67 (full-table eps 2.20-4.20).
     The text view has about 3,500 token types and H(V) = 9.43 bits; I(d) at
     sigma_res is 99.83-100% of it in every model and basis.
