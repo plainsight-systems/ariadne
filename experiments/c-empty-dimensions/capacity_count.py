@@ -1,4 +1,6 @@
-"""Shannon's 1949 count, turned around: how many directions identity can need at least.
+"""Shannon's 1949 count, turned around, and a lower bound on the directions identity needs.
+
+n_flat below is a heuristic count, not a bound; k_C is the bound.
 
 Shannon 1949 (Communication in the Presence of Noise, p. 17, eq. 21): at most
 (sqrt((P+N)/N))^n signals are distinguishable in n dimensions, so telling M
