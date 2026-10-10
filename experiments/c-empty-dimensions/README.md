@@ -50,6 +50,8 @@ pinned revisions in `models.json`.
 | `tail_capacity.py` | Gaussian capacity of the core and the tail beside their measured identity (no new draws) | `results/tail_capacity.*` |
 | `capacity_count.py` | Shannon's 1949 count (token entropy and noise only) and the capacity lower bound on the directions identity needs, beside the measured k99 (no new draws) | `results/capacity_count.*` |
 | `identity_fine.py` | Identity's cut points on a grid of 16, and Shannon's count against them with a rule committed before running | `results/identity_fine.*` |
+| `claim_checks.py` | Loss measured at identity's k99; ten shuffles and ten random tails at 1.4b and 2.8b | `results/claim_checks.*` |
+| `plot_identity_vs_need.py` | The paper's figure of identity's k99 against the network's k*(0.01) | `pieces/empty-dimensions/figures/identity-vs-need.png` |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
 ## What we have so far (2026-10-07)
@@ -357,6 +359,19 @@ Observations only, from the runs below. No interpretation here.
     the best constant in the primary test (mean |ln ratio| 0.230 vs 0.199).
     Every constant from about 131 to 194 beats the unscaled count; the best
     constants are 144-160. Computed from results/identity_fine.json.
+46. Loss at identity's 99% point, measured directly (`claim_checks.py`,
+    rules committed in 6cc55f3 before running; `results/claim_checks.md`).
+    Squashing the input table to k99 (text view, squash-test basis,
+    sigma_res) costs 0.7767 bits per byte at 410m (k = 384), 0.1387 at 1b
+    (1,536), 0.4701 at 1.4b (1,024), 1.3333 at 2.8b (768; 0.8683 at
+    1,024), 1.7332 at 6.9b (512) and 1.6094 at 12b (384): above 0.1 in
+    every model from 410m up. At 70m and 160m k99 = d (no change).
+47. Tail interventions repeated at 1.4b and 2.8b (same script): ten
+    shuffles (seeds 1-10) and ten matched random tails (seeds 101-110)
+    each. Every draw costs more than zeroing the tail. 1.4b: zeroed
+    0.9400; shuffled 0.9514-0.9766 (mean 0.9620); random 0.9451-0.9746
+    (mean 0.9551). 2.8b: zeroed 0.8776; shuffled 0.8915-0.9145 (mean
+    0.8984); random 0.8840-0.9017 (mean 0.8921).
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
