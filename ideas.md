@@ -37,6 +37,7 @@ more, the table carried part of it. One extra arm; it separates "the input
 table needs these directions" from "the receiver needs this dimension".
 
 From: discussing Bochkov 2026 during the empty-dimensions revision.
+Moved to: brief.md, experiment D (the fixed-code arm).
 
 ## 2026-10-09: Identity is the vocabulary half; the gap is the candidate grammar half
 
@@ -57,182 +58,19 @@ single-token entropy (1951: F_1 down to F_N).
   right.
 - Hypothesis for the toddler language: the dimension a receiver needs is
   about d_identity(H, sigma) + d_grammar(states, or rank R; see the
-  parked rank inference above), and dimensions beyond both stay empty.
+  parked rank inference in notes/2026-10-09-toddler-language.md), and dimensions beyond both stay empty.
 - Dropped: further tests on the tail beyond k*(0.1). That split is set by
   k*, which the paper shows is a property of the trained network, not of
   the language.
 
-From: Andrew, "figure out where we are deviating", after the paper landed.
+From: Andrew, "figure
+Moved to: brief.md H5; tested by experiment D.
+
+ out where we are deviating", after the paper landed.
 
 ## 2026-10-09: A toddler language, and a toy codebook with known answers
 
-The small models still use languages that are too advanced to start from:
-grammar too complex, vocabulary too broad. Even was/were is advanced. We
-need something like a toddler language. My 2-year-old uses "bubble" for
-about 5 different things. And when I hand her something she wants she says
-"here you go da da", because her whole life, when we hand her things, we
-say "here you go Ellie". This feels like the right pivot toward Shannon.
-
-Confirmed by Andrew, 2026-10-09: she says "here you go" whether she is
-giving or receiving, filling the slot with the other person; the whole
-toddler-language idea came from interacting with her.
-
-From: thinking about step 3 of "Next step on the measure" (check on a toy
-first)
-Rough notes from talking it through:
-
-Toy codebook (answer known before measuring):
-- Two-level hypercube: each symbol has a binary address; the first bits are
-  its class (the semantic level), the rest its variant (the pedantic
-  level). Each bit is +/- an amplitude on its own dimension, large for
-  class bits, small for variant bits.
-- Independent dimensions, so the channel splits into one-dimensional binary
-  channels: exact I(k), I_B, I_W and multilevel-coding rates are sums of
-  scalar capacities (one integral each). The spectrum order is known
-  (large amplitudes first). Ungerboeck's set partitioning in its simplest
-  form.
-- Use: the Monte Carlo estimator and every comparison (crossover,
-  half-fill, rates) must reproduce the exact values before any is used on
-  a real table; sweep the amplitude ratio to see what each responds to.
-
-Toddler language:
-- "Bubble" is a vocabulary smaller than the world: several referents on one
-  word, so the loss from world to word is visible (the 2026-10-04 "loss is
-  the meaning" entry, made concrete).
-- "Here you go da da" is a chunk with a slot: a phrase stored as one unit
-  from exposure. She says it when she is the one receiving, with the
-  giver's name in the slot: the caregivers' frame, used from the other side
-  of the exchange. (Corrected 2026-10-09; an earlier version of this note
-  said the slot was filled with whoever receives.) The
-  vocabulary/grammar line from 2026-10-05 at its first appearance;
-  exposure doing the work. Developmental names, from memory, to check:
-  Braine's pivot grammar (1963); Tomasello's item-based constructions.
-- (a) Design one first: a small world (people, objects, actions); a
-  vocabulary deliberately smaller than the world with controlled
-  polysemy; a handful of frames with slots ("more X", "X gone", "want X",
-  "here you go Y"); known probabilities. Finite-state, so entropy, the
-  number of grammar states and word-referent information are exact. Knobs:
-  vocabulary size, frames, polysemy, world size. Train tiny models and
-  non-neural receivers (n-gram counters) on it and see whether the
-  dimension they need follows V and the grammar's state count: experiment
-  C's step 2, controlled.
-- (b) Then real toddler speech as the check: the CHILDES archive (children
-  around age 2 with caregivers; from memory, Brown's Adam, Eve and Sarah),
-  free for research under TalkBank's ground rules.
-
-Why it is a pivot toward Shannon (inference): Shannon built English up from
-constructed sources with known statistics (his series of approximations)
-and modelled sources and coders as finite-state machines (section 8). A
-designed toddler language is a Shannon source we write ourselves, so every
-quantity is known before any receiver sees it: start where the field
-started.
-
-Prior art, searched 2026-10-09 (computational; developmental linguistics).
-Checked on arXiv, Crossref or publisher pages unless marked.
-
-Computational, most important:
-- The derived dimension is probably rank, not V plus states. Borenstein,
-  Svete, Chan, Valvoda, Nowak, Augenstein, Chodroff, Cotterell, "What
-  Languages are Easy to Language-Model? A Perspective from Learning
-  Probabilistic Regular Languages", ACL 2024, arXiv:2406.04289: any
-  language model built on a hidden representation needs hidden size at
-  least R, the rank of the language (of a minimal full-support
-  deterministic probabilistic automaton); on random automata (states and
-  alphabet 2 to 16) with RNNs and transformers at several hidden sizes,
-  rank predicts learnability better than state count or alphabet size.
-  Direct antecedent; frame the toddler experiment against R.
-- Svete and Cotterell, "Recurrent Neural Language Models as Probabilistic
-  Finite-state Automata", EMNLP 2023, arXiv:2310.05161: an arbitrary
-  deterministic finite-state LM with N states needs on the order of N|V|
-  neurons in an RNN.
-- Hewitt, Hahn, Ganguli, Liang, Manning, EMNLP 2020, arXiv:2010.07515:
-  Dyck-(k,m) needs and gets Theta(m log k) hidden units. Classical automaton
-  simulation bounds (Alon, Dewdney and Ott 1991; Horne and Hush 1996;
-  Indyk 1995; partly unverified) and transformer upper bounds (Rizvi et al.
-  2024, arXiv:2403.09728).
-- Design-method background: Elman, "Finding Structure in Time", 1990 (small
-  hand-built grammars into a recurrent net); White and Cotterell 2021,
-  arXiv:2106.01044 (artificial languages varying one feature); TinyStories;
-  BabyLM and BabyBERTa (real child-directed corpora). (Removed 2026-10-09: a
-  line citing the softmax bottleneck as relevant here; Andrew, 2026-10-08: the softmax bottleneck is a trivial rank bound, and the output table reads the full residual stream, so squashing it measures the stream, not the vocabulary.)
-- Toy codebook: not new (Ungerboeck 1982; Wachsmann et al. 1999).
-- Not found (about 70%): a designed, semantically grounded language (a world
-  of referents, vocabulary smaller than the world, role-filled frames,
-  word-referent information as a controlled variable); a measured minimum
-  width at the exact entropy floor compared against a derived bound (R,
-  sqrt(m), m log k); polysemy swept in a dimension study; neural and n-gram
-  receivers side by side on the same exact-entropy source.
-
-Developmental linguistics (well established; names to use):
-- "Bubble" is overextension (categorical overinclusion, analogical
-  overextension): Rescorla, "Overextension in early language development",
-  J. Child Language 7, 1980, doi:10.1017/S0305000900002658 (about a third of
-  first 75 words ever overextended); Clark 1973, 1978. Formal model:
-  Ferreira Pinto and Xu, "A computational theory of child overextension",
-  Cognition 206, 2021, doi:10.1016/j.cognition.2020.104472 (probabilistic
-  inference, not information theory).
-- Frames with slots: Braine 1963 (pivot grammar); Braine 1976, "Children's
-  first word combinations", doi:10.2307/1165959 (limited-scope formulae);
-  Lieven, Pine and Baldwin 1997, doi:10.1017/S0305000996002930
-  (slot-and-frame patterns about 60% of multiword utterances, ages 1-3);
-  Tomasello 1992, 2003 (verb islands, item-based constructions).
-- Known probabilities for frames have an empirical basis: Cameron-Faulkner,
-  Lieven and Tomasello, "A construction based analysis of child directed
-  speech", Cognitive Science 27, 2003, doi:10.1207/s15516709cog2706_2 (51%
-  of mothers' utterances began with one of 52 item-based frames).
-- Chunks learned whole: Peters 1983 (gestalt route); Pine and Lieven 1993
-  (rote-learned phrases later given slots); Bannard and Matthews 2008
-  (frequent chunks repeated more accurately).
-- Not found: a child using a caregiver's frame from the other side of the
-  exchange, with the name slot filled by the other person in that event
-  ("here you go da da", said while receiving). Pronoun-reversal work
-  studies copying the slot verbatim; closest anchor: Charney 1980,
-  doi:10.1017/S0305000900002816 (early role terms understood first from the
-  child's own role).
-- Information-theoretic: Zaslavsky et al. 2018 (adult naming as lossy
-  compression); Tal, Grossman and Arnon 2024, Cognition 249,
-  doi:10.1016/j.cognition.2024.105817 (entropy rate of infant-directed
-  speech falls as infants grow).
-
-CHILDES terms (talkbank.org ground rules, checked 2026-10-09): CC BY-NC-SA
-3.0 unless marked; no commercial use (LLMs named); cite each corpus (Brown
-1973 for Adam, Eve, Sarah; corpus doi:10.21415/T5HK5G) and MacWhinney 2000;
-data may go to web AI services only through an API that guarantees it is
-not stored. That last rule decides whether Claude can read the transcripts
-directly: Andrew to settle before plan (b). Eve (1;6 to 2;3) matches a
-2-year-old.
-
-Parked inference (2026-10-09): how rank R fits the embedding-dimension
-picture. Not the first experiment; kept so it is not lost. The first
-experiments follow Shannon's precedent: build the source, know its
-statistics exactly, then bring in receivers.
-- R is the rank of the language's table of next-token log-probabilities
-  (rows: contexts or grammar states; columns: tokens).
-- Retracted 2026-10-09: two bullets that argued d >= R from the
-  hidden-state x output-table product and used it to explain why the
-  output tables use all of d (observation 3). That argument is the
-  softmax bottleneck, which Andrew had already rejected (Andrew, 2026-10-08: the softmax bottleneck is a trivial rank bound, and the output table reads the full residual stream, so squashing it measures the stream, not the vocabulary). Observation 3 stays an observation with no explanation. Borenstein
-  et al.'s bound is the same argument in general form; their empirical
-  result (rank predicts learnability) is the part worth keeping.
-- The input side needs something else: enough to tell the network how each
-  token changes the state. Tokens that act on the grammar alike could share
-  a vector, so the input need is about the number of distinct token
-  actions, smaller than R. Fits the input-side slack (observation 2) and
-  gives H3's two numbers a definite form: output bounded by the language's
-  rank, input by the variety of token actions plus exposure.
-- R <= min(number of grammar states, V): a property of the language, set by
-  vocabulary and grammar together. (That it caps a model's dimension rests
-  on the retracted bound.) "Bubble" merges columns (can lower R); a
-  chunk like "here you go" moves structure from order into vocabulary,
-  changing both. All computable for a designed language.
-- The singular values of the log-probability table grade the rank: large
-  ones the main ways predictions differ (semantic core), small ones the
-  fine distinctions (pedantic tail). The output squash test was in effect
-  measuring this graded rank at a loss tolerance.
-- Candidate for what the input tail carries (see "The tail isn't
-  identity"): prediction-relevant structure, how a token shifts the state,
-  along small singular directions. Testable once the toddler language's
-  true spectrum is known.
+Moved to: notes/2026-10-09-toddler-language.md (design, prior art, CHILDES terms); planned as experiment D in brief.md.
 
 ## 2026-10-09: Next step on the measure: real noise, then the tail
 
@@ -257,163 +95,23 @@ would make of the two comparison measures.
 - Then point it at the tail: with real noise, ask what the tail carries.
   First candidate is graded similarity (do full-room similarities track
   how alike two tokens' usage is, better than core-only similarities?).
-- "The Bandwagon" warning applies throughout: information-theory labels on
+- "The Bandwagon" warning applies
+Moved to: done in experiment C (OBSERVATIONS.md 24-47) and the paper.
+
+ throughout: information-theory labels on
   embeddings prove nothing unless the channel model is real.
 
 ## 2026-10-09: Hellman and Cover 1970: what an m-state receiver can learn
 
-Read closely: Hellman and Cover, "Learning with Finite Memory", Annals of
-Mathematical Statistics 41(3), 765-782, 1970 (library scan, OCR'd for
-reading; the equal-prior formula below reproduces the paper's own Example
-1 numbers, 1/101 and 1/82, which checks the OCR). Facts first, then
-inferences.
-
-What the paper does:
-- Two-hypothesis testing (P0 vs P1) on an i.i.d. stream, with the data
-  summarized after each observation by a statistic T in {1, ..., m},
-  updated by a time-invariant (possibly randomized) rule T_n = f(T_{n-1},
-  X_n), and a decision d(T_n). The pair (f, d) is a finite-state machine
-  with m states. Loss: long-run probability of error as n goes to
-  infinity.
-- They reject two other notions of limited memory as not real
-  constraints: remembering the last k observations (the space of those
-  can be infinite) and remembering one real number such as the likelihood
-  ratio (infinitely many values).
-- The key statistic is gamma = (sup of the likelihood ratio) / (inf of it)
-  over events, "a natural measure of the resolvability of the two
-  hypotheses in the finite memory case".
-- Main result: the least achievable error is
-  P* = [2 sqrt(pi0 pi1 gamma^(m-1)) - 1] / (gamma^(m-1) - 1)
-  (when gamma^(m-1) exceeds the prior ratio); with equal priors,
-  P* = 1 / (1 + gamma^((m-1)/2)). An m-state machine's stationary state
-  likelihood ratios can spread by at most gamma^(m-1) (Theorem 2).
-- P* is the greatest lower bound but is not achieved by any machine for
-  m > 2 (Theorem 4); epsilon-optimal machines exist. They are saturating
-  counters: move up one state only on near-maximal likelihood-ratio
-  events, down only on near-minimal ones, ignore everything else, and
-  leave the end states only with small probability. In the discrete case
-  this needs artificial randomization, which they call surprising "since
-  randomization usually decreases information".
-- Examples: coins with p = 0.501 vs 0.499 give gamma = 1.008, so a 5-state
-  machine is little better than no memory, and about 500 states are needed
-  for 1% error; the difference |p0 - p1| is a poor measure of
-  resolvability with finite memory. Normal vs Cauchy location tests behave
-  alike with unlimited memory, but the normal case reaches zero error with
-  2 states while the Cauchy case stays at 0.15.
-- Conclusions: rounding a sufficient statistic to a few digits is far from
-  optimal, because the machine should wait for extreme events. With a
-  time-varying rule, Cover (1969) reaches zero error with m = 4, so time
-  invariance is part of the constraint. Finite sample size N is left open.
-
-Inferences for Ariadne (not in the paper):
-- A derived number from a receiver's capacity, in closed form, in a
-  non-neural receiver: invert the equal-prior bound and the memory needed
-  for error P is m = 1 + 2 ln((1 - P)/P) / ln(gamma). The form H2 wants,
-  for one receiver kind. Credit it as prior art for the shape of a
-  derivation.
-- What a bounded receiver can use is a different property of the source
-  than what an unbounded one can use. With unlimited memory the error
-  decays at a rate set by an information quantity (Chernoff information,
-  from the general theory, not this paper); with m states only gamma, the
-  extreme likelihood ratios, matters. Normal and Cauchy are the clean
-  example. This is H1 shown exactly, in 1970.
-- The optimal machine recodes the input into a three-letter alphabet
-  (extreme high, extreme low, everything else) before it counts. The
-  alphabet falls out of the receiver's limit and the source's extremes;
-  nothing is tuned, and its size is 3 for every m. A derived alphabet
-  (question 3), in a finite-state receiver. Check whether the brief's H2
-  should credit this directly.
-- "Rounding is far from optimal" says the best code for a finite receiver
-  is not the most faithful compression of the sufficient statistic; it
-  throws away the moderate events entirely. Compare "the loss from source
-  to signal is the meaning": the machine's meaning is in which events it
-  discards.
-- The finite-N case is open in the paper, and it is the realistic one
-  (Ariadne's exposure term). Look for later work on it.
+Moved to: notes/2026-10-09-reading-hellman-cover-1970.md (close reading).
 
 ## 2026-10-09: Shannon's section 8: coders as finite transducers
 
-Read closely from the original scan (shannon-1948-part1.pdf, pages 21-23;
-BSTJ 27(3), pp. 399-401). Facts first, then inferences.
-
-What section 8 ("Representation of the Encoding and Decoding Operations")
-says:
-- The transmitter and the receiver are each a *discrete transducer*: input
-  a sequence of symbols, output a sequence of symbols, with an internal
-  memory, so the output depends on the present input and the past.
-- The memory is assumed finite: "a finite number m of possible states". A
-  transducer is two functions, output y_n = f(x_n, a_n) and next state
-  a_{n+1} = g(x_n, a_n), where a_n is the state.
-- Transducers connect in tandem. One whose output a second transducer can
-  turn back into the original input is *non-singular*; the second is its
-  inverse.
-- Theorem 7 (paraphrase): a finite-state transducer driven by a
-  finite-state statistical source outputs a finite-state statistical source
-  whose entropy per unit time is at most the input's, and equal when the
-  transducer is non-singular. Proved on the product state space of source
-  state and transducer state.
-- Theorem 8 (the rest of the section): for a channel given as a graph of
-  constraints, one assignment of transition probabilities maximizes the
-  entropy, and that maximum is the capacity C.
-- Section 9's converse then uses it: the transmitter must be non-singular,
-  so the channel input carries the source's entropy, which cannot exceed C.
-
-Inferences for Ariadne (not in the paper):
-- Theorem 7 is "recoding is lossless" in Shannon's own terms: an invertible
-  finite coder keeps the entropy exactly; any other can only lose it. A
-  deterministic tokenizer with a decoder is a non-singular transducer.
-  Credit Shannon for Andrew's position rather than state it as new.
-- The theorem bounds entropy, not use. It says nothing about whether the
-  receiver can exploit what arrives, which is where Ariadne starts.
-- The finite memory is a modelling convenience, not a limit. m can be any
-  finite number, and the coding theorem in section 9 works on blocks of N
-  symbols with N growing without bound; a transducer that buffers such
-  blocks needs a number of states that grows with N (exponentially in N
-  for a block code). So Shannon's coder is finite at every N but unbounded
-  across them: "finite but unlimited", the same idealization the brief
-  names for the receiver.
-- Section 8 is where a bounded receiver would enter Shannon's own
-  formalism: fix m, or tie it to a cost, and ask what Theorems 7 and 9
-  become. Hellman and Cover (1970, in the library) did the hypothesis-
-  testing version with S states.
+Moved to: notes/2026-10-09-reading-shannon-1948-section-8.md (close reading).
 
 ## 2026-10-09: Shannon tied vocabulary size to redundancy (anchor for piece 1)
 
-In the 1948 paper itself, Shannon puts vocabulary size next to redundancy.
-Basic English, with its vocabulary limited to 850 words, has very high
-redundancy, seen in the expansion when a passage is translated into it;
-Joyce enlarges the vocabulary and "is alleged to achieve a compression of
-semantic content". So the man who said meaning is irrelevant to the
-engineering problem also says a bigger vocabulary compresses semantic
-content. The vocabulary question is in the founding paper, as an aside.
-
-From: asking what Shannon would say about the two comparison measures
-(crossover and half-fill), 2026-10-09
-Source: Shannon 1948, Part I, section 7, p. 399 (BSTJ 27(3)). Checked
-against the original scan (shannon-1948-part1.pdf, page 21) on
-2026-10-09: the quoted words are exact, and the printing itself reads
-"James Joyces' book "Finigans Wake."", so quote it with [sic], not
-corrected.
-- The next section on the same page (section 8) models the transmitter
-  and receiver as discrete transducers with a finite internal memory, "a
-  finite number m of possible states". Shannon did give the coder a finite
-  memory there; his capacity results still let block length, and so the
-  codebook, grow without limit. Worth a closer read for piece 1.
-Rough notes:
-- Same section defines relative entropy (a source's entropy over the
-  maximum with the same symbols) and redundancy (one minus that), and
-  gives English at roughly 50%. Half-fill is a normalization in that
-  spirit; the crossover compares raw bits.
-- His third requirement for H (breaking a choice into two successive
-  choices; section 6) is exactly the between-class plus within-class
-  split both measures rest on.
-- Information belongs to the source: the text view (source
-  probabilities) is the Shannon view, the dictionary view describes the
-  alphabet. Experiment C's text view gives a clean order (role before
-  word, observation 21); the dictionary view gives none (22).
-- Use in piece 1: start where the field started; the field's founder
-  already saw vocabulary size trade against redundancy and semantic
-  compression, and nobody derived the size.
+Moved to: notes/2026-10-09-reading-shannon-vocabulary-redundancy.md (close reading; anchor for piece 1).
 
 ## 2026-10-09: The tail isn't identity
 

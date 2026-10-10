@@ -12,3 +12,9 @@ __pycache__/
 build/
 
 .DS_Store
+
+# AI assistant files: local only, never published
+AGENTS.md
+.claude/
+.codex/
+.cursor/

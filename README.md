@@ -17,10 +17,20 @@ Named for Theseus, Claude Shannon's 1950 maze-solving mouse with a finite relay
 memory, and the thread Ariadne gave Theseus to find his way through the
 labyrinth.
 
-**Status:** research program defined; one exploratory experiment run
-(`experiments/c-empty-dimensions/`); nothing published yet.
+**Status:** one experiment done (`experiments/c-empty-dimensions/`), written
+up as working paper 1 (`pieces/empty-dimensions/`, draft); the next
+experiment, a constructed toddler language, designed. Nothing published yet.
 **License:** writing CC BY 4.0, code Apache 2.0; see [LICENSE](LICENSE) and
 [NOTICE](NOTICE).
+
+## How the work moves
+
+An idea starts in `ideas.md`. When it firms up it becomes a hypothesis, one row
+in the table in `brief.md`, or a dated note in `notes/`, and its entry in
+`ideas.md` keeps a pointer to where it went. An experiment in `experiments/`
+tests a hypothesis, with its prediction stated before the run and its
+observations kept apart from interpretation. A piece in `pieces/` writes up
+what held and what failed.
 
 ## Layout
 
@@ -29,12 +39,12 @@ labyrinth.
 | `brief.md` | The program: question, positions, hypotheses, pieces, experiments, prior art, risks |
 | `definitions.md` | Formal definitions of the measures used, with their knobs stated |
 | `ideas.md` | Half-formed thoughts and questions to explore; not hypotheses |
-| `notes/` | Dated research notes, `YYYY-MM-DD-topic.md`. Notes are a record: add new ones rather than rewriting old conclusions |
+| `notes/` | Dated research notes, `YYYY-MM-DD-topic.md`: research passes, prior-art searches, close readings of sources, experiment designs. Notes are a record: add new ones rather than rewriting old conclusions |
 | `references/refs.bib` | One bibliography shared by every piece |
 | `references/to-get.md` | Books and papers to acquire later, with where to get them |
 | `references/library/` | Papers downloaded for reading. Git-ignored; `references/library.tsv` lists what belongs there |
-| `pieces/` | One folder per piece of writing, in the site's paper format |
-| `experiments/` | One folder per experiment: code, pinned environment, small results |
+| `pieces/` | One folder per piece of writing, in the site's paper format; `AUDIT.md` is the audit every paper goes through |
+| `experiments/` | One folder per experiment: hypothesis and prediction, code, pinned environment, numbered observations, small results (layout in `experiments/README.md`) |
 | `scripts/` | `publish-piece.sh` (copy a piece into the site and build it) and its tests |
 
 ## Publishing

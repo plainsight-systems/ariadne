@@ -1,6 +1,6 @@
 # Ariadne: project brief
 
-*Captured 2026-10-03. Named 2026-10-03. Status: research program defined, nothing written or built. Supersedes the
+*Captured 2026-10-03. Named 2026-10-03. Status (2026-10-10): experiment C done and written up as working paper 1 (draft); experiment D designed. Supersedes the
 "BPE" seed, now at `notes/2026-09-30-bpe-information-theory-seed.md`, whose research is carried over below.*
 
 ## The name
@@ -74,12 +74,13 @@ Shannon sets the last three to zero. The alphabet moves all three at once, which
 
 ## Working hypotheses (hypotheses, not claims)
 
-| # | Hypothesis | Status |
-|---|---|---|
-| H1 | The alphabet matters only because the receiver is bounded. | **Prior art; credit, do not claim.** Epiplexity's "Paradox 2", V-information, Rajaraman et al. |
-| H2 | The right alphabet size can be derived from the receiver's capacity and budget, not tuned. | **Partly anticipated** (2026-10-04). Nixon 2026 (arXiv:2604.09521, unreviewed) derives an agent's *semantic* alphabet (the history distinctions a finite-state controller's memory can sustain) from its capacity, and the communication rate between two such agents. Not found: the size of the *code* alphabet over a source, derived from a receiver's capacity and exposure budget. Moderate-low confidence that this remains open. The core of the program. |
-| H3 | It is two numbers: what a receiver can take in is bounded by exposure; what it can express out is bounded by its dimension. | **Appears open** (moderate-low confidence). Evidence: Over-Tokenized Transformer (input vocabulary scales freely, output vocabulary hurts small models). The softmax bottleneck is not evidence: a trivial rank bound, and the output-table squash measures the residual stream, not the vocabulary (Andrew, 2026-10-08). |
-| H4 | Capacity and compute are not independent: compute is spent through the receiver's limited dimension. | Strong evidence in one receiver kind: Godey and Artzi 2026 (95 to 99% of gradient norm suppressed at a rank-limited output). Needs a general statement. |
+| # | Hypothesis | Status | Tested by |
+|---|---|---|---|
+| H1 | The alphabet matters only because the receiver is bounded. | **Prior art; credit, do not claim.** Epiplexity's "Paradox 2", V-information, Rajaraman et al. | (prior art) |
+| H2 | The right alphabet size can be derived from the receiver's capacity and budget, not tuned. | **Partly anticipated** (2026-10-04). Nixon 2026 (arXiv:2604.09521, unreviewed) derives an agent's *semantic* alphabet (the history distinctions a finite-state controller's memory can sustain) from its capacity, and the communication rate between two such agents. Not found: the size of the *code* alphabet over a source, derived from a receiver's capacity and exposure budget. Moderate-low confidence that this remains open. The core of the program. | A, B |
+| H3 | It is two numbers: what a receiver can take in is bounded by exposure; what it can express out is bounded by its dimension. | **Appears open** (moderate-low confidence). Evidence: Over-Tokenized Transformer (input vocabulary scales freely, output vocabulary hurts small models). The softmax bottleneck is not evidence: a trivial rank bound, and the output-table squash measures the residual stream, not the vocabulary (Andrew, 2026-10-08). | B |
+| H4 | Capacity and compute are not independent: compute is spent through the receiver's limited dimension. | Strong evidence in one receiver kind: Godey and Artzi 2026 (95 to 99% of gradient norm suppressed at a rank-limited output). Needs a general statement. | B |
+| H5 | The dimension a receiver needs splits into a part set by the vocabulary's identity under the receiver's noise and a part set by the grammar, and dimensions beyond both stay empty. | **Proposed from experiment C** (2026-10-09). In Pythia, 99% of identity at noise calibrated from the model takes 96 to 240 directions in the text's own basis and does not grow with d, while the network depends on far more (`experiments/c-empty-dimensions/OBSERVATIONS.md` 32-47; paper). The grammar part is untested; the first alternative is bigram statistics. Shannon's 1949 count did not predict the identity part better than a constant (observation 43). | D |
 
 ## Where the question shows up (instances to test across)
 
@@ -98,6 +99,9 @@ Shannon sets the last three to zero. The alphabet moves all three at once, which
 Each piece stands alone and goes where it fits: a paper on the site, an article on andrewphunter.com, or a
 standalone LinkedIn post (see the write-ups rule). Order is a proposal.
 
+Written: **working paper 1, "Do Language Models Have Empty Dimensions?"** (`pieces/empty-dimensions/`, draft v0.3,
+from experiment C). Planned:
+
 1. **The receiver Shannon left out** (essay). The infinite-receiver assumption, what it hides, and why hyperparameters
    show up exactly where it breaks. Candidate line: "Shannon proved the alphabet can't matter. It matters anyway,
    which tells you something about the receiver."
@@ -113,6 +117,21 @@ clean, ML venues if the result is a measured curve (survey at
 `~/Documents/plainsight-publication-venues-2026-10.md`).
 
 ## Experiments
+
+Folders are created when work starts: `experiments/<letter>-<name>/`, each with its hypothesis, the prediction made
+in advance, runs, `OBSERVATIONS.md` and a way to reproduce it.
+
+**C. Do models have empty dimensions? (done, 2026-10-07 to 10).** `experiments/c-empty-dimensions/`; written up as
+working paper 1. Removable input directions in Pythia from 1.4B up, none on the output side; the plateau prediction
+failed; identity information at noise calibrated from the model needs far fewer directions than the network depends
+on. Gave H5.
+
+**D. A toddler language (planned).** A designed unifilar finite-state source: a small world, a vocabulary smaller than
+the world with controlled overextension, frames with slots, known probabilities, so entropy rate, states, rank and
+F_N are exact before training. Pairs of sources matched in single-token and bigram statistics but differing in
+longer-range structure. Receivers: tiny models with a learned input table and with a fixed identity code at several
+widths, and n-gram counters. First, a toy product codebook with exact identity information. Tests H5. Design and prior
+art: `notes/2026-10-09-toddler-language.md`; the fixed-code arm follows Bochkov 2026.
 
 **A. Classical receiver (cheap, deterministic, no ML).** Synthetic sources with known entropy (k-th order Markov),
 received by bounded-context predictors of order m over alphabets of increasing block size. Prediction: the best
@@ -176,8 +195,9 @@ Full notes, figures and verification status for each: `notes/2026-09-30-bpe-info
 
 ## Next steps
 
-1. Andrew reviews this brief; settle the order of pieces.
-2. Fresh prior-art pass on H2 and H3 specifically (derived alphabet size; separate input and output bounds), outside
-   ML as well as inside it.
-3. Design experiment A in detail (sources, receiver orders, alphabet construction, the predicted knee).
-4. Outline piece 1.
+1. Andrew reads working paper 1 (v0.3); then the site page, a Zenodo DOI and an arXiv endorsement request.
+2. Design experiment D in detail: the source, the matched pairs, the receivers, and the predictions stated before any
+   training.
+3. Settle the order of the remaining pieces; outline piece 1.
+4. Fresh prior-art pass on H2, H3 and H5, outside ML as well as inside it.
+5. Convert the remaining credit list into verified `references/refs.bib` entries.

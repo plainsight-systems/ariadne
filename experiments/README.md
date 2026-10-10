@@ -5,11 +5,16 @@ One folder per experiment, named after the brief: `a-bounded-context/`,
 
 Each experiment folder holds:
 
-- a README stating the hypothesis it tests, the prediction made in advance, and
-  how to reproduce it
-- code, with every dependency version pinned
-- `results/`: small, committed summaries (tables, plots) of a run, with the
-  commit and parameters that produced them
+- `README.md`: the hypothesis it tests (linked to its row in `../brief.md`), the
+  prediction made in advance, setup, a runs table, and how to reproduce it
+- `OBSERVATIONS.md`: numbered observations only, in the order made, kept apart
+  from interpretation; superseded ones are marked in place and keep their numbers
+- `LOG.md` (optional): dated narrative, with the readings made at the time
+- code, with every dependency version pinned; a rule for a test is committed
+  before the run it governs
+- `results/`: small, committed summaries (tables, plots, logs) of each run;
+  `results/superseded/` and `results/parked/` hold runs that were replaced or
+  set aside, each with a README saying why. Nothing is deleted.
 - `out/`: raw regenerated output, git-ignored
 
 Experiments that drive another repository (experiment B uses Charlotte) record
