@@ -1,0 +1,44 @@
+# Identity's cut points on a fine grid, and Shannon's count (Pythia input tables, sigma_res)
+
+Grid k = 16..512 in steps of 16, and d. n_flat = 2 H(T) / log2(1 + 1/eps^2). Rule in identity_fine.py,
+committed before running: agree if 0.8 <= n_flat / k_q <= 1.25; beats a constant if L < L0.
+
+## Text view, frequency-weighted basis (primary)
+
+| Model | d | eps | n_flat | k95 | k99 | k99.9 | draws | separates |
+|---|---|---|---|---|---|---|---|---|
+| pythia-70m | 512 | 2.975 | 122 | 112 | 160 | 272 | 64000 | False |
+| pythia-160m | 768 | 2.912 | 117 | 96 | 144 | 224 | 16000 | True |
+| pythia-410m | 1024 | 2.389 | 81 | 64 | 96 | 144 | 4000 | True |
+| pythia-1b | 2048 | 4.669 | 291 | 160 | 240 | 352 | 64000 | True |
+| pythia-1.4b | 2048 | 4.294 | 248 | 128 | 208 | 336 | 16000 | True |
+| pythia-2.8b | 2560 | 4.462 | 267 | 112 | 176 | 288 | 64000 | True |
+| pythia-6.9b | 4096 | 3.866 | 202 | 96 | 144 | 224 | 64000 | False |
+| pythia-12b | 5120 | 4.040 | 220 | 96 | 144 | 208 | 16000 | True |
+
+| Cut | n_flat / k_q per model | agree (count) | L | L0 (best constant) | beats constant |
+|---|---|---|---|---|---|
+| 0.95 | 1.09, 1.22, 1.27, 1.82, 1.93, 2.38, 2.10, 2.29 | 2 of 8 | 0.528 | 0.189 (96) | False |
+| 0.99 | 0.76, 0.81, 0.84, 1.21, 1.19, 1.52, 1.40, 1.53 | 4 of 8 | 0.274 | 0.199 (149) | False |
+| 0.999 | 0.45, 0.52, 0.56, 0.83, 0.74, 0.93, 0.90, 1.06 | 4 of 8 | 0.344 | 0.227 (224) | False |
+
+## Dictionary view
+
+| Model | d | eps | n_flat | k95 | k99 | k99.9 | draws | separates |
+|---|---|---|---|---|---|---|---|---|
+| pythia-70m | 512 | 2.746 | 174 | 160 | 256 | 400 | 64000 | True |
+| pythia-160m | 768 | 2.637 | 161 | 144 | 208 | 368 | 64000 | False |
+| pythia-410m | 1024 | 2.202 | 115 | 80 | 112 | 240 | 16000 | True |
+| pythia-1b | 2048 | 4.202 | 393 | 240 | 384 | 2048 | 64000 | True |
+| pythia-1.4b | 2048 | 3.960 | 350 | 176 | 304 | 2048 | 16000 | True |
+| pythia-2.8b | 2560 | 4.095 | 374 | 144 | 240 | 2560 | 64000 | True |
+| pythia-6.9b | 4096 | 3.532 | 281 | 80 | 144 | 400 | 16000 | True |
+| pythia-12b | 5120 | 3.692 | 306 | 80 | 128 | 480 | 16000 | True |
+
+| Cut | n_flat / k_q per model | agree (count) | L | L0 (best constant) | beats constant |
+|---|---|---|---|---|---|
+| 0.95 | 1.09, 1.12, 1.44, 1.64, 1.99, 2.60, 3.51, 3.82 | 2 of 8 | 0.662 | 0.323 (144) | False |
+| 0.99 | 0.68, 0.77, 1.03, 1.02, 1.15, 1.56, 1.95, 2.39 | 3 of 8 | 0.352 | 0.352 (208) | False |
+| 0.999 | 0.43, 0.44, 0.48, 0.19, 0.17, 0.15, 0.70, 0.64 | 0 of 8 | 1.067 | 0.737 (401) | False |
+
+Models in order: pythia-70m, pythia-160m, pythia-410m, pythia-1b, pythia-1.4b, pythia-2.8b, pythia-6.9b, pythia-12b.

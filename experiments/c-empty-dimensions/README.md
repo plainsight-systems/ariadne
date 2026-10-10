@@ -49,6 +49,7 @@ pinned revisions in `models.json`.
 | `tail_identity.py` | What the tail resolves on its own, against shuffled and random tails; redundancy with the core | `results/tail_identity.*` (the first run's role view permuted across all tokens; rerun permuting within the view's tokens, `results/tail_identity_role_rerun.log`) |
 | `tail_capacity.py` | Gaussian capacity of the core and the tail beside their measured identity (no new draws) | `results/tail_capacity.*` |
 | `capacity_count.py` | Shannon's 1949 count (token entropy and noise only) and the capacity lower bound on the directions identity needs, beside the measured k99 (no new draws) | `results/capacity_count.*` |
+| `identity_fine.py` | Identity's cut points on a grid of 16, and Shannon's count against them with a rule committed before running | `results/identity_fine.*` |
 | `project.py` | Causal test: squash a table onto its top k directions, run the model on WikiText-103 test, find where loss stops changing | `results/phase2.md`, `results/loss_vs_k.png`, `results/phase2.log` |
 
 ## What we have so far (2026-10-07)
@@ -183,7 +184,7 @@ Observations only, from the runs below. No interpretation here.
 24. Pinned noise (definitions.md 1.10, derived before computing;
     `pinned_noise.py`, `results/pinned_noise.md`). Residual-stream
     interference, the context-driven part of what the first block adds to
-    a token's vector, gives eps_res = 2.2-2.8 for 70m-410m and 3.5-4.2 from
+    a token's vector, gives eps_res = 2.2-2.7 for 70m-410m and 3.5-4.2 from
     1b up. Counting the token-determined part too gives 8.1-20.9. The fp16
     storage floor gives 2.1e-4.
 25. At eps_res, identity information reaches 99% of its value at k = d by
@@ -318,8 +319,8 @@ Observations only, from the runs below. No interpretation here.
     eps = sigma_res / s and s the view's own scale, is 115-393 in the
     dictionary view (H(T) = 15.62) and 81-291 in the text view (H(T) =
     9.43). It does not involve d.
-40. Against the measured k99 interval (grid point below, excluded, to
-    k99) at sigma_res: in the text view's frequency-weighted basis n_flat
+40. (Superseded by 42-43, which measure k99 on a fine grid.) Against the
+    measured k99 interval (grid point below, excluded, to k99) at sigma_res: in the text view's frequency-weighted basis n_flat
     is inside the interval at 410m, 1.4b, 6.9b and 12b, 4% and 14% above it
     at 2.8b and 1b, 5% and 9% below it at 70m and 160m. In the dictionary
     view it is inside at 160m, 410m, 1b and 1.4b, below at 70m (174 vs
@@ -331,6 +332,26 @@ Observations only, from the runs below. No interpretation here.
     squash basis) is 6-21 directions in the weighted basis, 30-113 in the
     squash basis and 36-129 in the dictionary view: 3-43 times below the
     measured k99 (12-43 times in the weighted basis).
+42. Fine grid (`identity_fine.py`, rule committed before running in
+    9a93675; `results/identity_fine.md`). Text view, frequency-weighted
+    basis, sigma_res, k in steps of 16: k95 / k99 / k99.9 are 70m 112 /
+    160 / 272; 160m 96 / 144 / 224; 410m 64 / 96 / 144; 1b 160 / 240 / 352;
+    1.4b 128 / 208 / 336; 2.8b 112 / 176 / 288; 6.9b 96 / 144 / 224; 12b
+    96 / 144 / 208. k99 spans 96-240 while d spans 512-5,120. Dictionary
+    view: k99 is 256, 208, 112, 384, 304, 240, 144, 128; k99.9 reaches d in
+    1b, 1.4b and 2.8b. The 99% cut did not separate from its neighbour at
+    64,000 draws in 70m and 6.9b (text) and 160m (dictionary).
+43. Shannon's count fails the rule. Primary test (text view, weighted
+    basis, 99%): n_flat / k99 = 0.76, 0.81, 0.84, 1.21, 1.19, 1.52, 1.40,
+    1.53 (70m to 12b); 4 of 8 within 0.8-1.25; mean |ln ratio| L = 0.274
+    against L0 = 0.199 for the best constant (149), so the count does not
+    beat a constant. It also fails at the 95% and 99.9% cuts (L 0.528 vs
+    0.189; 0.344 vs 0.227) and in the dictionary view at every cut (99%:
+    0.352 vs 0.352; 3 of 8 agree). n_flat ranges 81-291 across the models,
+    k99 96-240.
+44. Against the fine k99, the capacity lower bound k_C (observation 41) is
+    7.6-24 times smaller in the text view's weighted basis and 2.7-3.6
+    times smaller in the dictionary view.
 
 ## Phase 3 (2026-10-07): finer steps, larger models, checkpoints
 
