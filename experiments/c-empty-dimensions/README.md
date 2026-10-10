@@ -185,7 +185,7 @@ Observations only, from the runs below. No interpretation here.
     `pinned_noise.py`, `results/pinned_noise.md`). Residual-stream
     interference, the context-driven part of what the first block adds to
     a token's vector, gives eps_res = 2.2-2.7 for 70m-410m and 3.5-4.2 from
-    1b up. Counting the token-determined part too gives 8.1-20.9. The fp16
+    1b up. Counting the token-determined part too gives 8.1-20.8. The fp16
     storage floor gives 2.1e-4.
 25. At eps_res, identity information reaches 99% of its value at k = d by
     128-512 directions in all eight Pythia input tables (dictionary view;
