@@ -53,6 +53,10 @@ about 5 different things. And when I hand her something she wants she says
 "here you go da da", because her whole life, when we hand her things, we
 say "here you go Ellie". This feels like the right pivot toward Shannon.
 
+Confirmed by Andrew, 2026-10-09: she says "here you go" whether she is
+giving or receiving, filling the slot with the other person; the whole
+toddler-language idea came from interacting with her.
+
 From: thinking about step 3 of "Next step on the measure" (check on a toy
 first)
 Rough notes from talking it through:
