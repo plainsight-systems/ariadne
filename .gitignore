@@ -15,6 +15,7 @@ build/
 
 # AI assistant files: local only, never published
 AGENTS.md
+CLAUDE.md
 .claude/
 .codex/
 .cursor/
