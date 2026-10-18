@@ -3,9 +3,8 @@
 Half-formed thoughts and questions to explore. Not hypotheses: nothing here
 is claimed, checked or ranked. An entry can be one line.
 
-When an idea firms up, it moves on: a hypothesis goes into `brief.md`, a
-research pass into a dated note in `notes/`. Leave the entry here with a
-pointer to where it went, so the trail stays.
+When an idea firms up, it moves on: a hypothesis goes into `brief.md`. Leave
+the entry here with a pointer to where it went, so the trail stays.
 
 Newest first. Format:
 
@@ -15,7 +14,7 @@ Newest first. Format:
 The thought or question, as rough as it is.
 
 From: what prompted it (optional)
-Moved to: brief.md H5 / notes/... (once it has moved)
+Moved to: brief.md H5 (once it has moved)
 ```
 
 ## 2026-10-09: A fixed-code arm for the toddler experiment
@@ -57,8 +56,8 @@ single-token entropy (1951: F_1 down to F_N).
   (k99 to k*) are where the grammar half should show, if Andrew's guess is
   right.
 - Hypothesis for the toddler language: the dimension a receiver needs is
-  about d_identity(H, sigma) + d_grammar(states, or rank R; see the
-  parked rank inference in notes/2026-10-09-toddler-language.md), and dimensions beyond both stay empty.
+  about d_identity(H, sigma) + d_grammar(states, or rank R; rank
+  inference parked for now), and dimensions beyond both stay empty.
 - Dropped: further tests on the tail beyond k*(0.1). That split is set by
   k*, which the paper shows is a property of the trained network, not of
   the language.
@@ -70,7 +69,7 @@ Moved to: brief.md H5; tested by experiment D.
 
 ## 2026-10-09: A toddler language, and a toy codebook with known answers
 
-Moved to: notes/2026-10-09-toddler-language.md (design, prior art, CHILDES terms); planned as experiment D in brief.md.
+Planned as experiment D in brief.md.
 
 ## 2026-10-09: Next step on the measure: real noise, then the tail
 
@@ -103,15 +102,158 @@ Moved to: done in experiment C (OBSERVATIONS.md 24-47) and the paper.
 
 ## 2026-10-09: Hellman and Cover 1970: what an m-state receiver can learn
 
-Moved to: notes/2026-10-09-reading-hellman-cover-1970.md (close reading).
+Read closely: Hellman and Cover, "Learning with Finite Memory", Annals of
+Mathematical Statistics 41(3), 765-782, 1970 (library scan, OCR'd for
+reading; the equal-prior formula below reproduces the paper's own Example
+1 numbers, 1/101 and 1/82, which checks the OCR). Facts first, then
+inferences.
+
+What the paper does:
+- Two-hypothesis testing (P0 vs P1) on an i.i.d. stream, with the data
+  summarized after each observation by a statistic T in {1, ..., m},
+  updated by a time-invariant (possibly randomized) rule T_n = f(T_{n-1},
+  X_n), and a decision d(T_n). The pair (f, d) is a finite-state machine
+  with m states. Loss: long-run probability of error as n goes to
+  infinity.
+- They reject two other notions of limited memory as not real
+  constraints: remembering the last k observations (the space of those
+  can be infinite) and remembering one real number such as the likelihood
+  ratio (infinitely many values).
+- The key statistic is gamma = (sup of the likelihood ratio) / (inf of it)
+  over events, "a natural measure of the resolvability of the two
+  hypotheses in the finite memory case".
+- Main result: the least achievable error is
+  P* = [2 sqrt(pi0 pi1 gamma^(m-1)) - 1] / (gamma^(m-1) - 1)
+  (when gamma^(m-1) exceeds the prior ratio); with equal priors,
+  P* = 1 / (1 + gamma^((m-1)/2)). An m-state machine's stationary state
+  likelihood ratios can spread by at most gamma^(m-1) (Theorem 2).
+- P* is the greatest lower bound but is not achieved by any machine for
+  m > 2 (Theorem 4); epsilon-optimal machines exist. They are saturating
+  counters: move up one state only on near-maximal likelihood-ratio
+  events, down only on near-minimal ones, ignore everything else, and
+  leave the end states only with small probability. In the discrete case
+  this needs artificial randomization, which they call surprising "since
+  randomization usually decreases information".
+- Examples: coins with p = 0.501 vs 0.499 give gamma = 1.008, so a 5-state
+  machine is little better than no memory, and about 500 states are needed
+  for 1% error; the difference |p0 - p1| is a poor measure of
+  resolvability with finite memory. Normal vs Cauchy location tests behave
+  alike with unlimited memory, but the normal case reaches zero error with
+  2 states while the Cauchy case stays at 0.15.
+- Conclusions: rounding a sufficient statistic to a few digits is far from
+  optimal, because the machine should wait for extreme events. With a
+  time-varying rule, Cover (1969) reaches zero error with m = 4, so time
+  invariance is part of the constraint. Finite sample size N is left open.
+
+Inferences for Ariadne (not in the paper):
+- A derived number from a receiver's capacity, in closed form, in a
+  non-neural receiver: invert the equal-prior bound and the memory needed
+  for error P is m = 1 + 2 ln((1 - P)/P) / ln(gamma). The form H2 wants,
+  for one receiver kind. Credit it as prior art for the shape of a
+  derivation.
+- What a bounded receiver can use is a different property of the source
+  than what an unbounded one can use. With unlimited memory the error
+  decays at a rate set by an information quantity (Chernoff information,
+  from the general theory, not this paper); with m states only gamma, the
+  extreme likelihood ratios, matters. Normal and Cauchy are the clean
+  example. This is H1 shown exactly, in 1970.
+- The optimal machine recodes the input into a three-letter alphabet
+  (extreme high, extreme low, everything else) before it counts. The
+  alphabet falls out of the receiver's limit and the source's extremes;
+  nothing is tuned, and its size is 3 for every m. A derived alphabet
+  (question 3), in a finite-state receiver. Check whether the brief's H2
+  should credit this directly.
+- "Rounding is far from optimal" says the best code for a finite receiver
+  is not the most faithful compression of the sufficient statistic; it
+  throws away the moderate events entirely. Compare "the loss from source
+  to signal is the meaning": the machine's meaning is in which events it
+  discards.
+- The finite-N case is open in the paper, and it is the realistic one
+  (Ariadne's exposure term). Look for later work on it.
 
 ## 2026-10-09: Shannon's section 8: coders as finite transducers
 
-Moved to: notes/2026-10-09-reading-shannon-1948-section-8.md (close reading).
+Read closely from the original scan (shannon-1948-part1.pdf, pages 21-23;
+BSTJ 27(3), pp. 399-401). Facts first, then inferences.
+
+What section 8 ("Representation of the Encoding and Decoding Operations")
+says:
+- The transmitter and the receiver are each a *discrete transducer*: input
+  a sequence of symbols, output a sequence of symbols, with an internal
+  memory, so the output depends on the present input and the past.
+- The memory is assumed finite: "a finite number m of possible states". A
+  transducer is two functions, output y_n = f(x_n, a_n) and next state
+  a_{n+1} = g(x_n, a_n), where a_n is the state.
+- Transducers connect in tandem. One whose output a second transducer can
+  turn back into the original input is *non-singular*; the second is its
+  inverse.
+- Theorem 7 (paraphrase): a finite-state transducer driven by a
+  finite-state statistical source outputs a finite-state statistical source
+  whose entropy per unit time is at most the input's, and equal when the
+  transducer is non-singular. Proved on the product state space of source
+  state and transducer state.
+- Theorem 8 (the rest of the section): for a channel given as a graph of
+  constraints, one assignment of transition probabilities maximizes the
+  entropy, and that maximum is the capacity C.
+- Section 9's converse then uses it: the transmitter must be non-singular,
+  so the channel input carries the source's entropy, which cannot exceed C.
+
+Inferences for Ariadne (not in the paper):
+- Theorem 7 is "recoding is lossless" in Shannon's own terms: an invertible
+  finite coder keeps the entropy exactly; any other can only lose it. A
+  deterministic tokenizer with a decoder is a non-singular transducer.
+  Credit Shannon for Andrew's position rather than state it as new.
+- The theorem bounds entropy, not use. It says nothing about whether the
+  receiver can exploit what arrives, which is where Ariadne starts.
+- The finite memory is a modelling convenience, not a limit. m can be any
+  finite number, and the coding theorem in section 9 works on blocks of N
+  symbols with N growing without bound; a transducer that buffers such
+  blocks needs a number of states that grows with N (exponentially in N
+  for a block code). So Shannon's coder is finite at every N but unbounded
+  across them: "finite but unlimited", the same idealization the brief
+  names for the receiver.
+- Section 8 is where a bounded receiver would enter Shannon's own
+  formalism: fix m, or tie it to a cost, and ask what Theorems 7 and 9
+  become. Hellman and Cover (1970, in the library) did the hypothesis-
+  testing version with S states.
 
 ## 2026-10-09: Shannon tied vocabulary size to redundancy (anchor for piece 1)
 
-Moved to: notes/2026-10-09-reading-shannon-vocabulary-redundancy.md (close reading; anchor for piece 1).
+In the 1948 paper itself, Shannon puts vocabulary size next to redundancy.
+Basic English, with its vocabulary limited to 850 words, has very high
+redundancy, seen in the expansion when a passage is translated into it;
+Joyce enlarges the vocabulary and "is alleged to achieve a compression of
+semantic content". So the man who said meaning is irrelevant to the
+engineering problem also says a bigger vocabulary compresses semantic
+content. The vocabulary question is in the founding paper, as an aside.
+
+From: asking what Shannon would say about the two comparison measures
+(crossover and half-fill), 2026-10-09
+Source: Shannon 1948, Part I, section 7, p. 399 (BSTJ 27(3)). Checked
+against the original scan (shannon-1948-part1.pdf, page 21) on
+2026-10-09: the quoted words are exact, and the printing itself reads
+"James Joyces' book "Finigans Wake."", so quote it with [sic], not
+corrected.
+- The next section on the same page (section 8) models the transmitter
+  and receiver as discrete transducers with a finite internal memory, "a
+  finite number m of possible states". Shannon did give the coder a finite
+  memory there; his capacity results still let block length, and so the
+  codebook, grow without limit. Worth a closer read for piece 1.
+Rough notes:
+- Same section defines relative entropy (a source's entropy over the
+  maximum with the same symbols) and redundancy (one minus that), and
+  gives English at roughly 50%. Half-fill is a normalization in that
+  spirit; the crossover compares raw bits.
+- His third requirement for H (breaking a choice into two successive
+  choices; section 6) is exactly the between-class plus within-class
+  split both measures rest on.
+- Information belongs to the source: the text view (source
+  probabilities) is the Shannon view, the dictionary view describes the
+  alphabet. Experiment C's text view gives a clean order (role before
+  word, observation 21); the dictionary view gives none (22).
+- Use in piece 1: start where the field started; the field's founder
+  already saw vocabulary size trade against redundancy and semantic
+  compression, and nobody derived the size.
 
 ## 2026-10-09: The tail isn't identity
 

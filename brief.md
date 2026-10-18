@@ -1,7 +1,7 @@
 # Ariadne: project brief
 
 *Captured 2026-10-03. Named 2026-10-03. Status (2026-10-10): experiment C done and written up as working paper 1 (draft); experiment D designed. Supersedes the
-"BPE" seed, now at `notes/2026-09-30-bpe-information-theory-seed.md`, whose research is carried over below.*
+"BPE" seed, whose research is carried over below.*
 
 ## The name
 
@@ -130,8 +130,8 @@ on. Gave H5.
 the world with controlled overextension, frames with slots, known probabilities, so entropy rate, states, rank and
 F_N are exact before training. Pairs of sources matched in single-token and bigram statistics but differing in
 longer-range structure. Receivers: tiny models with a learned input table and with a fixed identity code at several
-widths, and n-gram counters. First, a toy product codebook with exact identity information. Tests H5. Design and prior
-art: `notes/2026-10-09-toddler-language.md`; the fixed-code arm follows Bochkov 2026.
+widths, and n-gram counters. First, a toy product codebook with exact identity information. Tests H5. The fixed-code arm
+follows Bochkov 2026.
 
 **A. Classical receiver (cheap, deterministic, no ML).** Synthetic sources with known entropy (k-th order Markov),
 received by bounded-context predictors of order m over alphabets of increasing block size. Prediction: the best
@@ -175,8 +175,6 @@ Land and Bartolo 2024 (undertrained tokens); Gowda and May 2020 (exposure heuris
 **Dimension:** Kolmogorov 1936 (n-widths); Yang et al. 2018 (softmax bottleneck; a trivial rank bound, not evidence for H3); Wies et al. 2021 (vocabulary
 bottleneck); Elhage et al. 2022 (superposition); Godey et al. 2024 (small-model saturation); Huang et al. 2025
 (Over-Tokenized Transformer); Godey and Artzi 2026 (gradient bottleneck); Lin and Tegmark 2017.
-
-Full notes, figures and verification status for each: `notes/2026-09-30-bpe-information-theory-seed.md`.
 
 ## Risks
 

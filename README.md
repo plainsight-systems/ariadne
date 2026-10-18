@@ -26,8 +26,8 @@ experiment, a constructed toddler language, designed. Nothing published yet.
 ## How the work moves
 
 An idea starts in `ideas.md`. When it firms up it becomes a hypothesis, one row
-in the table in `brief.md`, or a dated note in `notes/`, and its entry in
-`ideas.md` keeps a pointer to where it went. An experiment in `experiments/`
+in the table in `brief.md`, and its entry in `ideas.md` keeps a pointer to where
+it went. An experiment in `experiments/`
 tests a hypothesis, with its prediction stated before the run and its
 observations kept apart from interpretation. A piece in `pieces/` writes up
 what held and what failed.
@@ -39,11 +39,10 @@ what held and what failed.
 | `brief.md` | The program: question, positions, hypotheses, pieces, experiments, prior art, risks |
 | `definitions.md` | Formal definitions of the measures used, with their knobs stated |
 | `ideas.md` | Half-formed thoughts and questions to explore; not hypotheses |
-| `notes/` | Dated research notes, `YYYY-MM-DD-topic.md`: research passes, prior-art searches, close readings of sources, experiment designs. Notes are a record: add new ones rather than rewriting old conclusions |
 | `references/refs.bib` | One bibliography shared by every piece |
 | `references/to-get.md` | Books and papers to acquire later, with where to get them |
 | `references/library/` | Papers downloaded for reading. Git-ignored; `references/library.tsv` lists what belongs there |
-| `pieces/` | One folder per piece of writing, in the site's paper format; `AUDIT.md` is the audit every paper goes through |
+| `pieces/` | One folder per piece of writing, in the site's paper format |
 | `experiments/` | One folder per experiment: hypothesis and prediction, code, pinned environment, numbered observations, small results (layout in `experiments/README.md`) |
 | `scripts/` | `publish-piece.sh` (copy a piece into the site and build it) and its tests |
 

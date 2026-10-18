@@ -19,3 +19,7 @@ CLAUDE.md
 .claude/
 .codex/
 .cursor/
+
+# Personal research notes and internal audit docs: local only, never published
+notes/
+pieces/AUDIT.md
